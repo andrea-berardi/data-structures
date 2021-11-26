@@ -3,7 +3,7 @@ project(binary_trees C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(binary_trees src/main.c)
+add_executable(binary_trees src/main.c src/modules/binary_search_trees.c src/headers/binary_search_trees.h)
 
 # This enables extra compiler warnings, and more "pedantic" checks
 set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic")
