@@ -1,0 +1,17 @@
+# JetBrains' IDE files
+.idea/
+
+# Visual Studio Code files
+.vscode/
+
+# Project's build directory (debug)
+cmake-build-debug/
+
+# Project's build directory (release)
+cmake-build-release/
+
+# LibreOffice Calc files
+*.ods
+
+# LibreOffice locks
+.~lock.*.ods#
