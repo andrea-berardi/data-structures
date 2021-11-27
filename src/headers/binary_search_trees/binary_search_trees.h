@@ -29,11 +29,11 @@ BSTNode *BSTTreeSuccessor(BSTNode *x);
 
 BSTNode *BSTTreePredecessor(BSTNode *x);
 
-void BSTTreeInsert(BSTTree T, int k);
+void BSTTreeInsertKey(BSTTree *T, int k);
 
 BSTTree *BSTNewTree(BSTNode *x); // `x` can be NULL, but if it isn't then a new BSTNode gets instantiated
 
-void BSTTreeDelete(BSTTree T, BSTNode z);
+void BSTTreeDeleteKey(BSTTree *T, int k);
 
 #endif //BINARY_TREES_BINARY_SEARCH_TREES_H
 

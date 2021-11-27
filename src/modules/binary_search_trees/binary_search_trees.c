@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "../../headers/binary_search_trees/binary_search_trees.h"
 
@@ -84,11 +83,9 @@ BSTNode *BSTNewNode(int k) {
     return node;
 }
 
-void BSTTreeInsert(BSTTree T, int k) {
-    BSTNode *z = BSTNewNode(k);
-
+void BSTTreeInsert(BSTTree *T, BSTNode *z) {
     BSTNode *y = NULL;
-    BSTNode *x = T.root;
+    BSTNode *x = T->root;
 
     while (x != NULL) {
         y = x;
@@ -103,14 +100,20 @@ void BSTTreeInsert(BSTTree T, int k) {
     z->parent = y;
 
     if (y == NULL) {
-        T.root = z; // The Tree was empty
+        T->root = z; // The Tree was empty
     } else if (z->key < y->key) {
         y->left_child = z;
     } else {
         y->right_child = z;
     }
 
-    T.cardinality += 1; // we increase the number of elements in our tree
+    T->cardinality += 1; // we increase the number of elements in our tree
+}
+
+void BSTTreeInsertKey(BSTTree *T, int k) {
+    BSTNode *z = BSTNewNode(k);
+
+    BSTTreeInsert(T, z);
 }
 
 BSTTree *BSTNewTree(BSTNode *x) {
@@ -136,6 +139,30 @@ void BSTTransplant(BSTTree *T, BSTNode *u, BSTNode *v) {
     }
 }
 
-void BSTTreeDelete(BSTTree T, BSTNode z) {
-    // TODO
+void BSTTreeDelete(BSTTree *T, BSTNode *z) {
+    if (z->left_child == NULL) {
+        BSTTransplant(T, z, z->right_child);
+    } else if (z->right_child == NULL) {
+        BSTTransplant(T, z, z->left_child);
+    } else {
+        BSTNode *y = BSTTreeMinimum(z->right_child);
+
+        if (y->parent != z) {
+            BSTTransplant(T, y, y->right_child);
+
+            y->right_child = z->right_child;
+            y->right_child->parent = y;
+        }
+
+        BSTTransplant(T, z, y);
+
+        y->left_child = z->left_child;
+        y->left_child->parent = y;
+    }
+}
+
+void BSTTreeDeleteKey(BSTTree *T, int k) {
+    BSTNode *z = BSTTreeSearch(T->root, k);
+
+    if (z != NULL) BSTTreeDelete(T, z); // if the node `z` exists, we delete it
 }
