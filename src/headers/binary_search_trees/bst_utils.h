@@ -3,11 +3,13 @@
 #ifndef BINARY_TREES_BST_UTILS_H
 #define BINARY_TREES_BST_UTILS_H
 
-void BSTTreeInOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
+#include <stdlib.h>
 
-void BSTTreePreOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
+void BSTInOrderTreeWalk(BSTTree *x, int array[], size_t index); // `x` is the "root" of the tree we want to walk
 
-void BSTTreePostOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
+void BSTPreOrderTreeWalk(BSTTree *x, int array[], size_t index); // `x` is the "root" of the tree we want to walk
+
+void BSTPostOrderTreeWalk(BSTTree *x, int array[], size_t index); // `x` is the "root" of the tree we want to walk
 
 #endif //BINARY_TREES_BST_UTILS_H
 
