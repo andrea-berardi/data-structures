@@ -15,12 +15,6 @@ typedef struct bst_tree {
     struct bst_node* root;
 } BSTTree;
 
-void BSTTreeInOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
-
-void BSTTreePreOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
-
-void BSTTreePostOrderTreeWalk(BSTTree x); // `x` is the "root" of the tree we want to walk
-
 void BSTTreesSearch(BSTNode x, int k); // `x` is the "root" of the tree, `k` is the key we're looking for
 
 #endif //BINARY_TREES_BINARY_SEARCH_TREES_H
