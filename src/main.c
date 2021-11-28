@@ -10,9 +10,9 @@ const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if t
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         fprintf(stderr, "Wrong number of arguments supplied.\n");
-        fprintf(stderr, "Usage: `.%s <1-5>`.\n", argv[0]);
+        fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
         fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n4) Lab. 4\n5) Everything\n");
+        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n5) Everything\n");
 
         exit(EXIT_FAILURE);
     }
@@ -31,9 +31,9 @@ int main(int argc, char *argv[]) {
         lab_1("../results/lab_1/lab_1.csv", lab1_conf, DEBUG);
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
-        fprintf(stderr, "Usage: `.%s <1-5>`.\n", argv[0]);
+        fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
         fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n4) Lab. 4\n5) Everything\n");
+        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n5) Everything\n");
 
         exit(EXIT_FAILURE);
     }
