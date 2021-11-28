@@ -12,9 +12,6 @@ int *new_array(size_t length);
 // Generate a new random array, given its length
 int *gen_rnd_array(size_t length);
 
-// Swap two integers of an array
-void swap(int *a, int *b);
-
 // Check if a given array is sorted (ascending order)
 bool is_sorted(const int array[], size_t length);
 
