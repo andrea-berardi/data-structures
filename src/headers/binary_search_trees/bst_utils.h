@@ -5,7 +5,7 @@
 
 #include <stdlib.h>
 
-void BSTInOrderTreeWalk(BSTTree *x, int array[], size_t index); // `x` is the "root" of the tree we want to walk
+void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t* index); // `x` is the "root" of the tree we want to walk
 
 void BSTPreOrderTreeWalk(BSTTree *x, int array[], size_t index); // `x` is the "root" of the tree we want to walk
 
