@@ -1,3 +1,3 @@
-# Binary Trees
+# Trees
 
 WIP - Work In Progress
