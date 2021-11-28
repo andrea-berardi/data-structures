@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 #include "../../headers/linked_lists/linked_lists.h"
@@ -13,6 +14,14 @@ LLNode *LLListSearch(LL *L, int k) {
     return x;
 }
 
+LLNode *LLNewNode(int k) {
+    LLNode *x = malloc(sizeof(LLNode));
+
+    x->previous = NULL;
+    x->next = NULL;
+    x->key = k;
+}
+
 void LLListInsert(LL *L, LLNode *x) {
     x->next = L->head;
 
@@ -23,6 +32,12 @@ void LLListInsert(LL *L, LLNode *x) {
     x->previous = NULL;
 
     L->cardinality += 1;
+}
+
+void LLListInsertKey(LL *L, int k) {
+    LLNode *x = LLNewNode(k);
+
+    LLListInsert(L, x);
 }
 
 void LLListDelete(LL *L, LLNode *x) {
@@ -37,4 +52,24 @@ void LLListDelete(LL *L, LLNode *x) {
     }
 
     L->cardinality -= 1;
+}
+
+void LLListDeleteKey(LL *L, int k) {
+    LLNode *x = LLListSearch(L, k);
+
+    LLListDelete(L, x);
+}
+
+LL *LLNewList(LLNode *x) {
+    LL *L = malloc(sizeof(LL));
+
+    L->cardinality = 0;
+
+    if (x != NULL) {
+        L->head = x;
+    } else {
+        L->head = NULL;
+    }
+
+    return L;
 }

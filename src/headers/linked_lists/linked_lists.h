@@ -16,11 +16,11 @@ typedef struct ll_head {
 
 LLNode *LLListSearch(LL *L, int k);
 
-void LLListInsert(LL *L, LLNode *x);
+void LLListInsertKey(LL *L, int k);
 
-void LLListDelete(LL *L, LLNode *x);
+void LLListDeleteKey(LL *L, int k);
 
-void LLNewList(LLNode *x);
+LL *LLNewList(LLNode *x);
 
 #endif //TREES_LINKED_LISTS_H
 
