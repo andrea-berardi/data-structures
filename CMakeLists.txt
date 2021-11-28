@@ -14,5 +14,3 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize=undefined -fsanitize=leak -g")
 
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O3")
-
-# set(CMAKE_VERBOSE_MAKEFILE ON)
