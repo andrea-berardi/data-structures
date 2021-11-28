@@ -1,7 +1,7 @@
 // Header guards:
 // patterns of preprocessor directives that protect a header from being included multiple times
-#ifndef BINARY_TREES_EXPERIMENTS_H
-#define BINARY_TREES_EXPERIMENTS_H
+#ifndef TREES_EXPERIMENTS_H
+#define TREES_EXPERIMENTS_H
 
 #include <stdlib.h>
 
@@ -15,10 +15,18 @@ typedef struct {
     unsigned int seed;
 } Configuration;
 
+// Enumeration of the available data structures
+typedef enum data_structures {
+    LL = 0, // Linked List
+    BST = 1, // Binary Search Tree
+    RBT = 2, // Red-Black Tree
+    BT = 3, // B-Tree
+} DataStructure;
+
 // Lab. 1 - Binary Search Trees
 void lab_1(char file[], Configuration conf, bool DEBUG);
 
-#endif //BINARY_TREES_EXPERIMENTS_H
+#endif //TREES_EXPERIMENTS_H
 
 // #pragma once
 // an alternative to header guards
