@@ -84,6 +84,12 @@ BSTNode *BSTNewNode(int k) {
 }
 
 void BSTTreeInsert(BSTTree *T, BSTNode *z) {
+    if (T->root == NULL) {
+        T->root = z;
+
+        return;
+    }
+
     BSTNode *y = NULL;
     BSTNode *x = T->root;
 
@@ -119,7 +125,12 @@ void BSTTreeInsertKey(BSTTree *T, int k) {
 BSTTree *BSTNewTree(BSTNode *x) {
     BSTTree *tree = malloc(sizeof(BSTTree));
 
-    if (x != NULL) tree->root = x; // if a BSTNode was supplied, we save it in the root
+    if (x != NULL) {
+        tree->root = x; // if a BSTNode was supplied, we save it in the root
+    } else {
+        tree->root = NULL;
+    }
+
     tree->cardinality = 0;
 
     return tree;
@@ -159,10 +170,17 @@ void BSTTreeDelete(BSTTree *T, BSTNode *z) {
         y->left_child = z->left_child;
         y->left_child->parent = y;
     }
+
+    T->cardinality -= 1; // we decrease the number of elements in our tree
 }
 
 void BSTTreeDeleteKey(BSTTree *T, int k) {
     BSTNode *z = BSTTreeSearch(T->root, k);
 
-    if (z != NULL) BSTTreeDelete(T, z); // if the node `z` exists, we delete it
+    if (z != NULL) {
+        BSTTreeDelete(T, z);
+
+        free(z);
+        z = NULL; // if the node `z` exists, we delete it
+    }
 }

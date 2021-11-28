@@ -7,13 +7,16 @@
 
 // Configuration
 typedef struct {
-    ssize_t min_keys;
-    ssize_t max_keys;
+    size_t min_keys;
+    size_t max_keys;
     size_t max_instances;
-    ssize_t step;
-    ssize_t search_delete_ratio; // percentage of searches (60 = 60% searches / 40% deletions)
+    size_t step;
+    size_t search_delete_ratio; // percentage of searches (60 = 60% searches / 40% deletions)
     unsigned int seed;
 } Configuration;
+
+// Lab. 1 - Binary Search Trees
+void lab_1(char file[], Configuration conf, bool DEBUG);
 
 #endif //BINARY_TREES_EXPERIMENTS_H
 
