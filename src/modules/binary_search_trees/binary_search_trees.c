@@ -178,7 +178,7 @@ void BSTTreeDelete(BSTTree *T, BSTNode *z) {
 }
 
 void BSTTreeDeleteKey(BSTTree *T, int k) {
-    BSTNode *z = BSTTreeSearch(T->root, k);
+    BSTNode *z = BSTIterativeTreeSearch(T->root, k);
 
     if (z != NULL) BSTTreeDelete(T, z);
 }

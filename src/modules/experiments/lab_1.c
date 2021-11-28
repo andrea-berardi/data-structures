@@ -32,15 +32,19 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
 
         t_start = clock();
         for (size_t key = 0; key < max_keys; ++key) {
-            BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]); // it's important to use `i++` instead of `++i` here
+            // it's important to use `i++` instead of `++i`
+            BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]);
         }
 
         for (size_t key = 0; key < max_search; ++key) {
-            BSTTreeSearch(T->root, rand_search_values_pool[search_index++]); // it's important to use `i++` instead of `++i` here
+            // it's important to use `i++` instead of `++i`
+            BSTIterativeTreeSearch(T->root, rand_search_values_pool[search_index++]);
         }
 
         for (size_t key = 0; key < max_delete; ++key) {
-            BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i` here
+            // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
+            // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
+            BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
         }
         t_end = clock();
 
