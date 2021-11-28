@@ -35,6 +35,12 @@ BSTTree *BSTNewTree(BSTNode *x); // `x` can be NULL, but if it isn't then a new 
 
 void BSTTreeDeleteKey(BSTTree *T, int k);
 
+// this procedure destroys every node of a tree (faster than `BSTEmptyTreePreserveStructure()`)
+void BSTTreeDestroyTree(BSTTree *T);
+
+// this procedure destroys every node of a tree BUT preserves the structure of the BST while running
+// void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x); // commented out because it's unused
+
 #endif //BINARY_TREES_BINARY_SEARCH_TREES_H
 
 // #pragma once

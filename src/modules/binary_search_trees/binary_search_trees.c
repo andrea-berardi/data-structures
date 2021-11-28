@@ -172,15 +172,40 @@ void BSTTreeDelete(BSTTree *T, BSTNode *z) {
     }
 
     T->cardinality -= 1; // we decrease the number of elements in our tree
+
+    free(z);
+    z = NULL;
 }
 
 void BSTTreeDeleteKey(BSTTree *T, int k) {
     BSTNode *z = BSTTreeSearch(T->root, k);
 
-    if (z != NULL) {
-        BSTTreeDelete(T, z);
+    if (z != NULL) BSTTreeDelete(T, z);
+}
 
-        free(z);
-        z = NULL; // if the node `z` exists, we delete it
+// this procedure destroys every node of a tree (faster than `BSTEmptyTreePreserveStructure()`)
+void BSTEmptyTree(BSTTree *T, BSTNode *x) {
+    if (x != NULL) {
+        BSTEmptyTree(T, x->left_child);
+        BSTEmptyTree(T, x->right_child);
+
+        free(x);
     }
+}
+
+// this procedure destroys every node of a tree BUT preserves the structure of the BST while running
+void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
+    if (x != NULL) {
+        BSTEmptyTree(T, x->left_child);
+        BSTEmptyTree(T, x->right_child);
+        BSTTreeDelete(T, x);
+    }
+}
+
+// this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
+void BSTTreeDestroyTree(BSTTree *T) {
+    BSTEmptyTree(T, T->root);
+
+    free(T);
+    T = NULL;
 }

@@ -20,8 +20,8 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
         // - I'll be able to compare the generated arrays and the generated BSTs
         // Also, I'm using different arrays in order not to create outliers.
         int *rand_insert_values_pool = gen_rnd_array(max_keys);
-        int *rand_search_values_pool = gen_rnd_array(max_keys);
-        int *rand_delete_values_pool = gen_rnd_array(max_keys);
+        int *rand_search_values_pool = gen_rnd_array(max_search);
+        int *rand_delete_values_pool = gen_rnd_array(max_delete);
 
         // I'll use these indexes to scan the arrays. They'll be incremented at each run.
         size_t insert_index = 0;
@@ -32,15 +32,15 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
 
         t_start = clock();
         for (size_t key = 0; key < max_keys; ++key) {
-            BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]); // it's important to use `x++` instead of `++i` here
+            BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]); // it's important to use `i++` instead of `++i` here
         }
 
         for (size_t key = 0; key < max_search; ++key) {
-            BSTTreeSearch(T->root, rand_search_values_pool[search_index++]); // it's important to use `x++` instead of `++i` here
+            BSTTreeSearch(T->root, rand_search_values_pool[search_index++]); // it's important to use `i++` instead of `++i` here
         }
 
         for (size_t key = 0; key < max_delete; ++key) {
-            BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `x++` instead of `++i` here
+            BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i` here
         }
         t_end = clock();
 
@@ -55,6 +55,9 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, length);*/
         }
+
+        BSTTreeDestroyTree(T); // destroying the tree and all its leaves (nodes)
+        T = NULL;
 
         free(rand_insert_values_pool);
         rand_insert_values_pool = NULL;
