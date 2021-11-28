@@ -27,8 +27,10 @@ int main(int argc, char *argv[]) {
     lab1_conf.seed = 10; // srand()'s starting seed
 
     if (strcmp(argv[1], "1") == 0) {
-        /* Lab. 1 - Insertion Sort */
+        /* Lab. 1 - (BSTs) Binary Search Trees */
         lab_1("../results/lab_1/lab_1.csv", lab1_conf, DEBUG);
+    } else if (strcmp(argv[1], "2") == 0) {
+        /* Lab. 2 - (RBTs) Red-Black Trees */
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
         fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
