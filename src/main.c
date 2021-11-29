@@ -3,6 +3,7 @@
 #include <string.h> // required for strcmp()
 #include <stdbool.h> // required to use idiomatically the boolean type
 
+#include "headers/utils.h"
 #include "headers/experiments.h"
 
 const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
@@ -10,13 +11,7 @@ const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if t
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         fprintf(stderr, "Wrong number of arguments supplied.\n");
-        fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
-        fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1A) Lab. 1A - Binary Search Trees\n");
-        fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
-        fprintf(stderr, "2) Lab. 2 - Red-Black Trees\n");
-        fprintf(stderr, "3) Lab. 3 - B-Trees\n");
-        fprintf(stderr, "4) Everything\n");
+        error_menu(argv);
 
         exit(EXIT_FAILURE);
     }
@@ -41,21 +36,19 @@ int main(int argc, char *argv[]) {
 
     if (strcmp(argv[1], "1A") == 0) {
         /* Lab. 1A - (BSTs) Binary Search Trees */
-        lab_1A("../results/lab_1A/1A/lab_1B.csv", lab1_conf, DEBUG);
+        lab_1A("../results/lab_1/1A/lab_1B.csv", lab1_conf, DEBUG);
     } else if (strcmp(argv[1], "1B") == 0) {
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
-        lab_1B("../results/lab_1A/1B/lab_1B.csv", lab1A_conf, DEBUG);
+        lab_1B("../results/lab_1/1B/lab_1B.csv", lab1A_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
         /* Lab. 2 - (RBTs) Red-Black Trees */
+    } else if (strcmp(argv[1], "3") == 0) {
+        /* Lab. 3 - (BTs) B-Trees */
+    } else if (strcmp(argv[1], "4") == 0) {
+        /* Everything */
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
-        fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
-        fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1A) Lab. 1A - Binary Search Trees\n");
-        fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
-        fprintf(stderr, "2) Lab. 2 - Red-Black Trees\n");
-        fprintf(stderr, "3) Lab. 3 - B-Trees\n");
-        fprintf(stderr, "4) Everything\n");
+        error_menu(argv);
 
         exit(EXIT_FAILURE);
     }

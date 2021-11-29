@@ -39,7 +39,7 @@ void BSTTreeDeleteKey(BSTTree *T, int k);
 void BSTTreeDestroyTree(BSTTree *T);
 
 // this procedure destroys every node of a tree BUT preserves the structure of the BST while running
-// void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x); // commented out because it's unused
+void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x);
 
 #endif //BINARY_TREES_BINARY_SEARCH_TREES_H
 

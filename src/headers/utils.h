@@ -30,6 +30,9 @@ void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index);
 // Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
 void DeallocNullifyInt(int *array);
 
+// Error messages to print in case of bad input
+void error_menu(char *argv[]);
+
 #endif //TREES_UTILS_H
 
 // #pragma once
