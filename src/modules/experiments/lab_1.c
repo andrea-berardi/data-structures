@@ -49,8 +49,7 @@ experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_i
                 for (size_t key = 0; key < max_delete; ++key) {
                     // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
                     // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    BSTTreeDeleteKey(T,
-                                     rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                    BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
                 }
                 t_end = clock();
 
