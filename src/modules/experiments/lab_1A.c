@@ -7,7 +7,7 @@
 #include "../../headers/experiments.h"
 
 long double
-experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
+experiment_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
            const bool DEBUG) {
     clock_t t_tot = 0;
 
@@ -118,23 +118,25 @@ experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_i
     return (long double) t_tot / (long double) max_instances;
 }
 
-void lab_1(char file[], Configuration conf, const bool DEBUG) {
+void lab_1A(char file[], Configuration conf, const bool DEBUG) {
     FILE *fp = fopen(file, "w+");
     if (fp == NULL) {
         fprintf(stderr, "Failed to open file `%s`\n", file);
         exit(EXIT_FAILURE);
     }
 
-    fprintf(fp, "Keys (n),Binary Search Trees\n");
+    fprintf(fp, "Keys (n),Linked Lists,Binary Search Trees\n");
     for (size_t keys = conf.min_keys; keys <= conf.max_keys; keys += conf.step) {
         srand(conf.seed);
 
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_BST = experiment_1(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
+        long double time_BST = experiment_1A(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
 
-        fprintf(fp, "%zu,%Lf\n", keys, time_BST);
+        long double time_LL = experiment_1A(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
+
+        fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_LL, time_BST);
 
         ++conf.seed;
     }

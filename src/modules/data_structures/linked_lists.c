@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../headers/linked_lists.h"
+#include "../../headers/data_structures/linked_lists.h"
 
 LLNode *LLListSearch(LLHead *L, int k) {
     LLNode *x = L->head;
@@ -42,6 +42,8 @@ void LLListInsertKey(LLHead *L, int k) {
 }
 
 void LLListDelete(LLHead *L, LLNode *x) {
+    if (x == NULL) return; // to ensure that the node supplied is not NULL
+
     if (x->previous != NULL) {
         x->previous->next = x->next;
     } else {
@@ -61,7 +63,7 @@ void LLListDelete(LLHead *L, LLNode *x) {
 void LLListDeleteKey(LLHead *L, int k) {
     LLNode *x = LLListSearch(L, k);
 
-    LLListDelete(L, x);
+    if (x != NULL) LLListDelete(L, x);
 }
 
 LLHead *LLNewList(LLNode *x) {
@@ -82,9 +84,11 @@ void LLListDestroyList(LLHead *L) {
     LLNode *x = L->head;
 
     while (x != NULL) {
+        LLNode *tmp = x->next; // temporary variable to store the address of the next node
+
         LLListDelete(L, x);
 
-        x = x->next;
+        x = tmp;
     }
 
     free(L);

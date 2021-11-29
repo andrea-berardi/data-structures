@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "../../headers/binary_search_trees.h"
+#include "../../headers/data_structures/binary_search_trees.h"
 
 BSTNode *BSTTreeSearch(BSTNode *x, int k) {
     if (x == NULL || x->key == k) {

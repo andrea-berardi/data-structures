@@ -26,6 +26,9 @@ typedef enum data_structures {
 // Lab. 1 - Binary Search Trees
 void lab_1(char file[], Configuration conf, bool DEBUG);
 
+// Lab. 1A - Linked Lists, Binary Search Trees
+void lab_1A(char file[], Configuration conf, bool DEBUG);
+
 #endif //TREES_EXPERIMENTS_H
 
 // #pragma once

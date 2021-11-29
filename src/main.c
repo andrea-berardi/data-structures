@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[1], "1") == 0) {
         /* Lab. 1 - (BSTs) Binary Search Trees */
         lab_1("../results/lab_1/lab_1.csv", lab1_conf, DEBUG);
+    } else if (strcmp(argv[1], "1A") == 0) {
+        lab_1A("../results/lab_1A/lab_1A.csv", lab1_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
         /* Lab. 2 - (RBTs) Red-Black Trees */
     } else {

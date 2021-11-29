@@ -3,8 +3,8 @@
 #include <stdbool.h>
 
 #include "../headers/utils.h"
-#include "../headers/linked_lists.h"
-#include "../headers/binary_search_trees.h"
+#include "../headers/data_structures/linked_lists.h"
+#include "../headers/data_structures/binary_search_trees.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {
@@ -48,6 +48,12 @@ bool is_sorted(const int array[], size_t length) {
 void print_array(const int array[], size_t length) {
     for (size_t i = 0; i < length; ++i)
         printf("%s%d%s", i == 0 ? "[" : "", array[i], i < length - 1 ? ", " : "]\n");
+}
+
+// Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
+void DeallocNullifyInt(int *array) {
+    free(array);
+    array = NULL;
 }
 
 void LLListWalkToArray(LLHead *L, int array[]) {
