@@ -35,12 +35,12 @@ int main(int argc, char *argv[]) {
     lab1_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab1_conf.seed = 10; // srand()'s starting seed
 
-    if (strcmp(argv[1], "1") == 0) {
-        /* Lab. 1 - (BSTs) Binary Search Trees */
-        lab_1("../results/lab_1/lab_1.csv", lab1_conf, DEBUG);
-    } else if (strcmp(argv[1], "1A") == 0) {
-        /* Lab. 1 - (LLs) Linked Lists, (BSTs) Binary Search Trees */
-        lab_1A("../results/lab_1A/lab_1A.csv", lab1A_conf, DEBUG);
+    if (strcmp(argv[1], "1A") == 0) {
+        /* Lab. 1A - (BSTs) Binary Search Trees */
+        lab_1A("../results/lab_1A/1A/lab_1B.csv", lab1_conf, DEBUG);
+    } else if (strcmp(argv[1], "1B") == 0) {
+        /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
+        lab_1B("../results/lab_1A/1B/lab_1B.csv", lab1A_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
         /* Lab. 2 - (RBTs) Red-Black Trees */
     } else {
