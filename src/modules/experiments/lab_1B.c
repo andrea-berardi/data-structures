@@ -7,8 +7,8 @@
 #include "../../headers/experiments.h"
 
 long double
-experiment_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
-              const bool DEBUG) {
+exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
+       const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -103,7 +103,7 @@ experiment_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_
             array = NULL;
         }
 
-        // The following lines will give back to the OS the dynamic memory previously allocated
+        /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
         BSTTreeDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
@@ -132,9 +132,9 @@ void lab_1B(char file[], Configuration conf, bool DEBUG) {
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_BST = experiment_1B(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
+        long double time_BST = exp_1B(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
 
-        long double time_LL = experiment_1B(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
+        long double time_LL = exp_1B(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_BST, time_LL);
 

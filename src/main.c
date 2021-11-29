@@ -12,7 +12,11 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Wrong number of arguments supplied.\n");
         fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
         fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n5) Everything\n");
+        fprintf(stderr, "1A) Lab. 1A - Binary Search Trees\n");
+        fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
+        fprintf(stderr, "2) Lab. 2 - Red-Black Trees\n");
+        fprintf(stderr, "3) Lab. 3 - B-Trees\n");
+        fprintf(stderr, "4) Everything\n");
 
         exit(EXIT_FAILURE);
     }
@@ -47,7 +51,11 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
         fprintf(stderr, "Usage: `.%s <1-4>`.\n", argv[0]);
         fprintf(stderr, "Please specify which test you want to run:\n");
-        fprintf(stderr, "1) Lab. 1\n2) Lab. 2\n3) Lab. 3\n5) Everything\n");
+        fprintf(stderr, "1A) Lab. 1A - Binary Search Trees\n");
+        fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
+        fprintf(stderr, "2) Lab. 2 - Red-Black Trees\n");
+        fprintf(stderr, "3) Lab. 3 - B-Trees\n");
+        fprintf(stderr, "4) Everything\n");
 
         exit(EXIT_FAILURE);
     }

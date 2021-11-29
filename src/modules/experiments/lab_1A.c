@@ -6,8 +6,7 @@
 #include "../../headers/utils.h"
 #include "../../headers/experiments.h"
 
-long double
-experiment_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -96,7 +95,7 @@ void lab_1A(char file[], Configuration conf, bool DEBUG) {
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_BST = experiment_1A(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_BST = exp_1A(keys, max_search, max_delete, conf.max_instances, DEBUG);
 
         fprintf(fp, "%zu,%Lf\n", keys, time_BST);
 
