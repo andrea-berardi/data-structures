@@ -62,8 +62,7 @@ long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
 
-            free(array);
-            array = NULL;
+            DeallocNullifyInt(array);
         }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
