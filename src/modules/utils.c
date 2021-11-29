@@ -3,8 +3,6 @@
 #include <stdbool.h>
 
 #include "../headers/utils.h"
-#include "../headers/data_structures/linked_lists.h"
-#include "../headers/data_structures/binary_search_trees.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {
