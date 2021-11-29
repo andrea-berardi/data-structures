@@ -3,6 +3,8 @@
 #ifndef TREES_LINKED_LISTS_H
 #define TREES_LINKED_LISTS_H
 
+#include <stdlib.h>
+
 typedef struct ll_node {
     int key;
     struct ll_node* previous;
@@ -12,15 +14,17 @@ typedef struct ll_node {
 typedef struct ll_head {
     size_t cardinality; // amount of elements in the linked list
     struct ll_node* head;
-} LL;
+} LLHead;
 
-LLNode *LLListSearch(LL *L, int k);
+LLNode *LLListSearch(LLHead *L, int k);
 
-void LLListInsertKey(LL *L, int k);
+void LLListInsertKey(LLHead *L, int k);
 
-void LLListDeleteKey(LL *L, int k);
+void LLListDeleteKey(LLHead *L, int k);
 
-LL *LLNewList(LLNode *x);
+LLHead *LLNewList(LLNode *x);
+
+void LLListDestroyList(LLHead *L);
 
 #endif //TREES_LINKED_LISTS_H
 

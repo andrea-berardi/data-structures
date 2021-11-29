@@ -3,6 +3,8 @@
 #include <stdbool.h>
 
 #include "../headers/utils.h"
+#include "../headers/linked_lists.h"
+#include "../headers/binary_search_trees.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {
@@ -46,4 +48,22 @@ bool is_sorted(const int array[], size_t length) {
 void print_array(const int array[], size_t length) {
     for (size_t i = 0; i < length; ++i)
         printf("%s%d%s", i == 0 ? "[" : "", array[i], i < length - 1 ? ", " : "]\n");
+}
+
+void LLListWalkToArray(LLHead *L, int array[]) {
+    LLNode *x = L->head;
+
+    size_t index = 0;
+    while (x != NULL) {
+        array[index++] = x->key;
+        x = x->next;
+    }
+}
+
+void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index) {
+    if (x != NULL) {
+        BSTInOrderTreeWalkToArray(x->left_child, array, index);
+        array[*index] = x->key, (*index)++;
+        BSTInOrderTreeWalkToArray(x->right_child, array, index);
+    }
 }

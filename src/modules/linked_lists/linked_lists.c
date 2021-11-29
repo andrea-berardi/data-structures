@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../headers/linked_lists/linked_lists.h"
+#include "../../headers/linked_lists.h"
 
-LLNode *LLListSearch(LL *L, int k) {
+LLNode *LLListSearch(LLHead *L, int k) {
     LLNode *x = L->head;
 
     while (x != NULL && x->key != k) {
@@ -21,7 +21,7 @@ LLNode *LLNewNode(int k) {
     x->key = k;
 }
 
-void LLListInsert(LL *L, LLNode *x) {
+void LLListInsert(LLHead *L, LLNode *x) {
     x->next = L->head;
 
     if (L->head != NULL)
@@ -33,13 +33,13 @@ void LLListInsert(LL *L, LLNode *x) {
     L->cardinality += 1;
 }
 
-void LLListInsertKey(LL *L, int k) {
+void LLListInsertKey(LLHead *L, int k) {
     LLNode *x = LLNewNode(k);
 
     LLListInsert(L, x);
 }
 
-void LLListDelete(LL *L, LLNode *x) {
+void LLListDelete(LLHead *L, LLNode *x) {
     if (x->previous != NULL) {
         x->previous->next = x->next;
     } else {
@@ -56,14 +56,14 @@ void LLListDelete(LL *L, LLNode *x) {
     x = NULL;
 }
 
-void LLListDeleteKey(LL *L, int k) {
+void LLListDeleteKey(LLHead *L, int k) {
     LLNode *x = LLListSearch(L, k);
 
     LLListDelete(L, x);
 }
 
-LL *LLNewList(LLNode *x) {
-    LL *L = malloc(sizeof(LL));
+LLHead *LLNewList(LLNode *x) {
+    LLHead *L = malloc(sizeof(LLHead));
 
     L->cardinality = 0;
 
@@ -74,4 +74,17 @@ LL *LLNewList(LLNode *x) {
     }
 
     return L;
+}
+
+void LLListDestroyList(LLHead *L) {
+    LLNode *x = L->head;
+
+    while (x != NULL) {
+        LLListDelete(L, x);
+
+        x = x->next;
+    }
+
+    free(L);
+    L = NULL;
 }

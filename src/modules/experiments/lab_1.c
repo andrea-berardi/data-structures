@@ -5,10 +5,12 @@
 
 #include "../../headers/utils.h"
 #include "../../headers/experiments.h"
-#include "../../headers/binary_search_trees/binary_search_trees.h"
-#include "../../headers/binary_search_trees/bst_utils.h"
+// #include "../../headers/linked_lists/linked_lists.h"
+// #include "../../headers/binary_search_trees/binary_search_trees.h"
 
-long double experiment(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double
+experiment(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
+           const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -29,25 +31,63 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
         size_t search_index = 0;
         size_t delete_index = 0;
 
+        // I'm declaring these here so that I can run debug checks on them before returning
         BSTTree *T = BSTNewTree(NULL);
+        LLHead *L = LLNewList(NULL);
 
-        t_start = clock();
-        for (size_t key = 0; key < max_keys; ++key) {
-            // it's important to use `i++` instead of `++i`
-            BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]);
-        }
+        switch (data_structure) {
+            case LL: {
+                t_start = clock();
+                for (size_t key = 0; key < max_keys; ++key) {
+                    // it's important to use `i++` instead of `++i`
+                    BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]);
+                }
 
-        for (size_t key = 0; key < max_search; ++key) {
-            // it's important to use `i++` instead of `++i`
-            BSTIterativeTreeSearch(T->root, rand_search_values_pool[search_index++]);
-        }
+                for (size_t key = 0; key < max_search; ++key) {
+                    // it's important to use `i++` instead of `++i`
+                    BSTIterativeTreeSearch(T->root, rand_search_values_pool[search_index++]);
+                }
 
-        for (size_t key = 0; key < max_delete; ++key) {
-            // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
-            // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-            BSTTreeDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                for (size_t key = 0; key < max_delete; ++key) {
+                    // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
+                    // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
+                    BSTTreeDeleteKey(T,
+                                     rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                }
+                t_end = clock();
+
+                break;
+            }
+
+            case BST: {
+                t_start = clock();
+                for (size_t key = 0; key < max_keys; ++key) {
+                    // it's important to use `i++` instead of `++i`
+                    LLListInsertKey(L, rand_insert_values_pool[insert_index++]);
+                }
+
+                for (size_t key = 0; key < max_search; ++key) {
+                    // it's important to use `i++` instead of `++i`
+                    LLListSearch(L, rand_search_values_pool[search_index++]);
+                }
+
+                for (size_t key = 0; key < max_delete; ++key) {
+                    // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
+                    // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
+                    LLListDeleteKey(L,
+                                    rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                }
+                t_end = clock();
+
+                break;
+            }
+
+            default: {
+                fprintf(stderr, "Unknown algorithm `%d`\n", data_structure);
+
+                exit(EXIT_FAILURE);
+            }
         }
-        t_end = clock();
 
         t_tot += t_end - t_start;
 
@@ -66,7 +106,7 @@ long double experiment(size_t max_keys, size_t max_search, size_t max_delete, si
         }
 
         BSTTreeDestroyTree(T); // destroying the tree and all its leaves (nodes)
-        T = NULL;
+        LLListDestroyList(L); // destroying the list and all its nodes
 
         free(rand_insert_values_pool);
         rand_insert_values_pool = NULL;
@@ -86,16 +126,18 @@ void lab_1(char file[], Configuration conf, const bool DEBUG) {
         exit(EXIT_FAILURE);
     }
 
-    fprintf(fp, "Keys (n),Binary Search Trees\n");
+    fprintf(fp, "Keys (n),Linked Lists,Binary Search Trees\n");
     for (size_t keys = conf.min_keys; keys <= conf.max_keys; keys += conf.step) {
         srand(conf.seed);
 
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_BST = experiment(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_BST = experiment(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
 
-        fprintf(fp, "%zu,%Lf\n", keys, time_BST);
+        long double time_LL = experiment(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
+
+        fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_LL, time_BST);
 
         ++conf.seed;
     }
