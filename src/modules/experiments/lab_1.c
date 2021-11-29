@@ -56,29 +56,6 @@ experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_i
                 break;
             }
 
-            case LL: {
-                t_start = clock();
-                for (size_t key = 0; key < max_keys; ++key) {
-                    // it's important to use `i++` instead of `++i`
-                    LLListInsertKey(L, rand_insert_values_pool[insert_index++]);
-                }
-
-                for (size_t key = 0; key < max_search; ++key) {
-                    // it's important to use `i++` instead of `++i`
-                    LLListSearch(L, rand_search_values_pool[search_index++]);
-                }
-
-                for (size_t key = 0; key < max_delete; ++key) {
-                    // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
-                    // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    LLListDeleteKey(L,
-                                    rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
-                }
-                t_end = clock();
-
-                break;
-            }
-
             default: {
                 fprintf(stderr, "Unknown data_structure `%d`\n", data_structure);
 
