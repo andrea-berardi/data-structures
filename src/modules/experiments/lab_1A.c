@@ -34,7 +34,7 @@ experiment_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_
         LLHead *L = LLNewList(NULL);
 
         switch (data_structure) {
-            case LL: {
+            case BST: {
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
@@ -57,7 +57,7 @@ experiment_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_
                 break;
             }
 
-            case BST: {
+            case LL: {
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
@@ -132,9 +132,9 @@ void lab_1A(char file[], Configuration conf, const bool DEBUG) {
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_BST = experiment_1A(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
-
         long double time_LL = experiment_1A(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
+
+        long double time_BST = experiment_1A(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_LL, time_BST);
 

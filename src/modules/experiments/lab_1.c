@@ -34,7 +34,7 @@ experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_i
         LLHead *L = LLNewList(NULL);
 
         switch (data_structure) {
-            case LL: {
+            case BST: {
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
@@ -57,7 +57,7 @@ experiment_1(size_t max_keys, size_t max_search, size_t max_delete, size_t max_i
                 break;
             }
 
-            case BST: {
+            case LL: {
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
