@@ -132,9 +132,9 @@ void lab_1A(char file[], Configuration conf, const bool DEBUG) {
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        long double time_LL = experiment_1A(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
-
         long double time_BST = experiment_1A(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
+
+        long double time_LL = experiment_1A(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_LL, time_BST);
 
