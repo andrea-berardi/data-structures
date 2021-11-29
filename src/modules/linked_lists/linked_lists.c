@@ -19,6 +19,8 @@ LLNode *LLNewNode(int k) {
     x->previous = NULL;
     x->next = NULL;
     x->key = k;
+
+    return x;
 }
 
 void LLListInsert(LLHead *L, LLNode *x) {
