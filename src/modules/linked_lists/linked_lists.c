@@ -52,6 +52,9 @@ void LLListDelete(LL *L, LLNode *x) {
     }
 
     L->cardinality -= 1;
+
+    free(x);
+    x = NULL;
 }
 
 void LLListDeleteKey(LL *L, int k) {
