@@ -8,7 +8,7 @@
 
 long double
 experiment_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
-           const bool DEBUG) {
+              const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -125,7 +125,7 @@ void lab_1B(char file[], Configuration conf, bool DEBUG) {
         exit(EXIT_FAILURE);
     }
 
-    fprintf(fp, "Keys (n),Linked Lists,Binary Search Trees\n");
+    fprintf(fp, "Keys (n),Binary Search Trees,Linked Lists\n");
     for (size_t keys = conf.min_keys; keys <= conf.max_keys; keys += conf.step) {
         srand(conf.seed);
 
@@ -136,7 +136,7 @@ void lab_1B(char file[], Configuration conf, bool DEBUG) {
 
         long double time_LL = experiment_1B(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
 
-        fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_LL, time_BST);
+        fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_BST, time_LL);
 
         ++conf.seed;
     }
