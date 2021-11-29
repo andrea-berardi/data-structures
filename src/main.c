@@ -5,7 +5,7 @@
 
 #include "headers/experiments.h"
 
-const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the algorithms sort correctly)
+const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
