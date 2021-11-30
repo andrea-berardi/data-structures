@@ -1,4 +1,4 @@
-# Trees
+# Trees (:construction: Work in Progress)
 
 This repository implements many data structures and their associated algorithms, and provides a ready to use environment to easily test them.
 
@@ -18,7 +18,7 @@ Here's what you'll find on this document:
 
 ## Data Structures currently implemented
 
-- [x] Linked Lists
+- [x] Linked Lists (personal test, **not** required by the lab.)
 - [x] Binary Search Trees
 - [ ] RB-Trees (_Red-Black Trees_)
 - [ ] B-Trees
