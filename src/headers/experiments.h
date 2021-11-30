@@ -23,10 +23,10 @@ typedef enum data_structures {
     BT = 3, // B-Tree
 } DataStructure;
 
-// Lab. 1 - Binary Search Trees
+// Lab. 1A - Binary Search Trees
 void lab_1A(char file[], Configuration conf, bool DEBUG);
 
-// Lab. 1A - Linked Lists, Binary Search Trees
+// Lab. 1B - Linked Lists, Binary Search Trees
 void lab_1B(char file[], Configuration conf, bool DEBUG);
 
 #endif //TREES_EXPERIMENTS_H
