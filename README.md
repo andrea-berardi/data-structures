@@ -37,7 +37,7 @@ Unless I'm missing something, the project is 100% free from:
 - :bug: Bugs
 - :sweat_drops: Memory Leaks
 
-The `CMakeLists.txt` (build file) ensures that debug builds have runtime sanity checks (provided by Clang) and the absence of warnings*°^ hints that there aren't weird things going on. I have also run several checks with Cppcheck (a static analyzer) and everything seems to be compliant. The `DEBUG_MODE` flag on the code even allows performing additional correctness checks (it ensures the algorithms sort correctly by using an antagonist function). I have decided to keep it as a `const` flag to allow the compiler to better optimize the code when it is set to `false`.
+The `CMakeLists.txt` (build file) ensures that debug builds have runtime sanity checks (provided by Clang) and the absence of warnings*°^ hints that there aren't weird things going on. In addition, Cppcheck (a static C/C++ analyzer) confirms that everything seems to be compliant. The `DEBUG` flag on the code even allows performing additional correctness checks (it ensures the data structures work correctly by using many antagonist functions). I'm keeping it as a `const` flag to allow the compiler to better optimize the code when it is set to `false` (hopefully it recognizes that its value never changes and removes the `if` branch of the checks completely from the binary.
 
 I'm planning to add more specific directions on how to run the project, but afaik it should be already out-of-the-box.
 
@@ -48,6 +48,8 @@ I tried to keep the algorithms as close as possible to those shown on the book _
 _\*: Unfortunately there's a tiny warning due to my use of `rand()` in the `gen_rand_array()` function. Basically, the IDE is saying that it has limited randomness, which is fine and totally expected. Please ignore._
 
 _°: The warnings about recursive calls can be ignored too, they're necessary to make some algorithms work properly._
+
+_^: I have not yet decided how to deal with unused functions.
 
 ## Laboratories
 
