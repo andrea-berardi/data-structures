@@ -49,7 +49,7 @@ _\*: Unfortunately there's a tiny warning due to my use of `rand()` in the `gen_
 
 _°: The warnings about recursive calls can be ignored too, they're necessary to make some algorithms work properly._
 
-_^: I have not yet decided how to deal with unused functions.
+_^: I have not yet decided how to deal with unused functions._
 
 ## Laboratories
 
