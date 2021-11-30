@@ -1,6 +1,6 @@
-# Data Structures: Trees
+# Trees
 
-This repository implements many data structures and algorithms, and provides a ready to use environment to easily test them.
+This repository implements many data structures and their associated algorithms, and provides a ready to use environment to easily test them.
 
 ## Table of Contents
 
@@ -10,18 +10,18 @@ Here's what you'll find on this document:
 - [Project Structure](#project-structure)
 - [Notes](#notes)
 - [Laboratories](#laboratories)
-    - [Lab. 1](#lab-1)
     - [Lab. 1A](#lab-1a)
+    - [Lab. 1B](#lab-1b)
     - [Lab. 2](#lab-2)
     - [Lab. 3](#lab-3)
     - [Final experiment](#final-experiment)
 
 ## Data Structures currently implemented
 
-- Linked Lists
-- Binary Search Trees
-- RB-Trees (_Red-Black Trees_)
-- B-Trees
+- [x] Linked Lists
+- [x] Binary Search Trees
+- [ ] RB-Trees (_Red-Black Trees_)
+- [ ] B-Trees
 
 ## Project Structure
 
@@ -47,38 +47,38 @@ _°: The warnings about recursive calls can be ignored too, they're necessary to
 
 ## Laboratories
 
-The following pictures show the performance of the algorithms.
+The following pictures show the performance of the data structures.
 
-The `X` axis represents the amount of keys that will be stored on the Data Structures.
+The `X` axis represents the amount of keys that will be stored on the data structures.
 
 The `Y` axis represents the time it took to run some operations on them (insertion, search and deletion of keys). It is calculated using C's `clock()` function, provided by the `time.h` library.
 
-### Lab. 1
+### Lab. 1A
 
 Binary Search Trees
 
 ![Binary Search Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_1/lab_1A.png?raw=true)
 
-### Lab. 1A
+### Lab. 1B
 
 Linked Lists, Binary Search Trees
 
 ![Linked Lists, Binary Search Trees](https://github.com/andrea-berardi/sorting-algorithms/blob/main/results/lab_2/2A/lab_2A.png?raw=true)
 
-### Lab. 2B
+### Lab. 2
 
-Insertion Sort, Merge Sort, Hybrid Sort
+Red-Black Trees
 
-![Insertion Sort, Merge Sort, Hybrid Sort](https://github.com/andrea-berardi/trees/blob/main/results/lab_2/2B/lab_2B.png?raw=true)
+![Red-Black Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_2/2B/lab_2B.png?raw=true)
 
 ### Lab. 3
 
-Quick Sort, Median of Three Quick Sort
+B-Trees
 
 ![Quick Sort, Median of Three Quick Sort](https://github.com/andrea-berardi/trees/blob/main/results/lab_3/lab_3.png?raw=true)
 
 ### Final experiment
 
-(Insertion Sort), Merge Sort, Hybrid Sort, Quick Sort, Median of Three Quick Sort, Tail Recursive Quick Sort, Heap Sort, Median of Three Tail Quick Sort, Hybrid Tail Recursive Median of Three Quick Sort
+Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
 
-![Insertion Sort, Merge Sort, Hybrid Sort, Quick Sort, Median of Three Quick Sort, Tail Recursive Quick Sort, Heap Sort, Median of Three Tail Quick Sort, Hybrid Tail Recursive Median of Three Quick Sort](https://github.com/andrea-berardi/sorting-algorithms/blob/main/results/total/total.png?raw=true)
+![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/sorting-algorithms/blob/main/results/total/total.png?raw=true)
