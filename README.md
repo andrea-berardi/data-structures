@@ -63,28 +63,28 @@ The `Y` axis represents the time it took to run some operations on them (inserti
 
 Binary Search Trees
 
-![Binary Search Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_1/lab_1A.png?raw=true)
+![Binary Search Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_1/1A/lab_1A.png?raw=true)
 
 ### Lab. 1B
 
 Linked Lists, Binary Search Trees
 
-![Linked Lists, Binary Search Trees](https://github.com/andrea-berardi/sorting-algorithms/blob/main/results/lab_2/2A/lab_2A.png?raw=true)
+![Linked Lists, Binary Search Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_1/1B/lab_1B.png?raw=true)
 
 ### Lab. 2
 
 Red-Black Trees
 
-![Red-Black Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_2/2B/lab_2B.png?raw=true)
+![Red-Black Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_2/lab_2.png?raw=true)
 
 ### Lab. 3
 
 B-Trees
 
-![Quick Sort, Median of Three Quick Sort](https://github.com/andrea-berardi/trees/blob/main/results/lab_3/lab_3.png?raw=true)
+![B-Trees](https://github.com/andrea-berardi/trees/blob/main/results/lab_3/lab_3.png?raw=true)
 
 ### Final experiment
 
 Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
 
-![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/sorting-algorithms/blob/main/results/total/total.png?raw=true)
+![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/trees/blob/main/results/total/total.png?raw=true)
