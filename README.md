@@ -31,13 +31,13 @@ TODO
 
 ## Notes
 
-Unless I'm missing something, the project is 100% free from:
+Unless I'm missing something, the project should be 100% free from:
 
-- :cyclone: Undefined Behaviors
-- :bug: Bugs
-- :sweat_drops: Memory Leaks
+- :cyclone: Undefined Behaviors (checked with Clang's sanitizers)
+- :bug: Bugs (_hopefully_)
+- :sweat_drops: Memory Leaks (checks made with Clang and Valgrind)
 
-The `CMakeLists.txt` (build file) ensures that debug builds have runtime sanity checks (provided by Clang) and the absence of warnings*°^ hints that there aren't weird things going on. In addition, Cppcheck (a static C/C++ analyzer) confirms that everything seems to be compliant. The `DEBUG` flag on the code even allows performing additional correctness checks (it ensures the data structures work correctly by using many antagonist functions). I'm keeping it as a `const` flag to allow the compiler to better optimize the code when it is set to `false` (hopefully it recognizes that its value never changes and removes the `if` branch of the checks completely from the binary.
+The `CMakeLists.txt` (build file) ensures that debug builds have runtime sanity checks (provided by Clang) and the absence of warnings*°^ hints that there aren't weird things going on. In addition, Cppcheck (a static C/C++ code analyzer) and Valgrind confirmed that everything is compliant and safe. The `DEBUG` flag on the code even allows performing additional correctness checks (it ensures the data structures work correctly by using many antagonist functions). I'm keeping it as a `const` flag to allow the compiler to better optimize the code when it is set to `false` (hopefully it recognizes that its value never changes and removes the `if` branch of the checks completely from the binary.
 
 I'm planning to add more specific directions on how to run the project, but afaik it should be already out-of-the-box.
 
