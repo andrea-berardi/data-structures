@@ -6,7 +6,7 @@ This repository implements many data structures and their associated algorithms,
 
 Here's what you'll find on this document:
 
-- [Data Structures currently implemented](#algorithms-currently-implemented)
+- [Data Structures currently implemented](#data-structures-currently-implemented)
 - [Project Structure](#project-structure)
 - [Notes](#notes)
 - [Laboratories](#laboratories)
@@ -31,7 +31,11 @@ TODO
 
 ## Notes
 
-At the moment, as far as I can tell, the project is 100% bug-free and undefined behavior-free.
+Unless I'm missing something, the project is 100% free from:
+
+- :cyclone: Undefined Behaviors
+- :bug: Bugs
+- :sweat_drops: Memory Leaks
 
 The `CMakeLists.txt` (build file) ensures that debug builds have runtime sanity checks (provided by Clang) and the absence of warnings\*° hints that there aren't weird things going on. I have also run several checks with Cppcheck (a static analyzer) and everything seems to be compliant. The `DEBUG_MODE` flag on the code even allows performing additional correctness checks (it ensures the algorithms sort correctly by using an antagonist function). I have decided to keep it as a `const` flag to allow the compiler to better optimize the code when it is set to `false`.
 
