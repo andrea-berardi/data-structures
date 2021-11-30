@@ -25,6 +25,8 @@ Here's what you'll find on this document:
 
 ## Project Structure
 
+Folders and files of this project.
+
 ```
 TODO
 ```
