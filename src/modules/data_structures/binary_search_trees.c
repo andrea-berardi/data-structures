@@ -2,54 +2,54 @@
 
 #include "../../headers/data_structures/binary_search_trees.h"
 
-BSTNode *BSTTreeSearch(BSTNode *x, int k) {
+BSTNode *BSTSearch(BSTNode *x, int k) {
     if (x == NULL || x->key == k) {
         return x;
     }
 
     if (k < x->key) {
-        return BSTTreeSearch(x->left_child, k);
+        return BSTSearch(x->left, k);
     } else {
-        return BSTTreeSearch(x->right_child, k);
+        return BSTSearch(x->right, k);
     }
 }
 
-BSTNode *BSTIterativeTreeSearch(BSTNode *x, int k) {
+BSTNode *BSTIterativeSearch(BSTNode *x, int k) {
     while (x != NULL && k != x->key) {
         if (k < x->key) {
-            x = x->left_child;
+            x = x->left;
         } else {
-            x = x->right_child;
+            x = x->right;
         }
     }
 
     return x;
 }
 
-BSTNode *BSTTreeMinimum(BSTNode *x) {
-    while (x->left_child != NULL) {
-        x = x->left_child;
+BSTNode *BSTMinimum(BSTNode *x) {
+    while (x->left != NULL) {
+        x = x->left;
     }
 
     return x;
 }
 
-BSTNode *BSTTreeMaximum(BSTNode *x) {
-    while (x->right_child != NULL) {
-        x = x->right_child;
+BSTNode *BSTMaximum(BSTNode *x) {
+    while (x->right != NULL) {
+        x = x->right;
     }
 
     return x;
 }
 
-BSTNode *BSTTreeSuccessor(BSTNode *x) {
-    if (x->right_child != NULL) {
-        return BSTTreeMinimum(x->right_child);
+BSTNode *BSTSuccessor(BSTNode *x) {
+    if (x->right != NULL) {
+        return BSTMinimum(x->right);
     }
 
     BSTNode *y = x->parent;
 
-    while (y != NULL && x == y->right_child) {
+    while (y != NULL && x == y->right) {
         x = y;
         y = y->parent;
     }
@@ -57,14 +57,14 @@ BSTNode *BSTTreeSuccessor(BSTNode *x) {
     return y;
 }
 
-BSTNode *BSTTreePredecessor(BSTNode *x) {
-    if (x->left_child != NULL) {
-        return BSTTreeMaximum(x->left_child);
+BSTNode *BSTPredecessor(BSTNode *x) {
+    if (x->left != NULL) {
+        return BSTMaximum(x->left);
     }
 
     BSTNode *y = x->parent;
 
-    while (y != NULL && x == y->left_child) {
+    while (y != NULL && x == y->left) {
         x = y;
         y = y->parent;
     }
@@ -76,14 +76,14 @@ BSTNode *BSTNewNode(int k) {
     BSTNode *node = malloc(sizeof(BSTNode));
 
     node->parent = NULL;
-    node->left_child = NULL;
-    node->right_child = NULL;
+    node->left = NULL;
+    node->right = NULL;
     node->key = k;
 
     return node;
 }
 
-void BSTTreeInsert(BSTTree *T, BSTNode *z) {
+void BSTInsert(BSTTree *T, BSTNode *z) {
     T->cardinality += 1; // we increase the number of elements in our tree
 
     if (T->root == NULL) {
@@ -99,9 +99,9 @@ void BSTTreeInsert(BSTTree *T, BSTNode *z) {
         y = x;
 
         if (z->key < x->key) {
-            x = x->left_child;
+            x = x->left;
         } else {
-            x = x->right_child;
+            x = x->right;
         }
     }
 
@@ -110,16 +110,16 @@ void BSTTreeInsert(BSTTree *T, BSTNode *z) {
     if (y == NULL) {
         T->root = z; // The Tree was empty
     } else if (z->key < y->key) {
-        y->left_child = z;
+        y->left = z;
     } else {
-        y->right_child = z;
+        y->right = z;
     }
 }
 
-void BSTTreeInsertKey(BSTTree *T, int k) {
+void BSTInsertKey(BSTTree *T, int k) {
     BSTNode *z = BSTNewNode(k);
 
-    BSTTreeInsert(T, z);
+    BSTInsert(T, z);
 }
 
 BSTTree *BSTNewTree(BSTNode *x) {
@@ -139,10 +139,10 @@ BSTTree *BSTNewTree(BSTNode *x) {
 void BSTTransplant(BSTTree *T, BSTNode *u, BSTNode *v) {
     if (u->parent == NULL) {
         T->root = v;
-    } else if (u == u->parent->left_child) {
-        u->parent->left_child = v;
+    } else if (u == u->parent->left) {
+        u->parent->left = v;
     } else {
-        u->parent->right_child = v;
+        u->parent->right = v;
     }
 
     if (v != NULL) {
@@ -150,25 +150,25 @@ void BSTTransplant(BSTTree *T, BSTNode *u, BSTNode *v) {
     }
 }
 
-void BSTTreeDelete(BSTTree *T, BSTNode *z) {
-    if (z->left_child == NULL) {
-        BSTTransplant(T, z, z->right_child);
-    } else if (z->right_child == NULL) {
-        BSTTransplant(T, z, z->left_child);
+void BSTDelete(BSTTree *T, BSTNode *z) {
+    if (z->left == NULL) {
+        BSTTransplant(T, z, z->right);
+    } else if (z->right == NULL) {
+        BSTTransplant(T, z, z->left);
     } else {
-        BSTNode *y = BSTTreeMinimum(z->right_child);
+        BSTNode *y = BSTMinimum(z->right);
 
         if (y->parent != z) {
-            BSTTransplant(T, y, y->right_child);
+            BSTTransplant(T, y, y->right);
 
-            y->right_child = z->right_child;
-            y->right_child->parent = y;
+            y->right = z->right;
+            y->right->parent = y;
         }
 
         BSTTransplant(T, z, y);
 
-        y->left_child = z->left_child;
-        y->left_child->parent = y;
+        y->left = z->left;
+        y->left->parent = y;
     }
 
     T->cardinality -= 1; // we decrease the number of elements in our tree
@@ -177,18 +177,18 @@ void BSTTreeDelete(BSTTree *T, BSTNode *z) {
     z = NULL;
 }
 
-void BSTTreeDeleteKey(BSTTree *T, int k) {
-    BSTNode *z = BSTIterativeTreeSearch(T->root, k);
+void BSTDeleteKey(BSTTree *T, int k) {
+    BSTNode *z = BSTIterativeSearch(T->root, k);
 
-    if (z != NULL) BSTTreeDelete(T, z);
+    if (z != NULL) BSTDelete(T, z);
 }
 
 // this procedure destroys every node of a tree (faster than `BSTEmptyTreePreserveStructure()`)
 // this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
 void BSTEmptyTree(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
-        BSTEmptyTree(T, x->left_child);
-        BSTEmptyTree(T, x->right_child);
+        BSTEmptyTree(T, x->left);
+        BSTEmptyTree(T, x->right);
         free(x);
     }
 }
@@ -197,14 +197,14 @@ void BSTEmptyTree(BSTTree *T, BSTNode *x) {
 // this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
 void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
-        BSTEmptyTree(T, x->left_child);
-        BSTEmptyTree(T, x->right_child);
-        BSTTreeDelete(T, x);
+        BSTEmptyTree(T, x->left);
+        BSTEmptyTree(T, x->right);
+        BSTDelete(T, x);
     }
 }
 
 // this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
-void BSTTreeDestroyTree(BSTTree *T) {
+void BSTDestroyTree(BSTTree *T) {
     BSTEmptyTree(T, T->root);
 
     free(T);

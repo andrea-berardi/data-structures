@@ -38,19 +38,19 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
-                    BSTTreeInsertKey(T, rand_insert_values_pool[insert_index++]);
+                    BSTInsertKey(T, rand_insert_values_pool[insert_index++]);
                 }
 
                 for (size_t key = 0; key < max_search; ++key) {
                     // it's important to use `i++` instead of `++i`
-                    BSTIterativeTreeSearch(T->root, rand_search_values_pool[search_index++]);
+                    BSTIterativeSearch(T->root, rand_search_values_pool[search_index++]);
                 }
 
                 for (size_t key = 0; key < max_delete; ++key) {
-                    // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
+                    // This uses the iterative version of BSTSearch, but both versions are implemented and functional.
                     // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    BSTTreeDeleteKey(T,
-                                     rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                    BSTDeleteKey(T,
+                                 rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
                 }
                 t_end = clock();
 
@@ -61,19 +61,19 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
                 t_start = clock();
                 for (size_t key = 0; key < max_keys; ++key) {
                     // it's important to use `i++` instead of `++i`
-                    LLListInsertKey(L, rand_insert_values_pool[insert_index++]);
+                    LLInsertKey(L, rand_insert_values_pool[insert_index++]);
                 }
 
                 for (size_t key = 0; key < max_search; ++key) {
                     // it's important to use `i++` instead of `++i`
-                    LLListSearch(L, rand_search_values_pool[search_index++]);
+                    LLSearch(L, rand_search_values_pool[search_index++]);
                 }
 
                 for (size_t key = 0; key < max_delete; ++key) {
-                    // This uses the iterative version of BSTTreeSearch, but both versions are implemented and functional.
+                    // This uses the iterative version of BSTSearch, but both versions are implemented and functional.
                     // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    LLListDeleteKey(L,
-                                    rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                    LLDeleteKey(L,
+                                rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
                 }
                 t_end = clock();
 
@@ -105,8 +105,8 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
-        BSTTreeDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
-        LLListDestroyList(L); // destroying the list and all its nodes - `L` is now NULL
+        BSTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
+        LLDestroyList(L); // destroying the list and all its nodes - `L` is now NULL
 
         // Destroying the arrays
         DeallocNullifyInt(rand_insert_values_pool);

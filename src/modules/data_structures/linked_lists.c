@@ -3,7 +3,7 @@
 
 #include "../../headers/data_structures/linked_lists.h"
 
-LLNode *LLListSearch(LLHead *L, int k) {
+LLNode *LLSearch(LLHead *L, int k) {
     LLNode *x = L->head;
 
     while (x != NULL && x->key != k) {
@@ -23,7 +23,7 @@ LLNode *LLNewNode(int k) {
     return x;
 }
 
-void LLListInsert(LLHead *L, LLNode *x) {
+void LLInsert(LLHead *L, LLNode *x) {
     x->next = L->head;
 
     if (L->head != NULL)
@@ -35,13 +35,13 @@ void LLListInsert(LLHead *L, LLNode *x) {
     L->cardinality += 1;
 }
 
-void LLListInsertKey(LLHead *L, int k) {
+void LLInsertKey(LLHead *L, int k) {
     LLNode *x = LLNewNode(k);
 
-    LLListInsert(L, x);
+    LLInsert(L, x);
 }
 
-void LLListDelete(LLHead *L, LLNode *x) {
+void LLDelete(LLHead *L, LLNode *x) {
     if (x == NULL) return; // to ensure that the node supplied is not NULL
 
     if (x->previous != NULL) {
@@ -60,10 +60,10 @@ void LLListDelete(LLHead *L, LLNode *x) {
     x = NULL;
 }
 
-void LLListDeleteKey(LLHead *L, int k) {
-    LLNode *x = LLListSearch(L, k);
+void LLDeleteKey(LLHead *L, int k) {
+    LLNode *x = LLSearch(L, k);
 
-    if (x != NULL) LLListDelete(L, x);
+    if (x != NULL) LLDelete(L, x);
 }
 
 LLHead *LLNewList(LLNode *x) {
@@ -80,13 +80,13 @@ LLHead *LLNewList(LLNode *x) {
     return L;
 }
 
-void LLListDestroyList(LLHead *L) {
+void LLDestroyList(LLHead *L) {
     LLNode *x = L->head;
 
     while (x != NULL) {
         LLNode *tmp = x->next; // temporary variable to store the address of the next node
 
-        LLListDelete(L, x);
+        LLDelete(L, x);
 
         x = tmp;
     }

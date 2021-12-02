@@ -7,24 +7,24 @@
 
 typedef struct ll_node {
     int key;
-    struct ll_node* previous;
-    struct ll_node* next;
+    struct ll_node *previous;
+    struct ll_node *next;
 } LLNode;
 
 typedef struct ll_head {
     size_t cardinality; // amount of elements in the linked list
-    struct ll_node* head;
+    struct ll_node *head;
 } LLHead;
 
-LLNode *LLListSearch(LLHead *L, int k);
+LLNode *LLSearch(LLHead *L, int k);
 
-void LLListInsertKey(LLHead *L, int k);
+void LLInsertKey(LLHead *L, int k);
 
-void LLListDeleteKey(LLHead *L, int k);
+void LLDeleteKey(LLHead *L, int k);
 
 LLHead *LLNewList(LLNode *x);
 
-void LLListDestroyList(LLHead *L);
+void LLDestroyList(LLHead *L);
 
 #endif //TREES_LINKED_LISTS_H
 

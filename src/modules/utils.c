@@ -66,9 +66,9 @@ void LLListWalkToArray(LLHead *L, int array[]) {
 
 void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index) {
     if (x != NULL) {
-        BSTInOrderTreeWalkToArray(x->left_child, array, index);
+        BSTInOrderTreeWalkToArray(x->left, array, index);
         array[*index] = x->key, (*index)++;
-        BSTInOrderTreeWalkToArray(x->right_child, array, index);
+        BSTInOrderTreeWalkToArray(x->right, array, index);
     }
 }
 
