@@ -1,4 +1,4 @@
-# Trees (:construction: Work in Progress)
+# Data Structures (:construction: Work in Progress)
 
 This repository implements many data structures and their associated algorithms, and provides a ready to use environment to easily test them.
 
@@ -6,6 +6,7 @@ This repository implements many data structures and their associated algorithms,
 
 Here's what you'll find on this document:
 
+- [About](#about)
 - [Data Structures currently implemented](#data-structures-currently-implemented)
 - [Project Structure](#project-structure)
 - [Notes](#notes)
@@ -15,6 +16,11 @@ Here's what you'll find on this document:
     - [Lab. 2](#lab-2)
     - [Lab. 3](#lab-3)
     - [Final experiment](#final-experiment)
+- [Credits](#credits)
+
+## About
+
+Things to say about this project... preamble and things like that.
 
 ## Data Structures currently implemented
 
@@ -90,3 +96,7 @@ B-Trees
 Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
 
 ![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/trees/blob/main/results/total/total.png?raw=true)
+
+## Credits
+
+Special thanks to [...]
