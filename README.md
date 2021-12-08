@@ -1,5 +1,7 @@
 # Data Structures (:construction: Work in Progress)
 
+[![LICENSE](https://img.shields.io/badge/license-AGPLv3-green)](https://github.com/andrea-berardi/trees/blob/main/LICENSE)
+
 This repository implements many data structures and their associated algorithms, and provides a ready to use environment to easily test them.
 
 ## Table of Contents
