@@ -7,7 +7,7 @@ This repository implements many data structures and their associated algorithms,
 Here's what you'll find on this document:
 
 - [About](#about)
-- [Data Structures currently implemented](#data-structures-currently-implemented)
+- [Data Structures implemented](#data-structures-implemented)
 - [Project Structure](#project-structure)
 - [Notes](#notes)
 - [Laboratories](#laboratories)
@@ -22,7 +22,7 @@ Here's what you'll find on this document:
 
 Things to say about this project... preamble and things like that.
 
-## Data Structures currently implemented
+## Data Structures implemented
 
 - [x] Linked Lists (personal test, **not** required by the lab.)
 - [x] Binary Search Trees
