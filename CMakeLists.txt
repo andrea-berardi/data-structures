@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
-project(trees C)
+project(data_structures C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(trees src/main.c src/modules/data_structures/binary_search_trees.c src/headers/data_structures/binary_search_trees.h src/headers/experiments.h src/modules/experiments/lab_1A.c src/modules/utils.c src/headers/utils.h src/modules/data_structures/linked_lists.c src/headers/data_structures/linked_lists.h src/modules/experiments/lab_1B.c src/modules/data_structures/red_black_trees.c src/headers/data_structures/red_black_trees.h)
+add_executable(data_structures src/main.c src/modules/data_structures/binary_search_trees.c src/headers/data_structures/binary_search_trees.h src/headers/experiments.h src/modules/experiments/lab_1A.c src/modules/utils.c src/headers/utils.h src/modules/data_structures/linked_lists.c src/headers/data_structures/linked_lists.h src/modules/experiments/lab_1B.c src/modules/data_structures/red_black_trees.c src/headers/data_structures/red_black_trees.h)
 
 # This enables extra compiler warnings, and more "pedantic" checks
 set(CMAKE_C_FLAGS "-Wall -Werror -Wextra -pedantic")
