@@ -184,7 +184,7 @@ void BSTDeleteKey(BSTTree *T, int k) {
 }
 
 // this procedure destroys every node of a tree (faster than `BSTEmptyTreePreserveStructure()`)
-// this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
+// this is basically a TreePostOrderWalk that destroys the BST root, and all the nodes - recursively
 void BSTEmptyTree(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
         BSTEmptyTree(T, x->left);
@@ -194,7 +194,7 @@ void BSTEmptyTree(BSTTree *T, BSTNode *x) {
 }
 
 // this procedure destroys every node of a tree BUT preserves the structure of the BST while running
-// this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
+// this is basically a TreePostOrderWalk that destroys the BST root, and all the nodes - recursively
 void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
         BSTEmptyTree(T, x->left);
@@ -203,7 +203,7 @@ void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
     }
 }
 
-// this is basically a TreePostOrderWalk that instead of printing the key destroys the node, and the whole BST
+// this procedure destroys the BST root, and all the nodes - recursively
 void BSTDestroyTree(BSTTree *T) {
     BSTEmptyTree(T, T->root);
 
