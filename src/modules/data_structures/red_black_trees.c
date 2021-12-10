@@ -44,6 +44,22 @@ void RBTRightRotate(RBTTree *T, RBTNode *x) {
     x->parent = y;
 }
 
+void RBTInsertFixupLeft(RBTTree *T, RBTNode *z) {} // TODO
+
+void RBTInsertFixupRight(RBTTree *T, RBTNode *z) {} // TODO
+
+void RBTInsertFixup(RBTTree *T, RBTNode *z) {
+    while (z->parent->color == RED) {
+        if (z->parent == z->parent->parent->left) {
+            RBTInsertFixupLeft(T, z);
+        } else {
+            RBTInsertFixupRight(T, z);
+        }
+    }
+
+    T->root->color = BLACK;
+}
+
 void RBTInsert(RBTTree *T, RBTNode *z) {
     RBTNode *y = T->nil;
     RBTNode *x = T->root;
@@ -70,5 +86,5 @@ void RBTInsert(RBTTree *T, RBTNode *z) {
     z->right = T->nil;
     z->color = RED;
 
-    // RBTTreeInsertFixup()
+    RBTInsertFixup(T, z);
 }
