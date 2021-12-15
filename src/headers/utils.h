@@ -29,7 +29,7 @@ void LLListWalkToArray(LLHead *L, int array[]);
 void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index);
 
 // Populates an array passed as argument while walking a RBT (InOrderTreeWalk)
-void RBTInOrderTreeWalkToArray(RBTNode *x, int array[], size_t *index);
+void RBTInOrderTreeWalkToArray(RBTTree *T, RBTNode *x, int array[], size_t *index);
 
 // Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
 void DeallocNullifyInt(int *array);

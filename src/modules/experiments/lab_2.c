@@ -128,7 +128,8 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         if (DEBUG) {
             int *array = new_array(T->cardinality);
             size_t index = 0;
-            RBTInOrderTreeWalkToArray(T->root, array, &index);
+
+            RBTInOrderTreeWalkToArray(T, T->root, array, &index);
 
             if (is_sorted(array, T->cardinality))
                 printf("Array sorted successfully (length: %ld)\n", T->cardinality);
@@ -167,7 +168,8 @@ void lab_2(char file[], Configuration conf, bool DEBUG) {
         size_t max_delete = keys - max_search;
 
         srand(conf.seed);
-        long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        //long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_BST = 0.0;
         srand(conf.seed);
         long double time_RBT = exp_RBT(keys, max_search, max_delete, conf.max_instances, DEBUG);
 

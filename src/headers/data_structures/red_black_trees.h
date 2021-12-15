@@ -33,7 +33,8 @@ void RBTInsertKey(RBTTree *T, int key);
 
 RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k);
 
-void RBTDeleteKey(RBTTree *T, int k);
+// Returns true on success, false on failure (if you try to delete a non-existing key)
+bool RBTDeleteKey(RBTTree *T, int k);
 
 void RBTDestroyTree(RBTTree *T);
 
