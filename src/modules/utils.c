@@ -72,6 +72,14 @@ void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index) {
     }
 }
 
+void RBTInOrderTreeWalkToArray(RBTNode *x, int array[], size_t *index) {
+    if (x != NULL) {
+        RBTInOrderTreeWalkToArray(x->left, array, index);
+        array[*index] = x->key, (*index)++;
+        RBTInOrderTreeWalkToArray(x->right, array, index);
+    }
+}
+
 // Error messages to print in case of bad input
 void error_menu(char *argv[]) {
     fprintf(stderr, "Usage: `.%s <1(A/B)-4>`.\n", argv[0]);

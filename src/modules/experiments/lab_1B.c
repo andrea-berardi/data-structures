@@ -131,8 +131,9 @@ void lab_1B(char file[], Configuration conf, bool DEBUG) {
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
+        srand(conf.seed);
         long double time_BST = exp_1B(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
-
+        srand(conf.seed);
         long double time_LL = exp_1B(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_BST, time_LL);

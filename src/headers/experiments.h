@@ -1,7 +1,7 @@
 // Header guards:
 // patterns of preprocessor directives that protect a header from being included multiple times
-#ifndef TREES_EXPERIMENTS_H
-#define TREES_EXPERIMENTS_H
+#ifndef DS_EXPERIMENTS_H
+#define DS_EXPERIMENTS_H
 
 #include <stdlib.h>
 
@@ -29,7 +29,10 @@ void lab_1A(char file[], Configuration conf, bool DEBUG);
 // Lab. 1B - Linked Lists, Binary Search Trees
 void lab_1B(char file[], Configuration conf, bool DEBUG);
 
-#endif //TREES_EXPERIMENTS_H
+// Lab. 2 - Binary Search Trees, Red-Black Trees
+void lab_2(char file[], Configuration conf, bool DEBUG);
+
+#endif //DS_EXPERIMENTS_H
 
 // #pragma once
 // an alternative to header guards

@@ -1,7 +1,7 @@
 // Header guards:
 // patterns of preprocessor directives that protect a header from being included multiple times
-#ifndef BINARY_TREES_BINARY_SEARCH_TREES_H
-#define BINARY_TREES_BINARY_SEARCH_TREES_H
+#ifndef DS_BINARY_SEARCH_TREES_H
+#define DS_BINARY_SEARCH_TREES_H
 
 #include <stdlib.h>
 
@@ -41,7 +41,7 @@ void BSTDestroyTree(BSTTree *T);
 // this procedure destroys every node of a tree BUT preserves the structure of the BST while running
 void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x);
 
-#endif //BINARY_TREES_BINARY_SEARCH_TREES_H
+#endif //DS_BINARY_SEARCH_TREES_H
 
 // #pragma once
 // an alternative to header guards

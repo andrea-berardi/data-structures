@@ -1,7 +1,7 @@
 // Header guards:
 // patterns of preprocessor directives that protect a header from being included multiple times
-#ifndef TREES_LINKED_LISTS_H
-#define TREES_LINKED_LISTS_H
+#ifndef DS_LINKED_LISTS_H
+#define DS_LINKED_LISTS_H
 
 #include <stdlib.h>
 
@@ -26,7 +26,7 @@ LLHead *LLNewList(LLNode *x);
 
 void LLDestroyList(LLHead *L);
 
-#endif //TREES_LINKED_LISTS_H
+#endif //DS_LINKED_LISTS_H
 
 // #pragma once
 // an alternative to header guards

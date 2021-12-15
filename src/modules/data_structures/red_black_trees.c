@@ -1,5 +1,7 @@
 #include "../../headers/data_structures/red_black_trees.h"
 
+#include <stdio.h>
+
 void RBTLeftRotate(RBTTree *T, RBTNode *x) {
     RBTNode *y = x->right;
     x->right = y->left;
@@ -223,8 +225,8 @@ void RBTDeleteFixup(RBTTree *T, RBTNode *x) {
     x->color = BLACK;
 }
 
-RBTNode *RBTMinimum(RBTNode *x) {
-    while (x->left != NULL) {
+RBTNode *RBTMinimum(RBTTree *T, RBTNode *x) {
+    while (x->left != T->nil && x->left != NULL) {
         x = x->left;
     }
 
@@ -244,7 +246,7 @@ void RBTDelete(RBTTree *T, RBTNode *z) {
         x = z->left;
         RBTTransplant(T, z, z->left);
     } else {
-        y = RBTMinimum(z->right);
+        y = RBTMinimum(T, z->right);
         y_original_color = y->color;
         x = y->right;
 
@@ -299,11 +301,11 @@ RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k) {
 void RBTDeleteKey(RBTTree *T, int k) {
     RBTNode *x = RBTIterativeSearch(T, T->root, k);
 
-    if (x != T->nil || x != NULL) RBTDelete(T, x);
+    if (x != T->nil && x != NULL) RBTDelete(T, x);
 }
 
 void RBTEmptyTree(RBTTree *T, RBTNode *x) {
-    if (x != NULL) {
+    if (x != T->nil && x != NULL) {
         RBTEmptyTree(T, x->left);
         RBTEmptyTree(T, x->right);
         free(x);
@@ -311,7 +313,7 @@ void RBTEmptyTree(RBTTree *T, RBTNode *x) {
 }
 
 void RBTEmptyTreePreserveStructure(RBTTree *T, RBTNode *x) {
-    if (x != NULL) {
+    if (/*x != T->nil &&*/ x != NULL) {
         RBTEmptyTree(T, x->left);
         RBTEmptyTree(T, x->right);
         RBTDelete(T, x);
@@ -321,6 +323,33 @@ void RBTEmptyTreePreserveStructure(RBTTree *T, RBTNode *x) {
 void RBTDestroyTree(RBTTree *T) {
     RBTEmptyTree(T, T->root);
 
+    free(T->nil);
+    T->nil = NULL;
+
     free(T);
     T = NULL;
+}
+
+RBTTree *RBTNewTree(RBTNode *x) {
+    RBTTree *tree = malloc(sizeof(RBTTree));
+
+    RBTNode *nil = malloc(sizeof(RBTNode));
+    nil->color = BLACK;
+    nil->parent = NULL;
+    nil->left = NULL;
+    nil->right = NULL;
+
+    tree->nil = nil;
+
+    if (x != NULL) {
+        tree->root = x;
+
+        tree->cardinality = 1;
+    } else {
+        tree->root = tree->nil;
+
+        tree->cardinality = 0;
+    }
+
+    return tree;
 }

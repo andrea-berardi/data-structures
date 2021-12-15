@@ -1,7 +1,7 @@
 // Header guards:
 // patterns of preprocessor directives that protect a header from being included multiple times
-#ifndef TREES_RED_BLACK_TREES_H
-#define TREES_RED_BLACK_TREES_H
+#ifndef DS_RED_BLACK_TREES_H
+#define DS_RED_BLACK_TREES_H
 
 #include <stdlib.h>
 
@@ -25,7 +25,19 @@ typedef struct rbt_tree {
     struct rbt_node *root;
 } RBTTree;
 
-#endif //TREES_RED_BLACK_TREES_H
+RBTTree *RBTNewTree(RBTNode *x);
+
+RBTNode *RBTSearch(RBTTree *T, RBTNode *x, int k);
+
+void RBTInsertKey(RBTTree *T, int key);
+
+RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k);
+
+void RBTDeleteKey(RBTTree *T, int k);
+
+void RBTDestroyTree(RBTTree *T);
+
+#endif //DS_RED_BLACK_TREES_H
 
 // #pragma once
 // an alternative to header guards

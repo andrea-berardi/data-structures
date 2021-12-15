@@ -127,11 +127,13 @@ BSTTree *BSTNewTree(BSTNode *x) {
 
     if (x != NULL) {
         tree->root = x; // if a BSTNode was supplied, we save it in the root
+
+        tree->cardinality = 1;
     } else {
         tree->root = NULL;
-    }
 
-    tree->cardinality = 0;
+        tree->cardinality = 0;
+    }
 
     return tree;
 }
