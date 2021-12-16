@@ -96,6 +96,9 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         int *rand_search_values_pool = gen_rnd_array(max_search);
         int *rand_delete_values_pool = gen_rnd_array(max_delete);
 
+        print_array(rand_insert_values_pool, max_keys);
+        print_array(rand_delete_values_pool, max_delete);
+
         // I'll use these indexes to scan the arrays. They'll be incremented at each run.
         size_t insert_index = 0;
         size_t search_index = 0;
@@ -118,8 +121,7 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         for (size_t key = 0; key < max_delete; ++key) {
             // This uses the iterative version of RBTSearch, but both versions are implemented and functional.
             // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-            RBTDeleteKey(T,
-                         rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+            RBTDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
         }
         t_end = clock();
 

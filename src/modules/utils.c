@@ -73,7 +73,7 @@ void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index) {
 }
 
 void RBTInOrderTreeWalkToArray(RBTTree *T, RBTNode *x, int array[], size_t *index) {
-    if (x != T->nil && x != NULL) {
+    if (x != T->nil) {
         RBTInOrderTreeWalkToArray(T, x->left, array, index);
         array[*index] = x->key, (*index)++;
         RBTInOrderTreeWalkToArray(T, x->right, array, index);

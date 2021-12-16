@@ -102,12 +102,53 @@ void RBTInsertFixup(RBTTree *T, RBTNode *z) {
     T->root->color = BLACK;
 }
 
-void RBTInsert(RBTTree *T, RBTNode *z) {
-    if (T->root == T->nil && T->cardinality == 0) {
-        T->root = z;
-        return;
+void TESTInsertFixup(RBTTree *T, RBTNode *z) {
+    while (z->parent->color == RED) {
+        if (z->parent == z->parent->parent->left) {
+            RBTNode *y = z->parent->parent->right;
+
+            if (y->color == RED) {
+                z->parent->color = BLACK;
+                y->color = BLACK;
+                z->parent->parent->color = RED;
+                z = z->parent->parent;
+            } else {
+                if (z == z->parent->right) {
+                    z = z->parent;
+                    RBTLeftRotate(T, z);
+                }
+
+                z->parent->color = BLACK;
+                z->parent->parent->color = RED;
+
+                RBTRightRotate(T, z->parent->parent);
+            }
+        } else {
+            RBTNode *y = z->parent->parent->left;
+
+            if (y->color == RED) {
+                z->parent->color = BLACK;
+                y->color = BLACK;
+                z->parent->parent->color = RED;
+                z = z->parent->parent;
+            } else {
+                if (z == z->parent->left) {
+                    z = z->parent;
+                    RBTRightRotate(T, z);
+                }
+
+                z->parent->color = BLACK;
+                z->parent->parent->color = RED;
+
+                RBTLeftRotate(T, z->parent->parent);
+            }
+        }
     }
 
+    T->root->color = BLACK;
+}
+
+void RBTInsert(RBTTree *T, RBTNode *z) {
     RBTNode *y = T->nil;
     RBTNode *x = T->root;
 
@@ -136,6 +177,7 @@ void RBTInsert(RBTTree *T, RBTNode *z) {
     z->color = RED;
 
     RBTInsertFixup(T, z);
+    //TInsertFixup(T, z);
 
     T->cardinality += 1;
 }
@@ -241,7 +283,7 @@ void RBTDeleteFixup(RBTTree *T, RBTNode *x) {
 }
 
 RBTNode *RBTMinimum(RBTTree *T, RBTNode *x) {
-    while (x->left != T->nil && x->left != NULL) {
+    while (x->left != T->nil) {
         x = x->left;
     }
 
@@ -360,17 +402,15 @@ RBTTree *RBTNewTree(RBTNode *x) {
     nil->parent = nil;
     nil->left = nil;
     nil->right = nil;
-    nil->key = -1;
+    nil->key = -1; // distinguishable value (I will only insert positive values)
 
     tree->nil = nil;
 
     if (x != NULL) {
         tree->root = x;
-
         tree->cardinality = 1;
     } else {
         tree->root = tree->nil;
-
         tree->cardinality = 0;
     }
 
