@@ -96,9 +96,6 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         int *rand_search_values_pool = gen_rnd_array(max_search);
         int *rand_delete_values_pool = gen_rnd_array(max_delete);
 
-        print_array(rand_insert_values_pool, max_keys);
-        print_array(rand_delete_values_pool, max_delete);
-
         // I'll use these indexes to scan the arrays. They'll be incremented at each run.
         size_t insert_index = 0;
         size_t search_index = 0;

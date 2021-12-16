@@ -102,52 +102,6 @@ void RBTInsertFixup(RBTTree *T, RBTNode *z) {
     T->root->color = BLACK;
 }
 
-void TESTInsertFixup(RBTTree *T, RBTNode *z) {
-    while (z->parent->color == RED) {
-        if (z->parent == z->parent->parent->left) {
-            RBTNode *y = z->parent->parent->right;
-
-            if (y->color == RED) {
-                z->parent->color = BLACK;
-                y->color = BLACK;
-                z->parent->parent->color = RED;
-                z = z->parent->parent;
-            } else {
-                if (z == z->parent->right) {
-                    z = z->parent;
-                    RBTLeftRotate(T, z);
-                }
-
-                z->parent->color = BLACK;
-                z->parent->parent->color = RED;
-
-                RBTRightRotate(T, z->parent->parent);
-            }
-        } else {
-            RBTNode *y = z->parent->parent->left;
-
-            if (y->color == RED) {
-                z->parent->color = BLACK;
-                y->color = BLACK;
-                z->parent->parent->color = RED;
-                z = z->parent->parent;
-            } else {
-                if (z == z->parent->left) {
-                    z = z->parent;
-                    RBTRightRotate(T, z);
-                }
-
-                z->parent->color = BLACK;
-                z->parent->parent->color = RED;
-
-                RBTLeftRotate(T, z->parent->parent);
-            }
-        }
-    }
-
-    T->root->color = BLACK;
-}
-
 void RBTInsert(RBTTree *T, RBTNode *z) {
     RBTNode *y = T->nil;
     RBTNode *x = T->root;
@@ -212,61 +166,61 @@ void RBTTransplant(RBTTree *T, RBTNode *u, RBTNode *v) {
     v->parent = u->parent;
 }
 
-void RBTDeleteFixupLeft(RBTTree *T, RBTNode *z) {
-    RBTNode *w = z->parent->right;
+void RBTDeleteFixupLeft(RBTTree *T, RBTNode *x) {
+    RBTNode *w = x->parent->right;
 
     if (w->color == RED) {
         w->color = BLACK;
-        z->parent->color = RED;
-        RBTLeftRotate(T, z->parent);
-        w = z->parent->right;
+        x->parent->color = RED;
+        RBTLeftRotate(T, x->parent);
+        w = x->parent->right;
     }
 
     if (w->left->color == BLACK && w->right->color == BLACK) {
         w->color = RED;
-        z = z->parent;
+        x = x->parent;
     } else {
         if (w->right->color == BLACK) {
             w->left->color = BLACK;
             w->color = RED;
             RBTRightRotate(T, w);
-            w = z->parent->right;
+            w = x->parent->right;
         }
 
-        w->color = z->parent->color;
-        z->parent->color = BLACK;
+        w->color = x->parent->color;
+        x->parent->color = BLACK;
         w->right->color = BLACK;
-        RBTLeftRotate(T, z->parent);
-        z = T->root;
+        RBTLeftRotate(T, x->parent);
+        x = T->root;
     }
 }
 
-void RBTDeleteFixupRight(RBTTree *T, RBTNode *z) {
-    RBTNode *w = z->parent->left;
+void RBTDeleteFixupRight(RBTTree *T, RBTNode *x) {
+    RBTNode *w = x->parent->left;
 
     if (w->color == RED) {
         w->color = BLACK;
-        z->parent->color = RED;
-        RBTRightRotate(T, z->parent);
-        w = z->parent->right;
+        x->parent->color = RED;
+        RBTRightRotate(T, x->parent);
+        w = x->parent->left;
     }
 
     if (w->right->color == BLACK && w->left->color == BLACK) {
         w->color = RED;
-        z = z->parent;
+        x = x->parent;
     } else {
         if (w->left->color == BLACK) {
             w->right->color = BLACK;
             w->color = RED;
             RBTLeftRotate(T, w);
-            w = z->parent->left;
+            w = x->parent->left;
         }
 
-        w->color = z->parent->color;
-        z->parent->color = BLACK;
+        w->color = x->parent->color;
+        x->parent->color = BLACK;
         w->left->color = BLACK;
-        RBTRightRotate(T, z->parent);
-        z = T->root;
+        RBTRightRotate(T, x->parent);
+        x = T->root;
     }
 }
 
@@ -358,34 +312,34 @@ RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k) {
 bool RBTDeleteKey(RBTTree *T, int k) {
     RBTNode *x = RBTIterativeSearch(T, T->root, k);
 
-    if (x != T->nil && x != NULL) {
+    if (x != T->nil) {
+        printf("Hit\n");
         RBTDelete(T, x);
-
         return true;
     } else {
+        printf("Miss\n");
         return false;
     }
 }
 
-void RBTRecursiveEmptyTree(RBTTree *T, RBTNode *x) {
+void RBTEmptyTree(RBTTree *T, RBTNode *x) {
     if (x != T->nil && x != NULL) {
-        RBTRecursiveEmptyTree(T, x->left);
-        RBTRecursiveEmptyTree(T, x->right);
-        free(x);
-        x = NULL;
+        RBTEmptyTree(T, x->left);
+        RBTEmptyTree(T, x->right);
+        free(x); x = NULL;
     }
 }
 
 void RBTEmptyTreePreserveStructure(RBTTree *T, RBTNode *x) {
     if (x != T->nil && x != NULL) {
-        RBTRecursiveEmptyTree(T, x->left);
-        RBTRecursiveEmptyTree(T, x->right);
+        RBTEmptyTreePreserveStructure(T, x->left);
+        RBTEmptyTreePreserveStructure(T, x->right);
         RBTDelete(T, x);
     }
 }
 
 void RBTDestroyTree(RBTTree *T) {
-    RBTRecursiveEmptyTree(T, T->root);
+    RBTEmptyTree(T, T->root);
 
     free(T->nil);
     T->nil = NULL;
