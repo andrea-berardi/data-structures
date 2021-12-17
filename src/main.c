@@ -4,6 +4,7 @@
 #include <stdbool.h> // required to use idiomatically the boolean type
 
 #include "headers/utils.h"
+#include "headers/colors.h"
 #include "headers/experiments.h"
 
 const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
@@ -50,10 +51,20 @@ int main(int argc, char *argv[]) {
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
         lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
-        /* Lab. 2 - (RBTs) Red-Black Trees */
+        /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
     } else if (strcmp(argv[1], "3") == 0) {
         /* Lab. 3 - (BTs) B-Trees */
+
+        red(), printf("test\n");
+        bold_red(), printf("test\n");
+        green(), printf("test\n");
+        bold_green(), printf("test\n");
+        yellow(), printf("test\n");
+        bold_yellow(), printf("test\n");
+        blue(), printf("test\n");
+        bold_blue(), printf("test\n");
+        reset_color(), printf("test\n");
     } else if (strcmp(argv[1], "4") == 0) {
         /* Everything */
     } else {
