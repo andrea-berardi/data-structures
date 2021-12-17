@@ -162,13 +162,11 @@ void BSTDelete(BSTTree *T, BSTNode *z) {
 
         if (y->parent != z) {
             BSTTransplant(T, y, y->right);
-
             y->right = z->right;
             y->right->parent = y;
         }
 
         BSTTransplant(T, z, y);
-
         y->left = z->left;
         y->left->parent = y;
     }

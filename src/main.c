@@ -37,8 +37,8 @@ int main(int argc, char *argv[]) {
     /* Lab. 2 configurations */
     Configuration lab2_conf;
     lab2_conf.min_keys = 0; // minimum number of keys in the tree
-    lab2_conf.max_keys = 10000; // maximum number of keys in the tree
-    lab2_conf.max_instances = 100; // how many times to repeat the same test
+    lab2_conf.max_keys = 300; // maximum number of keys in the tree
+    lab2_conf.max_instances = 1; // how many times to repeat the same test
     lab2_conf.step = 1; // the amount of keys will grow this much at each test
     lab2_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab2_conf.seed = 10; // srand()'s starting seed
