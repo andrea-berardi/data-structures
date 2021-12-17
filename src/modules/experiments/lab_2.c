@@ -167,8 +167,8 @@ void lab_2(char file[], Configuration conf, bool DEBUG) {
         size_t max_delete = keys - max_search;
 
         srand(conf.seed);
-        //long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances, DEBUG);
-        long double time_BST = 0.0;
+        long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances, DEBUG);
+
         srand(conf.seed);
         long double time_RBT = exp_RBT(keys, max_search, max_delete, conf.max_instances, DEBUG);
 
