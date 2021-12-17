@@ -83,7 +83,7 @@ Linked Lists, Binary Search Trees
 
 ### Lab. 2
 
-Red-Black Trees
+Red-Black Trees, Binary Search Trees
 
 ![Red-Black Trees](https://github.com/andrea-berardi/data-structures/blob/main/results/lab_2/lab_2.png?raw=true)
 
