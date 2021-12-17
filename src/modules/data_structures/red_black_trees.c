@@ -48,24 +48,25 @@ void RBTRightRotate(RBTTree *T, RBTNode *x) {
     x->parent = y;
 }
 
-// void RBTInsertFixupLeft(RBTTree *T, RBTNode *z) {
-//     RBTNode *y = z->parent->parent->right;
+/* This horrible "(*z)->" thing is due to the fact that, if you want to edit a pointer... you have to pass its pointer */
+// void RBTInsertFixupLeft(RBTTree *T, RBTNode **z) {
+//     RBTNode *y = (*z)->parent->right;
 // 
 //     if (y->color == RED) {
-//         z->parent->color = BLACK;
+//         (*z)->parent->color = BLACK;
 //         y->color = BLACK;
-//         z->parent->parent->color = RED;
-//         z = z->parent->parent;
+//         (*z)->parent->parent->color = RED;
+//         *z = (*z)->parent->parent;
 //     } else {
-//         if (z == z->parent->right) {
-//             z = z->parent;
-//             RBTLeftRotate(T, z);
+//         if (*z == (*z)->parent->right) {
+//             *z = (*z)->parent;
+//             RBTLeftRotate(T, *z);
 //         }
 // 
-//         z->parent->color = BLACK;
-//         z->parent->parent->color = RED;
+//         (*z)->parent->color = BLACK;
+//         (*z)->parent->parent->color = RED;
 // 
-//         RBTRightRotate(T, z->parent->parent);
+//         RBTRightRotate(T, (*z)->parent->parent);
 //     }
 // }
 

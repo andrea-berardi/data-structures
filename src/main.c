@@ -55,16 +55,6 @@ int main(int argc, char *argv[]) {
         lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
     } else if (strcmp(argv[1], "3") == 0) {
         /* Lab. 3 - (BTs) B-Trees */
-
-        red(), printf("test\n");
-        bold_red(), printf("test\n");
-        green(), printf("test\n");
-        bold_green(), printf("test\n");
-        yellow(), printf("test\n");
-        bold_yellow(), printf("test\n");
-        blue(), printf("test\n");
-        bold_blue(), printf("test\n");
-        reset_color(), printf("test\n");
     } else if (strcmp(argv[1], "4") == 0) {
         /* Everything */
     } else {
