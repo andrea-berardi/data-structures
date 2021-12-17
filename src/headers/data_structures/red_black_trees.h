@@ -27,8 +27,6 @@ typedef struct rbt_tree {
 
 RBTTree *RBTNewTree(RBTNode *x);
 
-RBTNode *RBTSearch(RBTTree *T, RBTNode *x, int k);
-
 void RBTInsertKey(RBTTree *T, int key);
 
 RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k);

@@ -49,7 +49,7 @@ void print_array(const int array[], size_t length) {
 }
 
 // Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
-void DeallocNullifyInt(int *array) {
+void FreeNull_Int(int *array) {
     free(array);
     array = NULL;
 }
@@ -86,7 +86,7 @@ void error_menu(char *argv[]) {
     fprintf(stderr, "Please specify which test you want to run:\n");
     fprintf(stderr, "1A) Lab. 1A - Binary Search Trees\n");
     fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
-    fprintf(stderr, "2) Lab. 2 - Red-Black Trees\n");
+    fprintf(stderr, "2) Lab. 2 - Red-Black Trees, Binary Search Trees\n");
     fprintf(stderr, "3) Lab. 3 - B-Trees\n");
     fprintf(stderr, "4) Everything\n");
 }

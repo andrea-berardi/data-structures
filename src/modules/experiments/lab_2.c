@@ -62,7 +62,7 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
 
-            DeallocNullifyInt(array);
+            FreeNull_Int(array);
         }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
@@ -72,9 +72,9 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
         LLDestroyList(L); // destroying the list and all its nodes - `L` is now NULL
 
         // Destroying the arrays
-        DeallocNullifyInt(rand_insert_values_pool);
-        DeallocNullifyInt(rand_search_values_pool);
-        DeallocNullifyInt(rand_delete_values_pool);
+        FreeNull_Int(rand_insert_values_pool);
+        FreeNull_Int(rand_search_values_pool);
+        FreeNull_Int(rand_delete_values_pool);
     }
 
     return (long double) t_tot / (long double) max_instances;
@@ -135,7 +135,7 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
 
-            DeallocNullifyInt(array);
+            FreeNull_Int(array);
         }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
@@ -144,9 +144,9 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         RBTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
 
         // Destroying the arrays
-        DeallocNullifyInt(rand_insert_values_pool);
-        DeallocNullifyInt(rand_search_values_pool);
-        DeallocNullifyInt(rand_delete_values_pool);
+        FreeNull_Int(rand_insert_values_pool);
+        FreeNull_Int(rand_search_values_pool);
+        FreeNull_Int(rand_delete_values_pool);
     }
 
     return (long double) t_tot / (long double) max_instances;

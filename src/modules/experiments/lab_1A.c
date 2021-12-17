@@ -61,7 +61,7 @@ long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
 
-            DeallocNullifyInt(array);
+            FreeNull_Int(array);
         }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
@@ -70,9 +70,9 @@ long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t
         BSTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
 
         // Destroying the arrays
-        DeallocNullifyInt(rand_insert_values_pool);
-        DeallocNullifyInt(rand_search_values_pool);
-        DeallocNullifyInt(rand_delete_values_pool);
+        FreeNull_Int(rand_insert_values_pool);
+        FreeNull_Int(rand_search_values_pool);
+        FreeNull_Int(rand_delete_values_pool);
     }
 
     return (long double) t_tot / (long double) max_instances;
