@@ -28,7 +28,7 @@ Things to say about this project... preamble and things like that.
 
 - [x] Linked Lists (personal test, **not** required by the lab.)
 - [x] Binary Search Trees
-- [ ] RB-Trees (_Red-Black Trees_)
+- [x] RB-Trees (_Red-Black Trees_)
 - [ ] B-Trees
 
 ## Project Structure
