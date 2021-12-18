@@ -2,6 +2,8 @@
 
 [![LICENSE](https://img.shields.io/badge/license-AGPLv3-blue)](https://github.com/andrea-berardi/trees/blob/main/LICENSE)
 
+[![CMake Build Status](https://github.com/andrea-berardi/data-structures/actions/workflows/cmake.yml/badge.svg)](https://github.com/andrea-berardi/data-structures/actions)
+
 This repository implements many data structures and their associated algorithms, and provides a ready to use environment to easily test them.
 
 ## Table of Contents
