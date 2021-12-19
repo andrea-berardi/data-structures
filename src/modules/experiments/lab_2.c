@@ -29,7 +29,6 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
 
         // I'm declaring these here so that I can run debug checks on them before returning
         BSTTree *T = BSTNewTree(NULL);
-        LLHead *L = LLNewList(NULL);
 
         t_start = clock();
         for (size_t key = 0; key < max_keys; ++key) {
@@ -69,7 +68,6 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
 
         // Destroying the data structures of the test
         BSTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
-        LLDestroyList(L); // destroying the list and all its nodes - `L` is now NULL
 
         // Destroying the arrays
         FreeNull_Int(rand_insert_values_pool);
