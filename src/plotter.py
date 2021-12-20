@@ -32,7 +32,7 @@ def lab_1A() -> None:
         lines: List(str) = [line.strip() for line in file.readlines()]
 
         keys: List(int) = []
-        bst_times: List(float) = []
+        second_column: List(float) = []
 
         title: str = ''
 
@@ -42,14 +42,14 @@ def lab_1A() -> None:
                 line: List(str) = line.split(',')
 
                 keys.append(int(line[0]))
-                bst_times.append(float(line[1]))
+                second_column.append(float(line[1]))
             else:
                 title: str = line.split(',')[1] # title of the second column
             # end if
         # end for
 
         plt.xlabel(x_label); plt.ylabel(y_label) # set axis labels
-        plt.plot(keys, bst_times, 'blue', linewidth = 2) # plot the data
+        plt.plot(keys, second_column, 'blue', linewidth = 2) # plot the data
         plt.title(title_lab_1A) # set title
         plt.grid(True) # show the grid
         plt.legend([title], loc = 'best') # show legend, and put it in the best location
@@ -66,8 +66,8 @@ def lab_1B() -> None:
         lines: List(str) = [line.strip() for line in file.readlines()]
 
         keys: List(int) = []
-        bst_times: List(float) = []
-        ll_times: List(float) = []
+        second_column: List(float) = []
+        thrid_column: List(float) = []
 
         titles: List(str) = []
 
@@ -77,8 +77,8 @@ def lab_1B() -> None:
                 line: List(str) = line.split(',')
 
                 keys.append(int(line[0]))
-                bst_times.append(float(line[1]))
-                ll_times.append(float(line[2]))
+                second_column.append(float(line[1]))
+                thrid_column.append(float(line[2]))
             else:
                 line: List(str) = line.split(',')
 
@@ -88,7 +88,7 @@ def lab_1B() -> None:
         # end for
 
         plt.xlabel(x_label); plt.ylabel(y_label) # set axis labels
-        plt.plot(keys, bst_times, 'red', keys, ll_times, 'blue', linewidth = 2) # plot the data
+        plt.plot(keys, second_column, 'red', keys, thrid_column, 'blue', linewidth = 2) # plot the data
         plt.title(title_lab_1B) # set title
         plt.grid(True) # show the grid
         plt.legend(titles, loc = 'best') # show legend, and put it in the best location
@@ -105,8 +105,8 @@ def lab_2() -> None:
         lines: List(str) = [line.strip() for line in file.readlines()]
 
         keys: List(int) = []
-        bst_times: List(float) = []
-        rbt_times: List(float) = []
+        second_column: List(float) = []
+        thrid_column: List(float) = []
 
         titles: List(str) = []
 
@@ -116,8 +116,8 @@ def lab_2() -> None:
                 line: List(str) = line.split(',')
 
                 keys.append(int(line[0]))
-                bst_times.append(float(line[1]))
-                rbt_times.append(float(line[2]))
+                second_column.append(float(line[1]))
+                thrid_column.append(float(line[2]))
             else:
                 line: List(str) = line.split(',')
 
@@ -127,7 +127,7 @@ def lab_2() -> None:
         # end for
 
         plt.xlabel(x_label); plt.ylabel(y_label) # set axis labels
-        plt.plot(keys, bst_times, 'red', keys, rbt_times, 'blue', linewidth = 2) # plot the data
+        plt.plot(keys, second_column, 'red', keys, thrid_column, 'blue', linewidth = 2) # plot the data
         plt.title(title_lab_2) # set title
         plt.grid(True) # show the grid
         plt.legend(titles, loc = 'best') # show legend, and put it in the best location

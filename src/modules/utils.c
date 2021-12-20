@@ -3,6 +3,7 @@
 #include <stdbool.h>
 
 #include "../headers/utils.h"
+#include "../headers/colors.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {
@@ -89,4 +90,16 @@ void error_menu(char *argv[]) {
     fprintf(stderr, "2) Lab. 2 - Red-Black Trees, Binary Search Trees\n");
     fprintf(stderr, "3) Lab. 3 - B-Trees\n");
     fprintf(stderr, "4) Everything\n");
+}
+
+void plotter(void) {
+    bold_blue(), printf("Starting the automatic plotter... "), reset_color();
+    fflush(stdout); // I need to flush it because I don't put a newline ("\n") in the `printf()`
+    int exit_code = system("python3 ../src/plotter.py"); // this runs the script
+    if (exit_code == 0) {
+        bold_green(), printf("Success!\n"), reset_color();
+    } else {
+        fprintf(stderr, "Error, exit code: %d\n", exit_code);
+        exit(EXIT_FAILURE);
+    }
 }

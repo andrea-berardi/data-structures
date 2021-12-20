@@ -4,7 +4,6 @@
 #include <stdbool.h> // required to use idiomatically the boolean type
 
 #include "headers/utils.h"
-#include "headers/colors.h"
 #include "headers/experiments.h"
 
 const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
@@ -63,6 +62,9 @@ int main(int argc, char *argv[]) {
 
         exit(EXIT_FAILURE);
     }
+
+    /* Automatic plotter (Python script) */
+    plotter(); // the function handles potential errors
 
     return EXIT_SUCCESS;
 }

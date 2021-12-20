@@ -37,6 +37,9 @@ void FreeNull_Int(int *array);
 // Error messages to print in case of bad input
 void error_menu(char *argv[]);
 
+// Python Plotter
+void plotter(void);
+
 #endif //DS_UTILS_H
 
 // #pragma once
