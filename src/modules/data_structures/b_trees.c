@@ -48,3 +48,7 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
 BTTree *BTCreate() {
     BTTree *T = malloc(sizeof(BTTree *));
 }
+
+BTTree *BTNewTree() {
+    // TODO
+}
