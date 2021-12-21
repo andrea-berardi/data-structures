@@ -63,8 +63,14 @@ int main(int argc, char *argv[]) {
         /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
     } else if (strcmp(argv[1], "3") == 0) {
+        bold_yellow(), printf("Running Lab. 3 (B-Trees, Red-Black Trees, Binary Search Trees)... ");
+        reset_color(), fflush(stdout);
+
         /* Lab. 3 - (BTs) B-Trees */
     } else if (strcmp(argv[1], "4") == 0) {
+        bold_yellow(), printf("Running everything (LLs, BSTs, RBTs, BTs)... ");
+        reset_color(), fflush(stdout);
+
         /* Everything */
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
@@ -73,7 +79,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    bold_green(), printf("Done!\n"), reset_color();
+    bold_green(), printf("Done!\n"), reset_color(); // if we arrive here, the experiment were successful
 
     /* Automatic plotter (Python script) */
     plotter(); // the function handles potential errors
