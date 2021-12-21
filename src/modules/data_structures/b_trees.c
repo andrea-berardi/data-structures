@@ -43,3 +43,8 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
         return BTSearch(x->children[i], k);
     }
 }
+
+// FIXME - this is wrong!!!
+BTTree *BTCreate() {
+    BTTree *T = malloc(sizeof(BTTree *));
+}
