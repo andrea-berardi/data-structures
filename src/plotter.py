@@ -1,5 +1,5 @@
 # library imports
-from typing import List, Literal # I like to specify the type of the variables
+from typing import List # I like to specify the type of the variables
 import matplotlib.pyplot as plt # required to create the plots
 from matplotlib import rcParams # enable automatic scaling of the plots
 rcParams.update({'figure.autolayout': True}) # enable automatic scaling of the plots
