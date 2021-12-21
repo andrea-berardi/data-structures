@@ -95,6 +95,7 @@ void error_menu(char *argv[]) {
 void plotter(void) {
     bold_blue(), printf("Starting the automatic plotter... "), reset_color();
     fflush(stdout); // I need to flush it because I don't put a newline ("\n") in the `printf()`
+
     int exit_code = system("python3 ../src/plotter.py"); // this runs the script
     if (exit_code == 0) {
         bold_green(), printf("Success!\n"), reset_color();
