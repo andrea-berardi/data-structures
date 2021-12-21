@@ -21,6 +21,9 @@ typedef struct bt_tree {
     struct bt_node *root; // regular node, stored in the main memory
 } BTTree;
 
+void DiskRead(BTNode x[]);
+void DiskWrite(BTNode *x);
+
 #endif //DATA_STRUCTURES_B_TREES_H
 
 // #pragma once
