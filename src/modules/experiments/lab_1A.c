@@ -57,7 +57,7 @@ long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t
             BSTInOrderTreeWalkToArray(T->root, array, &index);
 
             if (is_sorted(array, T->cardinality))
-                printf("Array sorted successfully (length: %ld)\n", T->cardinality);
+                printf("Array sorted successfully (length: %zu)\n", T->cardinality);
             else
                 fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
 
