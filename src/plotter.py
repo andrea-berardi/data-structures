@@ -1,3 +1,5 @@
+#!/bin/python3
+
 # library imports
 from typing import List # I like to specify the type of the variables
 import matplotlib.pyplot as plt # required to create the plots
