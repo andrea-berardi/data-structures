@@ -12,13 +12,13 @@ typedef struct bt_node {
     size_t n; // cardinality of the node
     int keys[2 * t]; // keys actually stored in the node (NOT in descending order)
     bool leaf; // `true` if the node is a leaf, `false` if it's an internal node
-    struct bt_node *parent;
+    struct bt_node *parent; // pointer to the parent node
     struct bt_node *children[2 * t + 1]; // pointers to the children
 } BTNode;
 
 typedef struct bt_tree {
-    size_t cardinality; // `x.n`
-    struct bt_node *root;
+    size_t cardinality; // total number of keys in the data structure
+    struct bt_node *root; // regular node, stored in the main memory
 } BTTree;
 
 #endif //DATA_STRUCTURES_B_TREES_H
