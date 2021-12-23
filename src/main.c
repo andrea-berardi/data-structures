@@ -20,9 +20,9 @@ int main(int argc, char *argv[]) {
     /* Lab. 1 configurations */
     Configuration lab1A_conf;
     lab1A_conf.min_keys = 0; // minimum number of keys in the tree
-    lab1A_conf.max_keys = 10000; // maximum number of keys in the tree
+    lab1A_conf.max_keys = 100000; // maximum number of keys in the tree
     lab1A_conf.max_instances = 100; // how many times to repeat the same test
-    lab1A_conf.step = 250; // the amount of keys will grow this much at each test
+    lab1A_conf.step = 500; // the amount of keys will grow this much at each test
     lab1A_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab1A_conf.seed = 10; // srand()'s starting seed
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     /* Lab. 2 configurations */
     Configuration lab2_conf;
     lab2_conf.min_keys = 0; // minimum number of keys in the tree
-    lab2_conf.max_keys = 200000; // maximum number of keys in the tree
+    lab2_conf.max_keys = 500000; // maximum number of keys in the tree
     lab2_conf.max_instances = 100; // how many times to repeat the same test
     lab2_conf.step = 5000; // the amount of keys will grow this much at each test
     lab2_conf.search_delete_ratio = 60; // ratio of insertions/deletions
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
         reset_color(), fflush(stdout);
 
         /* Lab. 1A - (BSTs) Binary Search Trees */
-        lab_1A("../results/lab_1/1A/lab_1B.csv", lab1A_conf, DEBUG);
+        lab_1A("../results/lab_1/1A/lab_1A.csv", lab1A_conf, DEBUG);
     } else if (strcmp(argv[1], "1B") == 0) {
         bold_yellow(), printf("Running Lab. 1B (Linked Lists, Binary Search Trees)... ");
         reset_color(), fflush(stdout);
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
         lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
-        bold_yellow(), printf("Running Lab. 2 (Binary Search Trees)... ");
+        bold_yellow(), printf("Running Lab. 2 (Red-Black Trees, Binary Search Trees)... ");
         reset_color(), fflush(stdout);
 
         /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
