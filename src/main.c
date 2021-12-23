@@ -17,16 +17,16 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    /* Lab. 1 configurations */
+    /* Lab. 1A configurations */
     Configuration lab1A_conf;
     lab1A_conf.min_keys = 0; // minimum number of keys in the tree
     lab1A_conf.max_keys = 100000; // maximum number of keys in the tree
     lab1A_conf.max_instances = 100; // how many times to repeat the same test
-    lab1A_conf.step = 500; // the amount of keys will grow this much at each test
+    lab1A_conf.step = 1000; // the amount of keys will grow this much at each test
     lab1A_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab1A_conf.seed = 10; // srand()'s starting seed
 
-    /* Lab. 1A configurations */
+    /* Lab. 1B configurations */
     Configuration lab1B_conf;
     lab1B_conf.min_keys = 0; // minimum number of keys in the tree
     lab1B_conf.max_keys = 10000; // maximum number of keys in the tree
