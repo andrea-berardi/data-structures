@@ -27,6 +27,7 @@ y_label: str = 'Time (clock)'
 title_lab_1A: str = 'Binary Search Trees'
 title_lab_1B: str = 'Linked Lists, Binary Search Trees'
 title_lab_2: str = 'Red-Black Trees, Binary Search Trees'
+title_lab_3: str = 'B-Trees, Red-Black Trees, Binary Search Trees'
 
 # Lab. 1A - Binary Search Trees
 def lab_1A() -> None:
@@ -140,9 +141,14 @@ def lab_2() -> None:
     plt.clf() # clear the figure
 # end lab_2()
 
-# this specifies what will be run when the script is executed
-if __name__ == "__main__":
+# Main function
+def main() -> None:
     lab_1A()
     lab_1B()
     lab_2()
+# end main()
+
+# this specifies what will be run when the script is executed
+if __name__ == "__main__":
+    main()
 # end if
