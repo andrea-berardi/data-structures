@@ -74,7 +74,7 @@ void BTSplitChild(BTNode *x, size_t i) {
 }
 
 void BTInsertNonFull(BTNode *x, int k) {
-    size_t i = x->n - 1;
+    ssize_t i = x->n - 1;
 
     if (x->leaf == true) {
         while (i >= 0 && k < x->keys[i]) {
