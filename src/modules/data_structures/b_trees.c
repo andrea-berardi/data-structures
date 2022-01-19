@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #include "../../headers/data_structures/b_trees.h"
 
@@ -149,6 +150,50 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
     }
 }
 
-void BTDeleteKey(BTNode *x, int k) {
-    // TODO: implement
+void BTDeleteKey(BTTree *T, BTNode *x, int k) {
+    // search for the key
+    NodeAndIndex nx = BTSearch(x, k);
+
+    if (nx.node == NULL) return;
+
+    BTNode *y = nx.node;
+    size_t i = nx.index;
+
+    // if the key is found
+    if (y->keys[i] == k) {
+        // if the node is a leaf
+        if (y->leaf == true) {
+            // remove the key
+            for (size_t j = i; j < y->n - 1; ++j) {
+                y->keys[j] = y->keys[j + 1];
+            }
+
+            y->n -= 1;
+        } else {
+            // find the predecessor of the key
+            DiskRead(y->children[i]);
+            NodeAndIndex px = BTSearch(y->children[i], INT_MIN);
+            BTNode *pxi = px.node;
+            size_t pi = px.index;
+
+            // replace the key with the predecessor
+            y->keys[i] = pxi->keys[pi];
+
+            // delete the predecessor
+            BTDeleteKey(T, pxi, INT_MIN);
+        }
+    } else {
+        // if the key is not found
+        // find the successor of the key
+        DiskRead(y->children[i]);
+        NodeAndIndex sx = BTSearch(y->children[i], INT_MAX);
+        BTNode *sxi = sx.node;
+        size_t si = sx.index;
+
+        // replace the key with the successor
+        y->keys[i] = sxi->keys[si];
+
+        // delete the successor
+        BTDeleteKey(T, sxi, INT_MAX);
+    }
 }
