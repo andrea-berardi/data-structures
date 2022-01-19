@@ -6,23 +6,29 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define t 1000 // maximum numbers of keys that a node can have - it has to be >= 2
-
 typedef struct bt_node {
-    size_t n; // cardinality of the node
-    int keys[2 * t]; // keys actually stored in the node (NOT in descending order)
+    size_t t; // capacity of the node (number of keys that can be stored)
+    size_t n; // cardinality of keys in the node (number of keys actually stored)
+    int *keys; // keys actually stored in the node (NOT in descending order)
     bool leaf; // `true` if the node is a leaf, `false` if it's an internal node
     struct bt_node *parent; // pointer to the parent node
-    struct bt_node *children[2 * t + 1]; // pointers to the children
+    struct bt_node **children; // array of pointers to the children
 } BTNode;
 
 typedef struct bt_tree {
-    size_t cardinality; // total number of keys in the data structure
+    size_t t; // total number of keys in the data structure
     struct bt_node *root; // regular node, stored in the main memory
 } BTTree;
 
-void DiskRead(BTNode x[]);
-void DiskWrite(BTNode *x);
+// this is necessary because you cannot return two items from a function, unless they're in a struct
+typedef struct node_and_index {
+    BTNode *node;
+    size_t index;
+} NodeAndIndex;
+
+BTTree *BTNewTree(size_t t);
+NodeAndIndex BTSearch(BTNode *x, int k);
+
 
 #endif //DATA_STRUCTURES_B_TREES_H
 
