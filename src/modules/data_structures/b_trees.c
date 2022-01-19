@@ -4,8 +4,12 @@
 
 #include "../../headers/data_structures/b_trees.h"
 
-void DiskWrite(BTNode *node);
-BTNode *DiskRead(BTNode *xci); // x.children[i]
+void DiskWrite(BTNode *node) {
+    return;
+}
+BTNode *DiskRead(BTNode *xci /* x.children[i] */) {
+    return xci;
+}
 
 BTNode *BTNewNode(size_t t, bool leaf) {
     BTNode *x = malloc(sizeof(BTNode));
