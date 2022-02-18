@@ -7,6 +7,7 @@
 void DiskWrite(BTNode *node) {
     return;
 }
+
 BTNode *DiskRead(BTNode *xci /* x.children[i] */) {
     return xci;
 }
@@ -129,17 +130,17 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
     while (i <= x->n && k > x->keys[i]) i += 1;
 
     if (i <= x->n && k == x->keys[i]) {
-        NodeAndIndex nx;
-
-        nx.node = x;
-        nx.index = i;
+        NodeAndIndex nx = {
+                .node = x,
+                .index = i
+        };
 
         return nx;
     } else if (x->leaf == true) {
-        NodeAndIndex nx;
-
-        nx.node = NULL;
-        nx.index = i;
+        NodeAndIndex nx = {
+                .node = NULL,
+                nx.index = i
+        };
 
         return nx;
     } else {
@@ -149,12 +150,94 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
     }
 }
 
-void BTDeleteKey(BTTree *T, BTNode *x, int k) {
-    // search for the key
-    NodeAndIndex nx = BTSearch(x, k);
+int BTMin(BTNode *x) {
+    if (x == NULL) {
+        return -1;
+    } else if (x->leaf == true) {
+        return x->keys[0];
+    } else {
+        DiskRead(x->children[0]);
 
-    if (nx.node == NULL) return;
+        return BTMin(x->children[0]);
+    }
+}
 
-    BTNode *y = nx.node;
-    size_t i = nx.index;
+int BTMax(BTNode *x) {
+    if (x == NULL) {
+        return -1;
+    } else if (x->leaf == true) {
+        return x->keys[x->n];
+    } else {
+        DiskRead(x->children[x->n]);
+
+        return BTMin(x->children[x->n]);
+    }
+}
+
+int BTPredecessor(int k, BTNode *x) {
+    if (x->leaf == false) {
+        DiskRead(x->children[k]);
+
+        return BTMax(x);
+    } else if (k > 0) {
+        return x->keys[k - 1];
+    } else {
+        BTNode *z = x;
+
+        while (true) {
+            if (z->parent == NULL) {
+                return -1;
+            }
+
+            BTNode *y = z->parent;
+            int j = 0;
+
+            DiskRead(y->children[0]);
+
+            while (y->children[j] != x) {
+                j += 1;
+                DiskRead(y->children[j]);
+            }
+
+            if (j == 0) {
+                z = y;
+            } else {
+                return y->keys[j - 1];
+            }
+        }
+    }
+}
+
+void BTDelete(BTTree *tree, BTNode *x, int k) {
+    if (x->leaf == true) {
+        for (size_t i = 0; i < x->n; ++i) {
+            if (x->keys[i] == k) {
+                for (size_t j = i; j < x->n - 1; ++j) {
+                    x->keys[j] = x->keys[j + 1];
+                }
+
+                x->n -= 1;
+                DiskWrite(x);
+
+                return;
+            }
+        }
+    }
+
+    size_t i = 1;
+    while (x->keys[i] < k) i += 1;
+
+    if (x->keys[i] == k) {
+        DiskRead(x->children[i]);
+
+        if (x->children[i]->n >= tree->t) {
+            int ki = BTPredecessor(k, x->children[i]);
+            x->keys[i] = ki;
+
+            DiskWrite(x);
+            BTDelete(tree, x->children[i], ki);
+        }
+
+        // continue
+    }
 }
