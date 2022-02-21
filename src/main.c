@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
     lab1A_conf.step = 1000; // the amount of keys will grow this much at each test
     lab1A_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab1A_conf.seed = 10; // srand()'s starting seed
+    lab1A_conf.t = 0; // useless, B-Tree configuration
 
     /* Lab. 1B configurations */
     Configuration lab1B_conf;
@@ -34,6 +35,7 @@ int main(int argc, char *argv[]) {
     lab1B_conf.step = 250; // the amount of keys will grow this much at each test
     lab1B_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab1B_conf.seed = 10; // srand()'s starting seed
+    lab1B_conf.t = 0; // useless, B-Tree configuration
 
     /* Lab. 2 configurations */
     Configuration lab2_conf;
@@ -43,6 +45,17 @@ int main(int argc, char *argv[]) {
     lab2_conf.step = 10000; // the amount of keys will grow this much at each test
     lab2_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab2_conf.seed = 10; // srand()'s starting seed
+    lab2_conf.t = 0; // useless, B-Tree configuration
+
+    /* Lab. 2 configurations */
+    Configuration lab3_conf;
+    lab3_conf.min_keys = 0; // minimum number of keys in the tree
+    lab3_conf.max_keys = 1000000; // maximum number of keys in the tree
+    lab3_conf.max_instances = 50; // how many times to repeat the same test
+    lab3_conf.step = 10000; // the amount of keys will grow this much at each test
+    lab3_conf.search_delete_ratio = 60; // ratio of insertions/deletions
+    lab3_conf.seed = 10; // srand()'s starting seed
+    lab3_conf.t = 0; // useless, B-Tree configuration
 
     if (strcmp(argv[1], "1A") == 0) {
         bold_yellow(), printf("Running Lab. 1A (Binary Search Trees)... ");
@@ -67,6 +80,7 @@ int main(int argc, char *argv[]) {
         reset_color(), fflush(stdout);
 
         /* Lab. 3 - (BTs) B-Trees */
+        lab_3("../results/lab_3/lab_3.csv", lab3_conf, DEBUG);
     } else if (strcmp(argv[1], "4") == 0) {
         bold_yellow(), printf("Running everything (LLs, BSTs, RBTs, BTs)... ");
         reset_color(), fflush(stdout);
