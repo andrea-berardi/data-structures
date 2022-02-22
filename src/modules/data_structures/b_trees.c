@@ -4,8 +4,8 @@
 
 #include "../../headers/data_structures/b_trees.h"
 
-void DiskWrite(BTNode *node) {
-    return;
+BTNode *DiskWrite(BTNode *node) {
+    return node;
 }
 
 BTNode *DiskRead(BTNode *xci) {
@@ -66,6 +66,13 @@ void BTSplitChild(BTNode *x, size_t i) {
         x->children[j + 1] = x->children[j];
     }
 
+    x->children[i + 1] = z;
+
+    for (size_t j = x->n - 1; j >= i; --j) {
+        printf("j = %zu\n", j);
+        x->keys[j + 1] = x->keys[j];
+    }
+
     x->keys[i] = y->keys[t - 1];
     x->n += 1;
 
@@ -75,6 +82,7 @@ void BTSplitChild(BTNode *x, size_t i) {
 }
 
 void BTInsertNonFull(BTNode *x, int k) {
+    printf("x-n: %zu\n", x->n);
     ssize_t i = x->n - 1;
 
     if (x->leaf == true) {
@@ -86,17 +94,17 @@ void BTInsertNonFull(BTNode *x, int k) {
         x->keys[i + 1] = k;
         x->n += 1;
 
-        //DiskWrite(x);
+        DiskWrite(x);
     } else {
         while (i >= 0 && k < x->keys[i]) i -= 1;
-        //i += 1;
+        i += 1;
 
-        //DiskRead(x->children[i]);
+        DiskRead(x->children[i]);
 
         if (x->children[i]->n == 2 * x->t - 1) {
-            BTSplitChild(x, i + 1);
+            BTSplitChild(x->children[i], i);
 
-            if (k > x->keys[i + 1]) i += 1;
+            if (k > x->keys[i]) i += 1;
         }
 
         BTInsertNonFull(x->children[i + 1], k);
@@ -117,8 +125,7 @@ void BTInsert(BTTree *T, int k) {
 
         BTSplitChild(s, 0);
 
-        size_t i = s->keys[0] < k ? 1 : 0;
-        BTInsertNonFull(s->children[i], k);
+        BTInsertNonFull(s, k);
     } else {
         BTInsertNonFull(r, k);
     }
