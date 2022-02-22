@@ -7,8 +7,8 @@
 #include <stdbool.h>
 
 typedef struct bt_node {
-    size_t t; // capacity of the node (number of keys that can be stored)
-    size_t n; // cardinality of keys in the node (number of keys actually stored)
+    ssize_t t; // capacity of the node (number of keys that can be stored)
+    ssize_t n; // cardinality of keys in the node (number of keys actually stored)
     int *keys; // keys actually stored in the node (NOT in descending order)
     bool leaf; // `true` if the node is a leaf, `false` if it's an internal node
     struct bt_node *parent; // pointer to the parent node
@@ -16,17 +16,17 @@ typedef struct bt_node {
 } BTNode;
 
 typedef struct bt_tree {
-    size_t t; // total number of keys in the data structure
+    ssize_t t; // total number of keys in the data structure
     struct bt_node *root; // regular node, stored in the main memory
 } BTTree;
 
 // this is necessary because you cannot return two items from a function, unless they're in a struct
 typedef struct node_and_index {
     BTNode *node;
-    size_t index;
+    ssize_t index;
 } NodeAndIndex;
 
-BTTree *BTNewTree(size_t t);
+BTTree *BTNewTree(ssize_t t);
 void BTInsert(BTTree *T, int key);
 NodeAndIndex BTSearch(BTNode *x, int k);
 void BTDelete(BTTree *T, int key);

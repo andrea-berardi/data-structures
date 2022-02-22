@@ -12,7 +12,7 @@ BTNode *DiskRead(BTNode *xci) {
     return xci;
 }
 
-BTNode *BTNewNode(size_t t, bool leaf) {
+BTNode *BTNewNode(ssize_t t, bool leaf) {
     BTNode *x = malloc(sizeof(BTNode));
 
     x->t = t; // number of keys (NOT the cardinality) - capacity
@@ -24,7 +24,7 @@ BTNode *BTNewNode(size_t t, bool leaf) {
     return x;
 }
 
-BTTree *BTNewTree(size_t t) {
+BTTree *BTNewTree(ssize_t t) {
     BTTree *tree = malloc(sizeof(BTTree));
 
     tree->t = t; // starting capacity
@@ -41,8 +41,8 @@ BTTree *BTNewTree(size_t t) {
     return tree;
 }
 
-void BTSplitChild(BTNode *x, size_t i) {
-    size_t t = x->t;
+void BTSplitChild(BTNode *x, ssize_t i) {
+    ssize_t t = x->t;
 
     BTNode *z = BTNewNode(t, x->leaf);
     BTNode *y = x->children[i];
@@ -50,25 +50,25 @@ void BTSplitChild(BTNode *x, size_t i) {
     z->leaf = y->leaf;
     z->n = t - 1;
 
-    for (size_t j = 0; j < t - 1; ++j) {
+    for (ssize_t j = 0; j < t - 1; ++j) {
         z->keys[j] = y->keys[j + t];
     }
 
     if (y->leaf == false) {
-        for (size_t j = 0; j < t; ++j) {
+        for (ssize_t j = 0; j < t; ++j) {
             z->children[j] = y->children[j + t];
         }
     }
 
     y->n = t - 1;
 
-    for (size_t j = x->n; j >= i + 1; --j) {
+    for (ssize_t j = x->n; j >= i + 1; --j) {
         x->children[j + 1] = x->children[j];
     }
 
     x->children[i + 1] = z;
 
-    for (size_t j = x->n - 1; j >= i; --j) {
+    for (ssize_t j = x->n - 1; j >= i; --j) {
         printf("j = %zu\n", j);
         x->keys[j + 1] = x->keys[j];
     }
@@ -107,12 +107,12 @@ void BTInsertNonFull(BTNode *x, int k) {
             if (k > x->keys[i]) i += 1;
         }
 
-        BTInsertNonFull(x->children[i + 1], k);
+        BTInsertNonFull(x->children[i], k);
     }
 }
 
 void BTInsert(BTTree *T, int k) {
-    size_t t = T->t; // number of keys (NOT the cardinality) - capacity
+    ssize_t t = T->t; // number of keys (NOT the cardinality) - capacity
 
     BTNode *r = T->root;
 
@@ -132,7 +132,7 @@ void BTInsert(BTTree *T, int k) {
 }
 
 NodeAndIndex BTSearch(BTNode *x, int k) {
-    size_t i = 1;
+    ssize_t i = 1;
 
     while (i <= x->n && k > x->keys[i]) i += 1;
 
@@ -181,7 +181,7 @@ int BTMax(BTNode *x) {
     }
 }
 
-int BTPredecessor(int k, BTNode *x) {
+int BTPredecessor(ssize_t k, BTNode *x) {
     if (x->leaf == false) {
         DiskRead(x->children[k]);
 
@@ -216,12 +216,12 @@ int BTPredecessor(int k, BTNode *x) {
 }
 
 void BTDeleteLeaf(BTNode *x, int k) { // can be optimized by using the `i` from the search
-    size_t i = 0;
+    ssize_t i = 0;
 
     while (i < x->n && k > x->keys[i]) i += 1;
 
     if (i < x->n && k == x->keys[i]) {
-        for (size_t j = i; j < x->n - 1; ++j) {
+        for (ssize_t j = i; j < x->n - 1; ++j) {
             x->keys[j] = x->keys[j + 1];
         }
 
@@ -247,7 +247,7 @@ void BTDeleteLeaf(BTNode *x, int k) { // can be optimized by using the `i` from 
 }
 
 void BTDeleteNonLeaf(BTNode *x, int k) {
-    size_t i = 0;
+    ssize_t i = 0;
 
     while (i < x->n && k > x->keys[i]) i += 1;
 
@@ -260,9 +260,9 @@ void BTDeleteNonLeaf(BTNode *x, int k) {
             x->keys[i] = pred;
             BTDeleteNonLeaf(y, pred);
         } else if (z->n >= x->t) {
-            int succ = BTMax(z);
-            x->keys[i] = succ;
-            BTDeleteNonLeaf(z, succ);
+            int successor = BTMax(z);
+            x->keys[i] = successor;
+            BTDeleteNonLeaf(z, successor);
         } else {
             x->keys[i] = y->keys[y->n - 1];
             y->n -= 1;
@@ -280,9 +280,9 @@ void BTDeleteNonLeaf(BTNode *x, int k) {
             x->keys[i] = pred;
             BTDeleteNonLeaf(y, pred);
         } else if (z->n >= x->t) {
-            int succ = BTMax(z);
-            x->keys[i] = succ;
-            BTDeleteNonLeaf(z, succ);
+            int successor = BTMax(z);
+            x->keys[i] = successor;
+            BTDeleteNonLeaf(z, successor);
         } else {
             x->keys[i] = y->keys[y->n - 1];
             y->n -= 1;
