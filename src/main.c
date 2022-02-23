@@ -47,15 +47,15 @@ int main(int argc, char *argv[]) {
     lab2_conf.seed = 10; // srand()'s starting seed
     lab2_conf.t = 0; // useless, B-Tree configuration
 
-    /* Lab. 2 configurations */
+    /* Lab. 3 configurations */
     Configuration lab3_conf;
     lab3_conf.min_keys = 0; // minimum number of keys in the tree
-    lab3_conf.max_keys = 1000000; // maximum number of keys in the tree
+    lab3_conf.max_keys = 10000000; // maximum number of keys in the tree
     lab3_conf.max_instances = 50; // how many times to repeat the same test
     lab3_conf.step = 10000; // the amount of keys will grow this much at each test
     lab3_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab3_conf.seed = 10; // srand()'s starting seed
-    lab3_conf.t = 0; // useless, B-Tree configuration
+    lab3_conf.t = 100; // useless, B-Tree configuration
 
     if (strcmp(argv[1], "1A") == 0) {
         bold_yellow(), printf("Running Lab. 1A (Binary Search Trees)... ");

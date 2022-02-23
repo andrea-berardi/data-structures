@@ -6,7 +6,7 @@
 #include "../../headers/utils.h"
 #include "../../headers/experiments.h"
 
-long double exp_BT(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -28,7 +28,7 @@ long double exp_BT(size_t max_keys, size_t max_search, size_t max_delete, size_t
         size_t delete_index = 0;
 
         // I'm declaring these here so that I can run debug checks on them before returning
-        BTTree *T = BTNewTree(10);
+        BTTree *T = BTNewTree(t);
 
         t_start = clock();
         for (size_t key = 0; key < max_keys; ++key) {
@@ -85,7 +85,7 @@ void lab_3(char file[], Configuration conf, bool DEBUG) {
         //long double time_RBT = exp_RBT(keys, max_search, max_delete, conf.max_instances, DEBUG);
 
         srand(conf.seed);
-        long double time_BT = exp_BT(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_BT = exp_BT(conf.t, keys, max_search, max_delete, conf.max_instances, DEBUG);
 
         fprintf(fp, "%zu,%Lf\n", keys, time_BT);
 
