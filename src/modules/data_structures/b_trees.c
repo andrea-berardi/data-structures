@@ -69,7 +69,6 @@ void BTSplitChild(BTNode *x, ssize_t i) {
     x->children[i + 1] = z;
 
     for (ssize_t j = x->n - 1; j >= i; --j) {
-        printf("j = %zu\n", j);
         x->keys[j + 1] = x->keys[j];
     }
 
@@ -79,10 +78,11 @@ void BTSplitChild(BTNode *x, ssize_t i) {
     DiskWrite(y);
     DiskWrite(z);
     DiskWrite(x);
+
+    // free(z); // remove comment only when actually writing to disk
 }
 
 void BTInsertNonFull(BTNode *x, int k) {
-    printf("x-n: %zu\n", x->n);
     ssize_t i = x->n - 1;
 
     if (x->leaf == true) {
@@ -102,7 +102,7 @@ void BTInsertNonFull(BTNode *x, int k) {
         DiskRead(x->children[i]);
 
         if (x->children[i]->n == 2 * x->t - 1) {
-            BTSplitChild(x->children[i], i);
+            BTSplitChild(x, i);
 
             if (k > x->keys[i]) i += 1;
         }
@@ -132,11 +132,11 @@ void BTInsert(BTTree *T, int k) {
 }
 
 NodeAndIndex BTSearch(BTNode *x, int k) {
-    ssize_t i = 1;
+    ssize_t i = 0;
 
-    while (i <= x->n && k > x->keys[i]) i += 1;
+    while (i < x->n && k > x->keys[i]) i += 1;
 
-    if (i <= x->n && k == x->keys[i]) {
+    if (i < x->n && k == x->keys[i]) {
         NodeAndIndex nx = {
                 .node = x,
                 .index = i

@@ -34,7 +34,6 @@ long double exp_BT(size_t max_keys, size_t max_search, size_t max_delete, size_t
         for (size_t key = 0; key < max_keys; ++key) {
             // it's important to use `i++` instead of `++i`
             BTInsert(T, rand_insert_values_pool[insert_index++]);
-            printf("INSERIMENTO: %d\n", rand_insert_values_pool[insert_index - 1]);
         }
 
         for (size_t key = 0; key < max_search; ++key) {
