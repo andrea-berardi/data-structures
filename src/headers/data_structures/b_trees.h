@@ -7,7 +7,6 @@
 #include <stdbool.h>
 
 typedef struct bt_node {
-    ssize_t t; // capacity of the node (number of keys that can be stored)
     ssize_t n; // cardinality of keys in the node (number of keys actually stored)
     int *keys; // keys actually stored in the node (NOT in descending order)
     bool leaf; // `true` if the node is a leaf, `false` if it's an internal node

@@ -15,7 +15,6 @@ BTNode *DiskRead(BTNode *xci) {
 BTNode *BTNewNode(ssize_t t, bool leaf) {
     BTNode *x = malloc(sizeof(BTNode));
 
-    x->t = t; // number of keys (NOT the cardinality) - capacity
     x->n = 0; // number of keys - cardinality
     x->leaf = leaf; // will be determined by the function call, if provided
     x->keys = malloc(sizeof(int) * 2 * t - 1); // array of keys of the node
@@ -30,7 +29,6 @@ BTTree *BTNewTree(ssize_t t) {
     tree->t = t; // starting capacity
 
     tree->root = BTNewNode(t, true);
-    tree->root->t = t; // root capacity
     tree->root->n = 0; // root cardinality
     tree->root->leaf = true; // root is a leaf
     tree->root->parent = NULL; // root has no parent
@@ -41,26 +39,24 @@ BTTree *BTNewTree(ssize_t t) {
     return tree;
 }
 
-void BTSplitChild(BTNode *x, ssize_t i) {
-    ssize_t t = x->t;
-
-    BTNode *z = BTNewNode(t, x->leaf);
+void BTSplitChild(BTTree *T, BTNode *x, ssize_t i) {
+    BTNode *z = BTNewNode(T->t, x->leaf);
     BTNode *y = x->children[i];
 
     z->leaf = y->leaf;
-    z->n = t - 1;
+    z->n = T->t - 1;
 
-    for (ssize_t j = 0; j < t - 1; ++j) {
-        z->keys[j] = y->keys[j + t];
+    for (ssize_t j = 0; j < T->t - 1; ++j) {
+        z->keys[j] = y->keys[j + T->t];
     }
 
     if (y->leaf == false) {
-        for (ssize_t j = 0; j < t; ++j) {
-            z->children[j] = y->children[j + t];
+        for (ssize_t j = 0; j < T->t; ++j) {
+            z->children[j] = y->children[j + T->t];
         }
     }
 
-    y->n = t - 1;
+    y->n = T->t - 1;
 
     for (ssize_t j = x->n; j >= i + 1; --j) {
         x->children[j + 1] = x->children[j];
@@ -72,7 +68,7 @@ void BTSplitChild(BTNode *x, ssize_t i) {
         x->keys[j + 1] = x->keys[j];
     }
 
-    x->keys[i] = y->keys[t - 1];
+    x->keys[i] = y->keys[T->t - 1];
     x->n += 1;
 
     DiskWrite(y);
@@ -82,7 +78,7 @@ void BTSplitChild(BTNode *x, ssize_t i) {
     // free(z); // remove comment only when actually writing to disk
 }
 
-void BTInsertNonFull(BTNode *x, int k) {
+void BTInsertNonFull(BTTree *T, BTNode *x, int k) {
     ssize_t i = x->n - 1;
 
     if (x->leaf == true) {
@@ -101,33 +97,31 @@ void BTInsertNonFull(BTNode *x, int k) {
 
         DiskRead(x->children[i]);
 
-        if (x->children[i]->n == 2 * x->t - 1) {
-            BTSplitChild(x, i);
+        if (x->children[i]->n == 2 * T->t - 1) {
+            BTSplitChild(T, x, i);
 
             if (k > x->keys[i]) i += 1;
         }
 
-        BTInsertNonFull(x->children[i], k);
+        BTInsertNonFull(T, x->children[i], k);
     }
 }
 
 void BTInsert(BTTree *T, int k) {
-    ssize_t t = T->t; // number of keys (NOT the cardinality) - capacity
-
     BTNode *r = T->root;
 
-    if (r->n == 2 * t - 1) {
-        BTNode *s = BTNewNode(t, false);
+    if (r->n == 2 * T->t - 1) {
+        BTNode *s = BTNewNode(T->t, false);
         T->root = s;
         s->leaf = false;
         s->n = 0;
         s->children[0] = r;
 
-        BTSplitChild(s, 0);
+        BTSplitChild(T, s, 0);
 
-        BTInsertNonFull(s, k);
+        BTInsertNonFull(T, s, k);
     } else {
-        BTInsertNonFull(r, k);
+        BTInsertNonFull(T, r, k);
     }
 }
 
@@ -157,7 +151,6 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
     }
 }
 
-// TODO: implement BTDelete()
 void BTDelete(BTTree *T, int key) {
 
 }
