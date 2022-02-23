@@ -107,7 +107,7 @@ void BTInsertNonFull(BTTree *T, BTNode *x, int k) {
     }
 }
 
-void BTInsert(BTTree *T, int k) {
+void BTInsertKey(BTTree *T, int key) {
     BTNode *r = T->root;
 
     if (r->n == 2 * T->t - 1) {
@@ -119,13 +119,13 @@ void BTInsert(BTTree *T, int k) {
 
         BTSplitChild(T, s, 0);
 
-        BTInsertNonFull(T, s, k);
+        BTInsertNonFull(T, s, key);
     } else {
-        BTInsertNonFull(T, r, k);
+        BTInsertNonFull(T, r, key);
     }
 }
 
-NodeAndIndex BTSearch(BTNode *x, int k) {
+NodeAndIndex BTSearchKey(BTNode *x, int k) {
     ssize_t i = 0;
 
     while (i < x->n && k > x->keys[i]) i += 1;
@@ -147,10 +147,20 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
     } else {
         DiskRead(x->children[i]);
 
-        return BTSearch(x->children[i], k);
+        return BTSearchKey(x->children[i], k);
     }
 }
 
 void BTDelete(BTTree *T, int key) {
+    // TODO: implement
+}
 
+void BTDeleteKey(BTTree *T, int key) {
+    NodeAndIndex nx = BTSearchKey(T->root, key);
+
+    if (nx.node == NULL) {
+        return; // key not found
+    } else {
+        BTDelete(T, key);
+    }
 }

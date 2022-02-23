@@ -33,12 +33,12 @@ long double exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_del
         t_start = clock();
         for (size_t key = 0; key < max_keys; ++key) {
             // it's important to use `i++` instead of `++i`
-            BTInsert(T, rand_insert_values_pool[insert_index++]);
+            BTInsertKey(T, rand_insert_values_pool[insert_index++]);
         }
 
         for (size_t key = 0; key < max_search; ++key) {
             // it's important to use `i++` instead of `++i`
-            BTSearch(T->root, rand_search_values_pool[search_index++]);
+            BTSearchKey(T->root, rand_search_values_pool[search_index++]);
         }
 
         for (size_t key = 0; key < max_delete; ++key) {

@@ -26,9 +26,9 @@ typedef struct node_and_index {
 } NodeAndIndex;
 
 BTTree *BTNewTree(ssize_t t);
-void BTInsert(BTTree *T, int key);
-NodeAndIndex BTSearch(BTNode *x, int k);
-void BTDelete(BTTree *T, int key);
+void BTInsertKey(BTTree *T, int key);
+NodeAndIndex BTSearchKey(BTNode *x, int k);
+void BTDeleteKey(BTTree *T, int key);
 
 
 #endif //DATA_STRUCTURES_B_TREES_H
