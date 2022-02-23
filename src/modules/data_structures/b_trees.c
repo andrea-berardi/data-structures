@@ -158,3 +158,6 @@ NodeAndIndex BTSearch(BTNode *x, int k) {
 }
 
 // TODO: implement BTDelete()
+void BTDelete(BTTree *T, int key) {
+
+}
