@@ -151,8 +151,26 @@ NodeAndIndex BTSearchKey(BTNode *x, int k) {
     }
 }
 
-void BTDelete(BTTree *T, int key) {
-    // TODO: implement
+void BTDeleteLeaf(BTNode *x, ssize_t i) {
+    for (ssize_t j = i + 1; j < x->n; ++j) {
+        x->keys[j - 1] = x->keys[j];
+    }
+
+    x->n -= 1;
+
+    DiskWrite(x);
+}
+
+void BTDelete(BTTree *T, NodeAndIndex nx, int key) {
+    if (nx.node->leaf == true) {
+        BTDeleteLeaf(nx.node, nx.index);
+
+        if (nx.node->n == 0) {
+            free(nx.node);
+        }
+    } else {
+        //printf("Is NOT a leaf\n");
+    }
 }
 
 void BTDeleteKey(BTTree *T, int key) {
@@ -161,6 +179,6 @@ void BTDeleteKey(BTTree *T, int key) {
     if (nx.node == NULL) {
         return; // key not found
     } else {
-        BTDelete(T, key);
+        BTDelete(T, nx, key);
     }
 }
