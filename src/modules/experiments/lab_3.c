@@ -6,7 +6,8 @@
 #include "../../headers/utils.h"
 #include "../../headers/experiments.h"
 
-long double exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double
+exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -44,11 +45,15 @@ long double exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_del
         for (size_t key = 0; key < max_delete; ++key) {
             // This uses the iterative version of RBTSearch, but both versions are implemented and functional.
             // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-            BTDelete(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+            BTDeleteKey(T, rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
         }
         t_end = clock();
 
         t_tot += t_end - t_start;
+
+        if (DEBUG) {
+            printf("LOL\n");
+        }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
@@ -71,7 +76,7 @@ void lab_3(char file[], Configuration conf, bool DEBUG) {
         exit(EXIT_FAILURE);
     }
 
-    fprintf(fp, "Keys (n),B-Trees\n");
+    fprintf(fp, "Keys (n),Binary Search Trees,Red-Black Trees,B-Trees\n");
     for (size_t keys = conf.min_keys; keys <= conf.max_keys; keys += conf.step) {
         srand(conf.seed);
 
@@ -92,6 +97,5 @@ void lab_3(char file[], Configuration conf, bool DEBUG) {
         ++conf.seed;
     }
 
-    if (fclose(fp) == EOF)
-        fprintf(stderr, "Failed to flush buffered data on `%s`\n", file);
+    if (fclose(fp) == EOF) fprintf(stderr, "Failed to flush buffered data on `%s`\n", file);
 }
