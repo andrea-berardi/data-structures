@@ -52,38 +52,38 @@ int main(int argc, char *argv[]) {
     lab3_conf.min_keys = 0; // minimum number of keys in the tree
     lab3_conf.max_keys = 100000; // maximum number of keys in the tree
     lab3_conf.max_instances = 50; // how many times to repeat the same test
-    lab3_conf.step = 10000; // the amount of keys will grow this much at each test
+    lab3_conf.step = 5000; // the amount of keys will grow this much at each test
     lab3_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab3_conf.seed = 10; // srand()'s starting seed
-    lab3_conf.t = 1000; // useless, B-Tree configuration
+    lab3_conf.t = 100; // try with 1000 to show the difference
 
     if (strcmp(argv[1], "1A") == 0) {
-        bold_yellow(), printf("Running Lab. 1A (Binary Search Trees)... ");
-        reset_color(), fflush(stdout);
+        bold_yellow("Running Lab. 1A (Binary Search Trees)... ");
+        fflush(stdout);
 
         /* Lab. 1A - (BSTs) Binary Search Trees */
         lab_1A("../results/lab_1/1A/lab_1A.csv", lab1A_conf, DEBUG);
     } else if (strcmp(argv[1], "1B") == 0) {
-        bold_yellow(), printf("Running Lab. 1B (Linked Lists, Binary Search Trees)... ");
-        reset_color(), fflush(stdout);
+        bold_yellow("Running Lab. 1B (Linked Lists, Binary Search Trees)... ");
+        fflush(stdout);
 
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
         lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
-        bold_yellow(), printf("Running Lab. 2 (Red-Black Trees, Binary Search Trees)... ");
-        reset_color(), fflush(stdout);
+        bold_yellow("Running Lab. 2 (Red-Black Trees, Binary Search Trees)... ");
+        fflush(stdout);
 
         /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
     } else if (strcmp(argv[1], "3") == 0) {
-        bold_yellow(), printf("Running Lab. 3 (B-Trees, Red-Black Trees, Binary Search Trees)... ");
-        reset_color(), fflush(stdout);
+        bold_yellow("Running Lab. 3 (B-Trees, Red-Black Trees, Binary Search Trees)... ");
+        fflush(stdout);
 
         /* Lab. 3 - (BTs) B-Trees */
         lab_3("../results/lab_3/lab_3.csv", lab3_conf, DEBUG);
     } else if (strcmp(argv[1], "4") == 0) {
-        bold_yellow(), printf("Running everything (LLs, BSTs, RBTs, BTs)... ");
-        reset_color(), fflush(stdout);
+        bold_yellow("Running everything (LLs, BSTs, RBTs, BTs)... ");
+        fflush(stdout);
 
         /* Everything */
     } else {
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    bold_green(), printf("Done!\n"), reset_color(); // if we arrive here, the experiment were successful
+    bold_green("Done!\n"), fflush(stdout); // if we arrive here, the experiment were successful
 
     /* Automatic plotter (Python script) */
     plotter(); // the function handles potential errors

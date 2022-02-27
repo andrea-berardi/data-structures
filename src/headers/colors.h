@@ -3,15 +3,14 @@
 #ifndef DATA_STRUCTURES_COLORS_H
 #define DATA_STRUCTURES_COLORS_H
 
-void red(void); // Red, standard
-void bold_red(void); // Red, bold
-void yellow(void); // Yellow, standard
-void bold_yellow(void); // Yellow, bold
-void green(void); // Green, standard
-void bold_green(void); // Green, bold
-void blue(void); // Blue, standard
-void bold_blue(void); // Blue, bold
-void reset_color(void); // Reset the color
+void red(char *str); // Red, standard
+void bold_red(char *str); // Red, bold
+void yellow(char *str); // Yellow, standard
+void bold_yellow(char *str); // Yellow, bold
+void green(char *str); // Green, standard
+void bold_green(char *str); // Green, bold
+void blue(char *str); // Blue, standard
+void bold_blue(char *str); // Blue, bold
 
 #endif //DATA_STRUCTURES_COLORS_H
 

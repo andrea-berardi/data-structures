@@ -52,7 +52,7 @@ exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t 
         t_tot += t_end - t_start;
 
         if (DEBUG) {
-            printf("LOL\n");
+            printf("LOL\n"); // Suppress warning
         }
 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
