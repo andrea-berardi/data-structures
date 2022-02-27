@@ -172,8 +172,8 @@ def lab_3() -> None:
         # end for
 
         plt.xlabel(x_label); plt.ylabel(y_label) # set axis labels
-        plt.plot(keys, second_column, 'red', keys, thrid_column, 'blue', linewidth = 2) # plot the data
-        plt.title(title_lab_2) # set title
+        plt.plot(keys, second_column, 'red', keys, thrid_column, 'blue', keys, fourth_column, 'green', linewidth = 2) # plot the data
+        plt.title(title_lab_3) # set title
         plt.grid(True) # show the grid
         plt.legend(titles, loc = 'best') # show legend, and put it in the best location
         plt.xlim(0); plt.ylim(0) # set the lower limits of the x and y axis
