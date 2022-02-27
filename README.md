@@ -19,6 +19,7 @@ Here's what you'll find on this document:
     - [Lab. 2](#lab-2)
     - [Lab. 3](#lab-3)
     - [Final experiment](#final-experiment)
+- [Bibliography](#bibliography)
 - [Credits](#credits)
 
 ## About
