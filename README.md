@@ -100,6 +100,10 @@ Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
 
 ![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/data-structures/blob/main/results/total/total.png?raw=true)
 
+## Bibliography
+- Something
+- Something else
+
 ## Credits
 
 Special thanks to [...]
