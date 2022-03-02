@@ -19,6 +19,7 @@ Here's what you'll find on this document:
     - [Lab. 2](#lab-2)
     - [Lab. 3](#lab-3)
     - [Final experiment](#final-experiment)
+- [Bibliography](#bibliography)
 - [Credits](#credits)
 
 ## About
@@ -30,7 +31,7 @@ Things to say about this project... preamble and things like that.
 - [x] Linked Lists (personal test, **not** required by the lab.)
 - [x] Binary Search Trees
 - [x] RB-Trees (_Red-Black Trees_)
-- [ ] B-Trees
+- [x] B-Trees
 
 ## Project Structure
 
@@ -90,7 +91,7 @@ Red-Black Trees, Binary Search Trees
 
 ### Lab. 3
 
-B-Trees
+B-Trees, Red-Black Trees, Binary Search Trees
 
 ![B-Trees](https://github.com/andrea-berardi/data-structures/blob/main/results/lab_3/lab_3.png?raw=true)
 
@@ -101,6 +102,7 @@ Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
 ![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/data-structures/blob/main/results/total/total.png?raw=true)
 
 ## Bibliography
+
 - Something
 - Something else
 
