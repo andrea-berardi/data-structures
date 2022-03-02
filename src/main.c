@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
     lab3_conf.step = 5000; // the amount of keys will grow this much at each test
     lab3_conf.search_delete_ratio = 60; // ratio of insertions/deletions
     lab3_conf.seed = 10; // srand()'s starting seed
-    lab3_conf.t = 100; // try with 1000 to show the difference
+    lab3_conf.t = 50; // try with 1000 to show the difference
 
     if (strcmp(argv[1], "1A") == 0) {
         bold_yellow("Running Lab. 1A (Binary Search Trees)... ");

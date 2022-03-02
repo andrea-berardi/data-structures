@@ -29,6 +29,7 @@ BTTree *BTNewTree(ssize_t t);
 void BTInsertKey(BTTree *T, int key);
 NodeAndIndex BTSearchKey(BTNode *x, int k);
 void BTDeleteKey(BTTree *T, int key);
+void BTDestroyTree(BTTree *T, BTNode *x);
 
 
 #endif //DATA_STRUCTURES_B_TREES_H

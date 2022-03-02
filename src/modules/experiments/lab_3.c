@@ -58,7 +58,7 @@ exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
-        //BTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
+        BTDestroyTree(T, T->root); // destroying the tree and all its leaves (nodes) - `T` is now NULL
 
         // Destroying the arrays
         FreeNull_Int(rand_insert_values_pool);

@@ -225,78 +225,78 @@ int BTSuccessor(BTNode *x, ssize_t i) {
 }
 
 void BTBorrowFromPrevious(BTNode *x, ssize_t i) {
-    BTNode *y = x->children[i];
-    BTNode *z = x->children[i - 1];
+    BTNode *child = x->children[i];
+    BTNode *sibling = x->children[i - 1];
 
-    for (ssize_t j = y->n - 1; j >= 0; --j) {
-        y->keys[j + 1] = y->keys[j];
+    for (ssize_t j = child->n - 1; j >= 0; --j) {
+        child->keys[j + 1] = child->keys[j];
     }
 
-    if (y->leaf == false) {
-        for (ssize_t j = y->n; j >= 0; --j) {
-            y->children[j + 1] = y->children[j];
+    if (child->leaf == false) {
+        for (ssize_t j = child->n; j >= 0; --j) {
+            child->children[j + 1] = child->children[j];
         }
     }
 
-    y->keys[0] = x->keys[i - 1];
+    child->keys[0] = x->keys[i - 1];
 
-    if (y->leaf == false) {
-        y->children[0] = z->children[z->n];
+    if (child->leaf == false) {
+        child->children[0] = sibling->children[sibling->n];
     }
 
-    y->keys[i - 1] = z->keys[z->n - 1];
+    x->keys[i - 1] = sibling->keys[sibling->n - 1]; // cambiato da child->keys[i - 1] a x->keys[sibling->n - 1]
 
-    y->n += 1;
-    z->n -= 1;
+    child->n += 1;
+    sibling->n -= 1;
 
-    DiskWrite(y);
-    DiskWrite(z);
+    DiskWrite(child);
+    DiskWrite(sibling);
     DiskWrite(x);
 }
 
 void BTBorrowFromNext(BTNode *x, ssize_t i) {
-    BTNode *y = x->children[i];
-    BTNode *z = x->children[i + 1];
+    BTNode *child = x->children[i];
+    BTNode *sibling = x->children[i + 1];
 
-    y->keys[y->n] = x->keys[i];
+    child->keys[child->n] = x->keys[i];
 
-    if (y->leaf == false) {
-        y->children[y->n + 1] = z->children[0];
+    if (child->leaf == false) {
+        child->children[child->n + 1] = sibling->children[0];
     }
 
-    y->keys[i] = z->keys[0];
+    x->keys[i] = sibling->keys[0];
 
-    for (ssize_t j = 1; j < z->n; ++j) {
-        z->keys[j - 1] = z->keys[j];
+    for (ssize_t j = 1; j < sibling->n; ++j) {
+        sibling->keys[j - 1] = sibling->keys[j];
     }
 
-    if (y->leaf == false) {
-        for (ssize_t j = 1; j <= z->n; ++j) {
-            z->children[j - 1] = z->children[j];
+    if (sibling->leaf == false) {
+        for (ssize_t j = 1; j <= sibling->n; ++j) {
+            sibling->children[j - 1] = sibling->children[j];
         }
     }
 
-    y->n += 1;
-    z->n -= 1;
+    child->n += 1;
+    sibling->n -= 1;
 
-    DiskWrite(y);
-    DiskWrite(z);
+    DiskWrite(child);
+    DiskWrite(sibling);
     DiskWrite(x);
 }
 
 void BTMerge(BTTree *T, BTNode *x, ssize_t i) {
-    BTNode *y = x->children[i];
-    BTNode *z = x->children[i + 1];
+    BTNode *child = x->children[i];
+    BTNode *sibling = x->children[i + 1];
 
-    y->keys[T->t - 1] = x->keys[i];
+    child->keys[T->t - 1] = x->keys[i];
 
-    for (ssize_t j = 0; j < z->n; ++j) {
-        y->keys[T->t + 1] = z->keys[j];
+    for (ssize_t j = 0; j < sibling->n; ++j) {
+        child->keys[T->t + j] = sibling->keys[j];
     }
 
-    if (y->leaf == false) {
-        for (ssize_t j = 0; j <= z->n; ++j) {
-            y->children[T->t + 1] = z->children[j];
+    if (child->leaf == false) {
+        for (ssize_t j = 0; j <= sibling->n; ++j) {
+            child->children[T->t + j] = sibling->children[j];
         }
     }
 
@@ -308,15 +308,15 @@ void BTMerge(BTTree *T, BTNode *x, ssize_t i) {
         x->children[j - 1] = x->children[j];
     }
 
-    y->n += z->n + 1;
+    child->n += sibling->n + 1;
 
     x->n -= 1;
 
     DiskWrite(x);
-    DiskWrite(y);
-    DiskWrite(z);
+    DiskWrite(child);
+    DiskWrite(sibling);
 
-    free(z);
+    free(sibling);
 }
 
 void BTFillNode(BTTree *T, BTNode *x, ssize_t i) {
@@ -386,7 +386,7 @@ void BTRemoveFromNode(BTTree *T, BTNode *x, int k) {
 }
 
 void BTDeleteKey(BTTree *T, int key) {
-    if (T->root == NULL || !T->root) {
+    if (T->root == NULL || !T->root || T->root->n == 0) {
         return; // empty tree
     }
 
@@ -403,4 +403,23 @@ void BTDeleteKey(BTTree *T, int key) {
 
         free(root);
     }
+}
+
+void BTDestroyTree(BTTree *T, BTNode *x) {
+    ssize_t i;
+
+    for (i = 0; i < T->t; ++i) {
+        if (x->leaf == false) {
+            BTDestroyTree(T, x->children[i]);
+        }
+
+        free(x->keys);
+        free(x->children);
+        free(x);
+
+        break;
+    }
+
+    //free(T->root);
+    //free(T);
 }
