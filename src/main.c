@@ -69,36 +69,31 @@ int main(int argc, char *argv[]) {
             .step = 50000, // the amount of keys will grow this much at each test 
             .search_delete_ratio = 60, // ratio of insertions/deletions           
             .seed = 10, // srand()'s starting seed                                
-            .t = 1000 // try with 1000 to show the difference
+            .t = 10 // try with 1000 to show the difference
     };
 
     if (strcmp(argv[1], "1A") == 0) {
         bold_yellow("Running Lab. 1A (Binary Search Trees)... ");
-        fflush(stdout);
 
         /* Lab. 1A - (BSTs) Binary Search Trees */
         lab_1A("../results/lab_1/1A/lab_1A.csv", lab1A_conf, DEBUG);
     } else if (strcmp(argv[1], "1B") == 0) {
         bold_yellow("Running Lab. 1B (Linked Lists, Binary Search Trees)... ");
-        fflush(stdout);
 
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
         lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf, DEBUG);
     } else if (strcmp(argv[1], "2") == 0) {
         bold_yellow("Running Lab. 2 (Red-Black Trees, Binary Search Trees)... ");
-        fflush(stdout);
 
         /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
     } else if (strcmp(argv[1], "3") == 0) {
         bold_yellow("Running Lab. 3 (B-Trees, Red-Black Trees, Binary Search Trees)... ");
-        fflush(stdout);
 
         /* Lab. 3 - (BTs) B-Trees, (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         lab_3("../results/lab_3/lab_3.csv", lab3_conf, DEBUG);
     } else if (strcmp(argv[1], "4") == 0) {
         bold_yellow("Running Final (BTs with variable degree t)... ");
-        fflush(stdout);
 
         /* Final experiment */
         lab_final("../results/final/final.csv", final_conf, DEBUG);
@@ -109,7 +104,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    bold_green("Done!\n"), fflush(stdout); // if we arrive here, the experiment were successful
+    bold_green("Done!\n"); // if we arrive here, the experiment were successful
 
     /* Automatic plotter (Python script) */
     plotter(); // the function handles potential errors

@@ -76,17 +76,33 @@ void lab_final(char file[], Configuration conf, bool DEBUG) {
         exit(EXIT_FAILURE);
     }
 
-    fprintf(fp, "Keys (n),B-Trees\n");
+    fprintf(fp, "Keys (n),B-Trees (t = 10),B-Trees (t = 100),B-Trees (t = 1000),\n");
     for (size_t keys = conf.min_keys; keys <= conf.max_keys; keys += conf.step) {
         srand(conf.seed);
 
         size_t max_search = keys * conf.search_delete_ratio / 100;
         size_t max_delete = keys - max_search;
 
-        srand(conf.seed);
-        long double time_BT = final_BT(conf.t, keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double *array = malloc(10 * sizeof(long double));
+        if (array == NULL) {
+            fprintf(stderr, "Error: couldn't allocate %d-cells array, size: %zu bytes).\n", 10,
+                    10 * sizeof(long double));
+            exit(EXIT_FAILURE);
+        }
 
-        fprintf(fp, "%zu,%Lf\n", keys, time_BT);
+        ssize_t t = 10;
+        for (ssize_t i = 0; i < 3; ++i) {
+            srand(conf.seed);
+            array[i] = final_BT(t, keys, max_search, max_delete, conf.max_instances, DEBUG);
+
+            t *= 10;
+        }
+
+        fprintf(fp, "%zu", keys);
+        for (ssize_t i = 0; i < 3; ++i) {
+            fprintf(fp, ",%Lf", array[i]);
+        }
+        fprintf(fp, "\n");
 
         ++conf.seed;
     }
