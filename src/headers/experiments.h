@@ -33,8 +33,11 @@ void lab_1B(char file[], Configuration conf, bool DEBUG);
 // Lab. 2 - Binary Search Trees, Red-Black Trees
 void lab_2(char file[], Configuration conf, bool DEBUG);
 
-// Lab. 3 - B-Trees
+// Lab. 3 - B-Trees, Binary Search Trees, Red-Black Trees
 void lab_3(char file[], Configuration conf, bool DEBUG);
+
+// Final experiment - B-Trees
+void lab_final(char file[], Configuration conf, bool DEBUG);
 
 #endif //DS_EXPERIMENTS_H
 

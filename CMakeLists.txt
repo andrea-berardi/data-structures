@@ -3,7 +3,7 @@ project(data_structures C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(data_structures src/main.c src/modules/data_structures/binary_search_trees.c src/headers/data_structures/binary_search_trees.h src/headers/experiments.h src/modules/experiments/lab_1A.c src/modules/utils.c src/headers/utils.h src/modules/data_structures/linked_lists.c src/headers/data_structures/linked_lists.h src/modules/experiments/lab_1B.c src/modules/data_structures/red_black_trees.c src/headers/data_structures/red_black_trees.h src/modules/experiments/lab_2.c src/modules/colors.c src/headers/colors.h src/modules/data_structures/b_trees.c src/headers/data_structures/b_trees.h src/modules/experiments/lab_3.c)
+add_executable(data_structures src/main.c src/modules/data_structures/binary_search_trees.c src/headers/data_structures/binary_search_trees.h src/headers/experiments.h src/modules/experiments/lab_1A.c src/modules/utils.c src/headers/utils.h src/modules/data_structures/linked_lists.c src/headers/data_structures/linked_lists.h src/modules/experiments/lab_1B.c src/modules/data_structures/red_black_trees.c src/headers/data_structures/red_black_trees.h src/modules/experiments/lab_2.c src/modules/colors.c src/headers/colors.h src/modules/data_structures/b_trees.c src/headers/data_structures/b_trees.h src/modules/experiments/lab_3.c src/modules/experiments/lab_final.c)
 
 # This enables extra compiler warnings, and more "pedantic" checks
 # set(CMAKE_C_FLAGS "-Wall -Werror -Wextra -pedantic")
