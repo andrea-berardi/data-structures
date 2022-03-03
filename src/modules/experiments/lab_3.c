@@ -58,23 +58,7 @@ exp_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t 
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
-        // INSERIMENTO FORSE ERRATO
-        insert_index = 0;
-        for (size_t key = 0; key < max_keys; ++key) {
-            // it's important to use `i++` instead of `++i`
-            NodeAndIndex a = BTSearchKey(T->root, rand_insert_values_pool[insert_index++]);
-            if (a.node != NULL) {
-                //BTDeleteKey(T, a.node->key);
-                printf("TROVATO\n");
-            } else {
-                printf("NON TROVATO\n");
-            }
-        }
-        //printf("BEFORE\n");
-        //BTTraverse(T->root);
-        BTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
-        //printf("AFTER\n");
-        //BTTraverse(T->root);
+        BTDestroyTree(T);
 
         // Destroying the arrays
         FreeNull_Int(rand_insert_values_pool);
