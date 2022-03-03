@@ -97,9 +97,9 @@ B-Trees, Red-Black Trees, Binary Search Trees
 
 ### Final experiment
 
-Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees
+B-Trees, with variable degree `t`.
 
-![Linked Lists, Binary Search Trees, Red-Black Trees, B-Trees](https://github.com/andrea-berardi/data-structures/blob/main/results/total/total.png?raw=true)
+![B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)
 
 ## Bibliography
 
