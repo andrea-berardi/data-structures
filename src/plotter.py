@@ -177,6 +177,9 @@ def lab_3() -> None:
         plt.grid(True) # show the grid
         plt.legend(titles, loc = 'best') # show legend, and put it in the best location
         plt.xlim(0); plt.ylim(0) # set the lower limits of the x and y axis
+        plt.text(0.5, 0.5, 'andrea-berardi™',
+        fontsize=70, color='gray', alpha=0.15,
+        ha='center', va='center', rotation='30')
         plt.savefig(dir + dir_lab_3, dpi = quality) # save the plot PNG
     # end with
 
