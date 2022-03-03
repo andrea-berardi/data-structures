@@ -10,7 +10,6 @@ typedef struct bt_node {
     ssize_t n; // cardinality of keys in the node (number of keys actually stored)
     int *keys; // keys actually stored in the node (NOT in descending order)
     bool leaf; // `true` if the node is a leaf, `false` if it's an internal node
-    struct bt_node *parent; // pointer to the parent node
     struct bt_node **children; // array of pointers to the children
 } BTNode;
 
@@ -29,8 +28,7 @@ BTTree *BTNewTree(ssize_t t);
 void BTInsertKey(BTTree *T, int key);
 NodeAndIndex BTSearchKey(BTNode *x, int k);
 void BTDeleteKey(BTTree *T, int key);
-void BTDestroyTree(BTTree *T, BTNode *x);
-
+void BTDestroyTree(BTTree *T);
 
 #endif //DATA_STRUCTURES_B_TREES_H
 
