@@ -89,7 +89,7 @@ void error_menu(char *argv[]) {
     fprintf(stderr, "1B) Lab. 1B - Linked Lists, Binary Search Trees\n");
     fprintf(stderr, "2) Lab. 2 - Red-Black Trees, Binary Search Trees\n");
     fprintf(stderr, "3) Lab. 3 - B-Trees\n");
-    fprintf(stderr, "4) Everything\n");
+    fprintf(stderr, "4) B-Trees with variable degree t\n");
 }
 
 void plotter(void) {
