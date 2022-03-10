@@ -15,4 +15,5 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic")
 # Why? It is mandatory to ensure that the executables are free from bugs and Undefined Behaviors
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize=undefined -fsanitize=leak -g")
 
+# Release builda flags
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O3")
