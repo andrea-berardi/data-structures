@@ -128,6 +128,8 @@ The `X` axis represents the amount of keys that will be stored on the data struc
 
 The `Y` axis represents the time it took to run some operations on them (insertion, search and deletion of keys). It is calculated using C's `clock()` function, provided by the `time.h` library.
 
+Yes, the pictures have watermarks, because why not.
+
 ### Lab. 1A
 
 Binary Search Trees
