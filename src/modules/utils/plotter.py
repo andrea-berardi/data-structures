@@ -2,10 +2,10 @@
 
 # library imports
 from typing import List  # I like to specify the type of the variables
-import matplotlib.pyplot as plt  # required to create the plots
-from matplotlib import rcParams  # enable automatic scaling of the plots
+from  matplotlib import pyplot as plt  # required to create the plots
+from matplotlib import rcParams as rcp  # enable automatic scaling of the plots
 
-rcParams.update({"figure.autolayout": True})  # enable automatic scaling of the plots
+rcp.update({"figure.autolayout": True})  # automatic scaling of the plots
 
 # directories where the results are stored
 dir: str = "../../../results/"  # parent directory
@@ -62,6 +62,17 @@ def lab_1A() -> None:
         plt.legend([title], loc="best")  # show legend, and put it in the best location
         plt.xlim(0)
         plt.ylim(0)  # set the lower limits of the x and y axis
+        plt.text(
+            50000,
+            17000,
+            "andrea-berardi",
+            fontsize=50,
+            color="gray",
+            alpha=0.06,
+            ha="center",
+            va="center",
+            rotation="35",
+        )
         plt.savefig(dir + dir_lab_1A, dpi=quality)  # save the plot PNG
     # end with
 
@@ -105,6 +116,17 @@ def lab_1B() -> None:
         plt.legend(titles, loc="best")  # show legend, and put it in the best location
         plt.xlim(0)
         plt.ylim(0)  # set the lower limits of the x and y axis
+        plt.text(
+            5000,
+            50000,
+            "andrea-berardi",
+            fontsize=50,
+            color="gray",
+            alpha=0.06,
+            ha="center",
+            va="center",
+            rotation="35",
+        )
         plt.savefig(dir + dir_lab_1B, dpi=quality)  # save the plot PNG
     # end with
 
@@ -148,6 +170,17 @@ def lab_2() -> None:
         plt.legend(titles, loc="best")  # show legend, and put it in the best location
         plt.xlim(0)
         plt.ylim(0)  # set the lower limits of the x and y axis
+        plt.text(
+            520000,
+            620000,
+            "andrea-berardi",
+            fontsize=52,
+            color="gray",
+            alpha=0.06,
+            ha="center",
+            va="center",
+            rotation="35",
+        )
         plt.savefig(dir + dir_lab_2, dpi=quality)  # save the plot PNG
     # end with
 
@@ -270,6 +303,17 @@ def final() -> None:
         plt.legend(titles, loc="best")  # show legend, and put it in the best location
         plt.xlim(0)
         plt.ylim(0)  # set the lower limits of the x and y axis
+        plt.text(
+            520000,
+            420000,
+            "andrea-berardi",
+            fontsize=50,
+            color="gray",
+            alpha=0.06,
+            ha="center",
+            va="center",
+            rotation="35",
+        )
         plt.savefig(dir + dir_lab_4, dpi=quality)  # save the plot PNG
     # end with
 
