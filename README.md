@@ -165,7 +165,7 @@ B-Trees, with variable degree `t`.
 Resources used for my studies and the implementation:
 
 - _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein (2009)
-- _Misc laboratory PDFs_, Eduard I. Stan (2021)
+- _Misc laboratory slides_, Eduard I. Stan (2021)
 - _Misc course slides_, Guido Sciavicco (2021)
 - _The Art of Computer Programming_, Donald E. Knuth (1998)
 - _B-tree_, Wikipedia (as of 2022)
