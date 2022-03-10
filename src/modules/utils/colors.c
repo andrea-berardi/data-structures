@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../headers/colors.h"
+#include "../../headers/colors.h"
 
 void red(char *str) {
     printf("\033[0;31m%s\033[0m", str);

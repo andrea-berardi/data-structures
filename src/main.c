@@ -92,6 +92,8 @@ int main(int argc, char *argv[]) {
         /* Final experiment */
         bold_yellow("Running Final (BTs with variable degree t)... ");
         lab_final("../results/final/final.csv", final_conf, DEBUG);
+    } else if (strcmp(argv[1], "test") == 0) {
+        bold_yellow("Running unit and DS integrity tests... ");
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
         error_menu(argv);
