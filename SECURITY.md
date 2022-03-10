@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The one and only supported version is the last version committed on `main` branch.
+The one and only supported version is the last version committed on the `main` branch.
 
 ## Reporting a Vulnerability
 
