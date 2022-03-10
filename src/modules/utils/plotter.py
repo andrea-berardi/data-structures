@@ -8,7 +8,7 @@ from matplotlib import rcParams  # enable automatic scaling of the plots
 rcParams.update({"figure.autolayout": True})  # enable automatic scaling of the plots
 
 # directories where the results are stored
-dir: str = "../results/"  # parent directory
+dir: str = "../../../results/"  # parent directory
 dir_lab_1A: str = "lab_1/1A/lab_1A"
 dir_lab_1B: str = "lab_1/1B/lab_1B"
 dir_lab_2: str = "lab_2/lab_2"
