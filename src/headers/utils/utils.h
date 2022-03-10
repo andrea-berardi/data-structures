@@ -6,10 +6,10 @@
 #include <stdlib.h> // in order to get the `size_t` type
 #include <stdbool.h> // imports the boolean type for more idiomatic code
 
-#include "data_structures/linked_lists.h"
-#include "data_structures/red_black_trees.h"
-#include "data_structures/binary_search_trees.h"
-#include "data_structures/b_trees.h"
+#include "../data_structures/linked_lists.h"
+#include "../data_structures/red_black_trees.h"
+#include "../data_structures/binary_search_trees.h"
+#include "../data_structures/b_trees.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(size_t length);

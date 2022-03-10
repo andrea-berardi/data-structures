@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "../../headers/utils.h"
-#include "../../headers/colors.h"
+#include "../../headers/utils/utils.h"
+#include "../../headers/utils/colors.h"
 
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {

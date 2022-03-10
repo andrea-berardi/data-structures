@@ -3,9 +3,10 @@
 #include <string.h> // required for strcmp()
 #include <stdbool.h> // required to use idiomatically the boolean type
 
-#include "headers/utils.h"
-#include "headers/colors.h"
-#include "headers/experiments.h"
+#include "headers/utils/utils.h"
+#include "headers/utils/tests.h"
+#include "headers/utils/colors.h"
+#include "headers/utils/experiments.h"
 
 const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
 

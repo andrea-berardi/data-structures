@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "../../headers/utils.h"
-#include "../../headers/experiments.h"
+#include "../../headers/utils/utils.h"
+#include "../../headers/utils/experiments.h"
 
 long double exp_1A(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
     clock_t t_tot = 0;
