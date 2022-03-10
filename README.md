@@ -21,11 +21,12 @@ Here's what you'll find on this document:
   - [Lab. 3](#lab-3)
   - [Final experiment](#final-experiment)
 - [Bibliography](#bibliography)
-- [Credits](#credits)
 
 ## About
 
-Things to say about this project... preamble and things like that.
+This repository contains a simple implementation of some (cool) data structures.
+This is the second part of an assignment of a course on algorithms and data structures, the first half regarding sorting algorithms, can be found [here](https://github.com/andrea-berardi/sorting-algorithms).
+The thought behind the project is to create an enviroment that allows for easy performance testing.
 
 ## Data Structures implemented
 
@@ -161,7 +162,7 @@ B-Trees, with variable degree `t`.
 
 Resources used for my studies and the implementation:
 
-- _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein (2009)
+- _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein (2009)
 - _Misc laboratory PDFs_, Eduard I. Stan (2021)
 - _Misc course slides_, Guido Sciavicco (2021)
 - _Modern C_, Jens Gustedt (2019)
@@ -172,7 +173,3 @@ Resources used for my studies and the implementation:
 - _The Ubiquitous B-Tree_, Sally E. Fischbeck (1987)
 - _The Ubiquitous B-Tree_, Douglas Comer (1979)
 - _The Art of Computer Programming_, Donald E. Knuth (1998)
-
-## Credits
-
-Special thanks to [...]
