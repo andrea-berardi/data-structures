@@ -1,4 +1,4 @@
-# Data Structures (:construction: Work in Progress)
+# Data Structures
 
 [![LICENSE](https://badgen.net/badge/Support/Ukraine/?color=0057B8&labelColor=FFD700)](https://www.icrc.org/en/donate/ukraine)
 [![LICENSE](https://img.shields.io/badge/license-AGPLv3-blue)](https://github.com/andrea-berardi/trees/blob/main/LICENSE)
