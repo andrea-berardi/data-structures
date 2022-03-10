@@ -15,11 +15,11 @@ Here's what you'll find on this document:
 - [Project Structure](#project-structure)
 - [Notes](#notes)
 - [Laboratories](#laboratories)
-    - [Lab. 1A](#lab-1a)
-    - [Lab. 1B](#lab-1b)
-    - [Lab. 2](#lab-2)
-    - [Lab. 3](#lab-3)
-    - [Final experiment](#final-experiment)
+  - [Lab. 1A](#lab-1a)
+  - [Lab. 1B](#lab-1b)
+  - [Lab. 2](#lab-2)
+  - [Lab. 3](#lab-3)
+  - [Final experiment](#final-experiment)
 - [Bibliography](#bibliography)
 - [Credits](#credits)
 
@@ -39,7 +39,62 @@ Things to say about this project... preamble and things like that.
 Folders and files of this project.
 
 ```
-TODO
+data-structures
+├── CMakeLists.txt
+├── docs
+│  ├── Laboratorio (1) - BST.pdf
+│  ├── Laboratorio (2) - RBT.pdf
+│  └── Laboratorio (3) - BT.pdf
+├── LICENSE
+├── README.md
+├── results
+│  ├── final
+│  │  ├── final.csv
+│  │  └── final.png
+│  ├── lab_1
+│  │  ├── 1A
+│  │  │  ├── lab_1A.csv
+│  │  │  └── lab_1A.png
+│  │  └── 1B
+│  │     ├── lab_1B.csv
+│  │     └── lab_1B.png
+│  ├── lab_2
+│  │  ├── lab_2.csv
+│  │  └── lab_2.png
+│  └── lab_3
+│     ├── lab_3.csv
+│     └── lab_3.png
+├── SECURITY.md
+└── src
+   ├── headers
+   │  ├── data_structures
+   │  │  ├── b_trees.h
+   │  │  ├── binary_search_trees.h
+   │  │  ├── linked_lists.h
+   │  │  └── red_black_trees.h
+   │  └── utils
+   │     ├── colors.h
+   │     ├── experiments.h
+   │     ├── tests.h
+   │     └── utils.h
+   ├── main.c
+   └── modules
+      ├── data_structures
+      │  ├── b_trees.c
+      │  ├── binary_search_trees.c
+      │  ├── linked_lists.c
+      │  └── red_black_trees.c
+      ├── experiments
+      │  ├── lab_1A.c
+      │  ├── lab_1B.c
+      │  ├── lab_2.c
+      │  ├── lab_3.c
+      │  └── lab_final.c
+      └── utils
+         ├── colors.c
+         ├── plotter.py
+         ├── tests.c
+         └── utils.c
 ```
 
 ## Notes
@@ -104,8 +159,17 @@ B-Trees, with variable degree `t`.
 
 ## Bibliography
 
-- Something
-- Something else
+- _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein (2009)
+- _Misc laboratory PDFs_, Eduard I. Stan (2021)
+- _Misc course slides_, Guido Sciavicco (2021)
+- _Modern C_, Jens Gustedt (2019)
+- _B-tree_, Wikipedia (as of 2022)
+- _Open Data Structures_, Pat Morin (2013)
+- _B-Trees_, CIS - Saint Vincent College (2016)
+- _Linux's GitHub repository_, Linus Torvalds (as of 2022)
+- _The Ubiquitous B-Tree_, Sally E. Fischbeck (1987)
+- _The Ubiquitous B-Tree_, Douglas Comer (1979)
+- _The Art of Computer Programming_, Donald E. Knuth (1998)
 
 ## Credits
 
