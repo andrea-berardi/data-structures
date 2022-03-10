@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
         bold_yellow("Running Final (BTs with variable degree t)... ");
         lab_final("../results/final/final.csv", final_conf, DEBUG);
     } else if (strcmp(argv[1], "test") == 0) {
-        bold_yellow("Running unit and DS integrity tests... ");
+        bold_yellow("Running unit and Data Structures integrity tests... ");
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
         error_menu(argv);
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
     bold_green("Done!\n"); // if we arrive here, the experiment were successful
 
     /* Automatic plotter (Python script) */
-    plotter(); // the function handles potential errors
+    plotter(argv[1]); // the function handles potential errors
 
     return EXIT_SUCCESS;
 }

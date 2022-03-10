@@ -1,6 +1,8 @@
-#!/bin/python3
+#!/bin/python3.10
 
 # library imports
+import sys
+from traceback import print_tb # for getting the command line arguments
 from typing import List  # I like to specify the type of the variables
 from  matplotlib import pyplot as plt  # required to create the plots
 from matplotlib import rcParams as rcp  # enable automatic scaling of the plots
@@ -8,7 +10,7 @@ from matplotlib import rcParams as rcp  # enable automatic scaling of the plots
 rcp.update({"figure.autolayout": True})  # automatic scaling of the plots
 
 # directories where the results are stored
-dir: str = "../../../results/"  # parent directory
+dir: str = "../results/"  # parent directory
 dir_lab_1A: str = "lab_1/1A/lab_1A"
 dir_lab_1B: str = "lab_1/1B/lab_1B"
 dir_lab_2: str = "lab_2/lab_2"
@@ -320,16 +322,25 @@ def final() -> None:
     plt.clf()  # clear the figure
 # end final()
 
+# tests
+def test() -> None:
+    print()
+
 # Main function
-def main() -> None:
-    lab_1A()
-    lab_1B()
-    lab_2()
-    lab_3()
-    final()
+def main(option: str) -> None:
+    match option:
+        case "1A": lab_1A()
+        case "1B": lab_1B()
+        case "2": lab_2()
+        case "3": lab_3()
+        case "4": final()
+        case "test": exit() # nothing to do here, we don't run the test
 # end main()
 
 # this specifies what will be run when the script is executed
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 2:
+        main(sys.argv[1])
+    else:
+        sys.stderr.write("Usage: ./" + sys.argv[0].split('/')[-1] + " [1A|1B|2|3|4|test]\n")
 # end if

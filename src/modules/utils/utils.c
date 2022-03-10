@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 #include "../../headers/utils/utils.h"
@@ -92,13 +93,23 @@ void error_menu(char *argv[]) {
     fprintf(stderr, "4) B-Trees with variable degree t\n");
 }
 
-void plotter(void) {
-    bold_blue("Starting the automatic plotter... ");
+void plotter(char s[]) {
+    bold_yellow("Running the automatic plotter... ");
 
-    int exit_code = system("python3 ../src/utils/plotter.py"); // this runs the script
+    // a buffer of 40 is enough to hold the command and its concatenated arguments
+    char cmd[40] = "./../src/modules/utils/plotter.py ";
+
+    // concatenate the command and its arguments
+    strcat(cmd, s);
+
+    int exit_code = system(cmd); // this runs the script
 
     if (exit_code == 0) {
-        bold_green("Success!\n");
+        if (strcmp(s, "test") == 0) {
+            bold_blue("Skipped!\n");
+        } else {
+            bold_green("Done!\n");
+        }
     } else {
         fprintf(stderr, "Error, exit code: %d\n", exit_code);
         exit(EXIT_FAILURE);

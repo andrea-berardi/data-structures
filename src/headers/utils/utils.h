@@ -39,7 +39,7 @@ void FreeNull_Int(int *array);
 void error_menu(char *argv[]);
 
 // Python Plotter
-void plotter(void);
+void plotter(char s[]);
 
 #endif //DS_UTILS_H
 
