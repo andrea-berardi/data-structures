@@ -348,7 +348,7 @@ void BTRemoveFromNode(BTTree *T, BTNode *x, int k) {
 }
 
 void BTDeleteKey(BTTree *T, int key) {
-    if (T->root == NULL || !T->root) {
+    if (T->root == NULL) {
         return; // empty tree
     }
 
