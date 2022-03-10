@@ -38,7 +38,7 @@ Things to say about this project... preamble and things like that.
 
 Folders and files of this project.
 
-```
+```mono
 data-structures
 ├── CMakeLists.txt
 ├── docs
@@ -158,6 +158,8 @@ B-Trees, with variable degree `t`.
 ![B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)
 
 ## Bibliography
+
+Resources used for my studies and the implementation:
 
 - _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein (2009)
 - _Misc laboratory PDFs_, Eduard I. Stan (2021)
