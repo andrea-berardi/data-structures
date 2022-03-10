@@ -96,6 +96,7 @@ void plotter(void) {
     bold_blue("Starting the automatic plotter... ");
 
     int exit_code = system("python3 ../src/plotter.py"); // this runs the script
+
     if (exit_code == 0) {
         bold_green("Success!\n");
     } else {
