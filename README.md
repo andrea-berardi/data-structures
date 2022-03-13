@@ -158,7 +158,7 @@ B-Trees, Red-Black Trees, Binary Search Trees
 
 B-Trees, with variable degree `t`.
 
-![[B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)](t.me)
+![B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)
 
 ## Bibliography
 
