@@ -94,7 +94,17 @@ int main(int argc, char *argv[]) {
         bold_yellow("Running Final (BTs with variable degree t)... ");
         lab_final("../results/final/final.csv", final_conf, DEBUG);
     } else if (strcmp(argv[1], "test") == 0) {
+        /* Test the DS's integrity */
         bold_yellow("Running unit and Data Structures integrity tests... ");
+        if (run_tests() == true) {
+            bold_green("All tests passed!\n");
+
+            return EXIT_SUCCESS;
+        } else {
+            bold_red("Some tests failed!\n");
+
+            exit(EXIT_FAILURE);
+        }
     } else {
         fprintf(stderr, "Invalid argument supplied: `%s`\n", argv[1]);
         error_menu(argv);
