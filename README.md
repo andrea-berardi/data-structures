@@ -1,6 +1,6 @@
 # Data Structures
 
-[![LICENSE](https://badgen.net/badge/Support/Ukraine/?color=0057B8&labelColor=FFD700)](https://www.icrc.org/en/donate/ukraine)
+[![Support Ukraine](https://badgen.net/badge/Support/Ukraine/?color=0057B8&labelColor=FFD700)](https://www.icrc.org/en/donate/ukraine)
 [![LICENSE](https://img.shields.io/badge/license-AGPLv3-blue)](https://github.com/andrea-berardi/trees/blob/main/LICENSE)
 [![CMake Build Status](https://github.com/andrea-berardi/data-structures/actions/workflows/cmake.yml/badge.svg)](https://github.com/andrea-berardi/data-structures/actions)
 
@@ -158,7 +158,7 @@ B-Trees, Red-Black Trees, Binary Search Trees
 
 B-Trees, with variable degree `t`.
 
-![B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)
+![[B-Trees with variable t](https://github.com/andrea-berardi/data-structures/blob/main/results/final/final.png?raw=true)](t.me)
 
 ## Bibliography
 
@@ -167,6 +167,7 @@ Resources used for my studies and the implementation:
 - _Introduction to Algorithms_, Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein (2009)
 - _Misc laboratory PDFs_, Eduard I. Stan (2021)
 - _Misc course slides_, Guido Sciavicco (2021)
+- _The C Programming Language_, Brian W. Kernighan, Dennis Ritchie (1988)
 - _The Art of Computer Programming_, Donald E. Knuth (1998)
 - _B-tree_, Wikipedia (as of 2022)
 - _Open Data Structures_, Pat Morin (2013)

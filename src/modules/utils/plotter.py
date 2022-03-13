@@ -342,5 +342,5 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         main(sys.argv[1])
     else:
-        sys.stderr.write("Usage: ./" + sys.argv[0].split('/')[-1] + " [1A|1B|2|3|4|test]\n")
+        sys.stderr.write("Usage: ./" + sys.argv[0].split('/')[-1] + " 1A|1B|2|3|4|test\n")
 # end if
