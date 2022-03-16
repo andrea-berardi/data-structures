@@ -40,6 +40,8 @@ bool test_linked_list() {
 
     LLDestroyList(L);
 
+    FreeNull_Int(array);
+
     FreeNull_Int(rand_insert_values_pool);
     FreeNull_Int(rand_search_values_pool);
     FreeNull_Int(rand_delete_values_pool);
@@ -227,9 +229,9 @@ bool test_b_tree() {
         print_array(array, T->cardinality);
     }*/
 
-    FreeNull_Int(array);
-
     BTDestroyTree(T);
+
+    FreeNull_Int(array);
 
     FreeNull_Int(rand_insert_values_pool);
     FreeNull_Int(rand_search_values_pool);

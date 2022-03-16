@@ -31,7 +31,6 @@ BTTree *BTNewTree(ssize_t t) {
     tree->root = BTNewNode(t, true);
     tree->root->n = 0; // root cardinality
     tree->root->leaf = true; // root is a leaf
-    tree->root->children = NULL; // root has no children (yet!)
 
     DiskWrite(tree->root);
 
@@ -278,7 +277,14 @@ void BTMerge(BTTree *T, BTNode *x, ssize_t i) {
     DiskWrite(y);
     DiskWrite(z);
 
-    free(z); z = NULL;
+    free(z->keys);
+    z->keys = NULL;
+
+    free(z->children);
+    z->children = NULL;
+
+    free(z);
+    z = NULL;
 }
 
 void BTFillNode(BTTree *T, BTNode *x, ssize_t i) {
@@ -363,6 +369,8 @@ void BTDeleteKey(BTTree *T, int key) {
             T->root = T->root->children[0];
         }
 
+        free(tmp_root->keys);
+        free(tmp_root->children);
         free(tmp_root);
         tmp_root = NULL;
     }
@@ -375,8 +383,6 @@ void BTDestroyTreeRecursive(BTNode *x) {
         if (x->leaf == false) {
             BTDestroyTreeRecursive(x->children[i]);
         }
-
-        //printf("%d ", x->keys[i]);
     }
 
     if (x->leaf == false) {
