@@ -1,4 +1,19 @@
 var searchData=
 [
-  ['bstsearch_0',['BSTSearch',['../binary__search__trees_8c.html#a378b4831c1cc9198e0c82aba8cf7b824',1,'binary_search_trees.c']]]
+  ['bstdelete_0',['BSTDelete',['../binary__search__trees_8c.html#a0a3273c7507548cc370e6359991914c2',1,'binary_search_trees.c']]],
+  ['bstdeletekey_1',['BSTDeleteKey',['../binary__search__trees_8c.html#aa3f6495a97a66309111088109ae51f62',1,'binary_search_trees.c']]],
+  ['bstdestroytree_2',['BSTDestroyTree',['../binary__search__trees_8c.html#aa1904350fa0caa0e4437e82968864652',1,'binary_search_trees.c']]],
+  ['bstemptytree_3',['BSTEmptyTree',['../binary__search__trees_8c.html#a451b9e966e6c25b042b5ceca20d364ee',1,'binary_search_trees.c']]],
+  ['bstemptytreepreservestructure_4',['BSTEmptyTreePreserveStructure',['../binary__search__trees_8c.html#a8d8c7a84f4d5c5881b84b1b4961cf11d',1,'binary_search_trees.c']]],
+  ['bstinsert_5',['BSTInsert',['../binary__search__trees_8c.html#a9edad57a46e8b023aa6201391377da38',1,'binary_search_trees.c']]],
+  ['bstinsertkey_6',['BSTInsertKey',['../binary__search__trees_8c.html#a52cbf596d61704238c4734d609a418b9',1,'binary_search_trees.c']]],
+  ['bstiterativesearch_7',['BSTIterativeSearch',['../binary__search__trees_8c.html#ab7b8e3f886575df98e7dddf1fc7b54b5',1,'binary_search_trees.c']]],
+  ['bstmaximum_8',['BSTMaximum',['../binary__search__trees_8c.html#a071a30e25d5a3f5d9d3169fe8b1674c6',1,'binary_search_trees.c']]],
+  ['bstminimum_9',['BSTMinimum',['../binary__search__trees_8c.html#a51adabb1f0bf23284097f65dc065d28c',1,'binary_search_trees.c']]],
+  ['bstnewnode_10',['BSTNewNode',['../binary__search__trees_8c.html#a057037d832f2c14261baa237f019966b',1,'binary_search_trees.c']]],
+  ['bstnewtree_11',['BSTNewTree',['../binary__search__trees_8c.html#a38cc9e5b6d76ccbbb1449fdbc60e2c05',1,'binary_search_trees.c']]],
+  ['bstpredecessor_12',['BSTPredecessor',['../binary__search__trees_8c.html#a376d2d8b0e2eab971eb82e59f52ce12c',1,'binary_search_trees.c']]],
+  ['bstsearch_13',['BSTSearch',['../binary__search__trees_8c.html#a378b4831c1cc9198e0c82aba8cf7b824',1,'binary_search_trees.c']]],
+  ['bstsuccessor_14',['BSTSuccessor',['../binary__search__trees_8c.html#a580fe2c0766ea3df27c0174b90f56e72',1,'binary_search_trees.c']]],
+  ['bsttransplant_15',['BSTTransplant',['../binary__search__trees_8c.html#a25226c4d85cb9adf822e926f67743e35',1,'binary_search_trees.c']]]
 ];

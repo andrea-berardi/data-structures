@@ -27,7 +27,12 @@ BSTNode *BSTSearch(BSTNode *x, int k) {
     }
 }
 
-
+/**
+ ** @brief Search iteratively a key
+ ** @param x node where to start the search
+ ** @param k key to search
+ ** @return node containing the key or NULL if not found
+ **/
 BSTNode *BSTIterativeSearch(BSTNode *x, int k) {
     while (x != NULL && k != x->key) {
         if (k < x->key) {
@@ -40,6 +45,11 @@ BSTNode *BSTIterativeSearch(BSTNode *x, int k) {
     return x;
 }
 
+/**
+ ** @brief Find the minimum key in the tree
+ ** @param x node where to start the search
+ ** @return node containing the key
+ **/
 BSTNode *BSTMinimum(BSTNode *x) {
     while (x->left != NULL) {
         x = x->left;
@@ -48,6 +58,11 @@ BSTNode *BSTMinimum(BSTNode *x) {
     return x;
 }
 
+/**
+ ** @brief Find the maximum key in the tree
+ ** @param x node where to start the search
+ ** @return node containing the key
+ **/
 BSTNode *BSTMaximum(BSTNode *x) {
     while (x->right != NULL) {
         x = x->right;
@@ -56,6 +71,11 @@ BSTNode *BSTMaximum(BSTNode *x) {
     return x;
 }
 
+/**
+ ** @brief Find the successor of a key
+ ** @param x node where to start the search
+ ** @return node containing the key
+ **/
 BSTNode *BSTSuccessor(BSTNode *x) {
     if (x->right != NULL) {
         return BSTMinimum(x->right);
@@ -71,6 +91,11 @@ BSTNode *BSTSuccessor(BSTNode *x) {
     return y;
 }
 
+/**
+ ** @brief Find the predecessor of a key
+ ** @param x node where to start the search
+ ** @return node containing the key
+ **/
 BSTNode *BSTPredecessor(BSTNode *x) {
     if (x->left != NULL) {
         return BSTMaximum(x->left);
@@ -86,6 +111,11 @@ BSTNode *BSTPredecessor(BSTNode *x) {
     return y;
 }
 
+/**
+ ** @brief Create a node
+ ** @param k key to insert
+ ** @return node containing the key
+ **/
 BSTNode *BSTNewNode(int k) {
     BSTNode *node = malloc(sizeof(BSTNode));
 
@@ -97,6 +127,11 @@ BSTNode *BSTNewNode(int k) {
     return node;
 }
 
+/**
+ ** @brief Insert a node in the tree
+ ** @param T tree to insert the node
+ ** @param z node to insert
+ **/
 void BSTInsert(BSTTree *T, BSTNode *z) {
     T->cardinality += 1; // we increase the number of elements in our tree
 
@@ -130,12 +165,22 @@ void BSTInsert(BSTTree *T, BSTNode *z) {
     }
 }
 
+/**
+ ** @brief Insert a key in the tree
+ ** @param T tree to insert the key
+ ** @param k key to insert
+ **/
 void BSTInsertKey(BSTTree *T, int k) {
     BSTNode *z = BSTNewNode(k);
 
     BSTInsert(T, z);
 }
 
+/**
+ ** @brief Create a tree
+ ** @param x node to insert, can be NULL if the tree is empty
+ ** @return tree's address in memory
+ **/
 BSTTree *BSTNewTree(BSTNode *x) {
     BSTTree *tree = malloc(sizeof(BSTTree));
 
@@ -152,6 +197,12 @@ BSTTree *BSTNewTree(BSTNode *x) {
     return tree;
 }
 
+/**
+ ** @brief Transplant a node
+ ** @param T tree to transplant the node
+ ** @param u node to transplant (source)
+ ** @param v node to transplant (destination)
+ **/
 void BSTTransplant(BSTTree *T, BSTNode *u, BSTNode *v) {
     if (u->parent == NULL) {
         T->root = v;
@@ -166,6 +217,11 @@ void BSTTransplant(BSTTree *T, BSTNode *u, BSTNode *v) {
     }
 }
 
+/**
+ ** @brief Delete a node from the tree
+ ** @param T tree to delete the node
+ ** @param z node to delete
+ **/
 void BSTDelete(BSTTree *T, BSTNode *z) {
     if (z->left == NULL) {
         BSTTransplant(T, z, z->right);
@@ -191,14 +247,22 @@ void BSTDelete(BSTTree *T, BSTNode *z) {
     z = NULL;
 }
 
+/**
+ ** @brief Delete a key from the tree
+ ** @param T tree to delete the key
+ ** @param k key to delete
+ **/
 void BSTDeleteKey(BSTTree *T, int k) {
     BSTNode *z = BSTIterativeSearch(T->root, k);
 
     if (z != NULL) BSTDelete(T, z);
 }
 
-// this procedure destroys every node of a tree (faster than `BSTEmptyTreePreserveStructure()`)
-// this is basically a TreePostOrderWalk that destroys the BST root, and all the nodes - recursively
+/**
+ ** @brief Destroy a tree and free the memory
+ ** @param T tree to destroy
+ ** @param x next node to destroy
+ **/
 void BSTEmptyTree(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
         BSTEmptyTree(T, x->left);
@@ -207,8 +271,11 @@ void BSTEmptyTree(BSTTree *T, BSTNode *x) {
     }
 }
 
-// this procedure destroys every node of a tree BUT preserves the structure of the BST while running
-// this is basically a TreePostOrderWalk that destroys the BST root, and all the nodes - recursively
+/**
+ ** @brief Destroy a tree but maintain it a valid BST while freeing the memory
+ ** @param T tree to destroy
+ ** @param x next node to destroy
+ **/
 void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
     if (x != NULL) {
         BSTEmptyTree(T, x->left);
@@ -217,7 +284,10 @@ void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x) {
     }
 }
 
-// this procedure destroys the BST root, and all the nodes - recursively
+/**
+ ** @brief Destroy a tree
+ ** @param T tree to destroy
+ **/
 void BSTDestroyTree(BSTTree *T) {
     BSTEmptyTree(T, T->root);
 
