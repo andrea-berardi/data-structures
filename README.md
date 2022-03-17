@@ -43,10 +43,13 @@ Folders and files of this project.
 data-structures
 ├── CMakeLists.txt
 ├── docs
+│  ├── html
+│  │  └── a lot of .html and .js and .css files
 │  ├── Laboratorio (1) - BST.pdf
 │  ├── Laboratorio (2) - RBT.pdf
 │  └── Laboratorio (3) - BT.pdf
 ├── LICENSE
+├── Doxyfile
 ├── README.md
 ├── results
 │  ├── final

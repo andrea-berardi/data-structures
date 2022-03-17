@@ -11,7 +11,7 @@ digraph "src/modules/data_structures/b_trees.c"
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="stdbool.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="../../headers/data\l_structures/b_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$b__trees_8h_source.html",tooltip=" "];
+  Node5 [label="../../headers/data\l_structures/b_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$b__trees_8h.html",tooltip="B-Trees implementation (header)"];
   Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

@@ -1,0 +1,11 @@
+digraph "src/headers/data_structures/b_trees.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/headers/data_structures\l/b_trees.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="B-Trees implementation (header)"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/headers/utils/utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h_source.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/modules/data_structures\l/b_trees.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$b__trees_8c.html",tooltip="B-Trees implementation."];
+}

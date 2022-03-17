@@ -6,6 +6,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+/**
+ ** @file b_trees.h
+ ** @brief B-Trees implementation (header)
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Structure of a node of a B-Tree
+ **/
 typedef struct bt_node {
     ssize_t n; // cardinality of keys in the node (number of keys actually stored)
     int *keys; // keys actually stored in the node (NOT in descending order)
@@ -13,6 +23,9 @@ typedef struct bt_node {
     struct bt_node **children; // array of pointers to the children
 } BTNode;
 
+/**
+ ** @brief Structure of a B-Tree
+ **/
 typedef struct bt_tree {
     ssize_t t; // total number of keys in the data structure
     struct bt_node *root; // regular node, stored in the main memory
@@ -25,10 +38,15 @@ typedef struct node_and_index {
 } NodeAndIndex;
 
 BTTree *BTNewTree(ssize_t t);
+
 void BTInsertKey(BTTree *T, int key);
+
 NodeAndIndex BTSearchKey(BTNode *x, int k);
+
 void BTDeleteKey(BTTree *T, int key);
+
 void BTDestroyTree(BTTree *T);
+
 // void BTTraverse(BTTree *T); // unused
 
 #endif //DATA_STRUCTURES_B_TREES_H
