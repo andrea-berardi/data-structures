@@ -5,14 +5,21 @@
 
 #include <stdlib.h>
 
+/**
+ ** @file experiments.h
+ ** @brief Utils functions
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
 // Configuration
 typedef struct {
-    size_t min_keys;
-    size_t max_keys;
-    size_t max_instances;
-    size_t step;
+    size_t min_keys; // minimum number of keys
+    size_t max_keys; // maximum number of keys
+    size_t max_instances; // maximum number of instances (how many times the experiment is run)
+    size_t step; // step between min and max keys
     size_t search_delete_ratio; // percentage of searches (60 = 60% searches / 40% deletions)
-    unsigned int seed;
+    unsigned int seed; // seed for random number generator
     ssize_t t; // `t` of B-Trees
 } Configuration;
 

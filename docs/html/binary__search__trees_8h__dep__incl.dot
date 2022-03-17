@@ -5,7 +5,7 @@ digraph "src/headers/data_structures/binary_search_trees.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="src/headers/data_structures\l/binary_search_trees.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Binary Search Trees implementation (header)"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="src/headers/utils/utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h_source.html",tooltip=" "];
+  Node2 [label="src/headers/utils/utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h.html",tooltip="Utils functions."];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="src/modules/utils/tests.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tests_8c.html",tooltip="Tests necessary to ensure the correct functioning of the algorithms."];
   Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

@@ -3,6 +3,13 @@
 #ifndef DATA_STRUCTURES_COLORS_H
 #define DATA_STRUCTURES_COLORS_H
 
+/**
+ ** @file colors.h
+ ** @brief Colored output functions (header)
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
 void red(char *str); // Red, standard
 
 void bold_red(char *str); // Red, bold

@@ -1,9 +1,27 @@
 var searchData=
 [
-  ['test_5fb_5ftree_0',['test_b_tree',['../tests_8c.html#a8f5b7083e553d3cfe5c50e1472f22a35',1,'tests.c']]],
-  ['test_5fbinary_5fsearch_5ftree_1',['test_binary_search_tree',['../tests_8c.html#a283d5f3053ab70a25983b6533a1448c3',1,'tests.c']]],
-  ['test_5flinked_5flist_2',['test_linked_list',['../tests_8c.html#a72d09dafadf26afbcb4afde1bb755013',1,'tests.c']]],
-  ['test_5frb_5fproperties_3',['test_RB_properties',['../tests_8c.html#a3cb6230a4455a5bf166ed2a1759a953e',1,'tests.c']]],
-  ['test_5fred_5fblack_5ftree_4',['test_red_black_tree',['../tests_8c.html#a476cbfd422c45d0d490be65544ff8c33',1,'tests.c']]],
-  ['tests_2ec_5',['tests.c',['../tests_8c.html',1,'']]]
+  ['rbt_5fnode_0',['rbt_node',['../structrbt__node.html',1,'']]],
+  ['rbt_5ftree_1',['rbt_tree',['../structrbt__tree.html',1,'']]],
+  ['rbtcomputeheight_2',['RBTComputeHeight',['../tests_8c.html#af51d873b6400bc052752ae26911f730e',1,'tests.c']]],
+  ['rbtdelete_3',['RBTDelete',['../red__black__trees_8c.html#ac58bd312ecfa6f76056b123933505851',1,'red_black_trees.c']]],
+  ['rbtdeletefixup_4',['RBTDeleteFixup',['../red__black__trees_8c.html#a29f4c1484e4741646f9f2f89881ede9e',1,'red_black_trees.c']]],
+  ['rbtdeletekey_5',['RBTDeleteKey',['../red__black__trees_8h.html#aab06227bd81848eef103ee7683f39419',1,'RBTDeleteKey(RBTTree *T, int k):&#160;red_black_trees.c'],['../red__black__trees_8c.html#aab06227bd81848eef103ee7683f39419',1,'RBTDeleteKey(RBTTree *T, int k):&#160;red_black_trees.c']]],
+  ['rbtdestroytree_6',['RBTDestroyTree',['../red__black__trees_8h.html#a0c51d07931529599a09a29a051ff28fd',1,'RBTDestroyTree(RBTTree *T):&#160;red_black_trees.c'],['../red__black__trees_8c.html#a0c51d07931529599a09a29a051ff28fd',1,'RBTDestroyTree(RBTTree *T):&#160;red_black_trees.c']]],
+  ['rbtemptytree_7',['RBTEmptyTree',['../red__black__trees_8c.html#a212fe549a6ec4fc9a34a945471e61444',1,'red_black_trees.c']]],
+  ['rbtinsert_8',['RBTInsert',['../red__black__trees_8c.html#a85879398345f50c3bf3347f5601caea5',1,'red_black_trees.c']]],
+  ['rbtinsertfixup_9',['RBTInsertFixup',['../red__black__trees_8c.html#ae8a5a4f056320217713b96ea14ef33e5',1,'red_black_trees.c']]],
+  ['rbtinsertkey_10',['RBTInsertKey',['../red__black__trees_8c.html#a74857fa10f87c4afbddf70befba26cbe',1,'RBTInsertKey(RBTTree *T, int key):&#160;red_black_trees.c'],['../red__black__trees_8h.html#a74857fa10f87c4afbddf70befba26cbe',1,'RBTInsertKey(RBTTree *T, int key):&#160;red_black_trees.c']]],
+  ['rbtiterativesearch_11',['RBTIterativeSearch',['../red__black__trees_8h.html#af7d6c9946e8c71e7644edb9c752344fb',1,'RBTIterativeSearch(RBTTree *T, RBTNode *x, int k):&#160;red_black_trees.c'],['../red__black__trees_8c.html#af7d6c9946e8c71e7644edb9c752344fb',1,'RBTIterativeSearch(RBTTree *T, RBTNode *x, int k):&#160;red_black_trees.c']]],
+  ['rbtleftrotate_12',['RBTLeftRotate',['../red__black__trees_8c.html#a0c143b2836288e0ca9732231c19ed63e',1,'red_black_trees.c']]],
+  ['rbtminimum_13',['RBTMinimum',['../red__black__trees_8c.html#a5159812dd17c6833e6e9844559020cc4',1,'red_black_trees.c']]],
+  ['rbtnewnode_14',['RBTNewNode',['../red__black__trees_8c.html#ac58185cf62a14b7086f5a7a258d4a821',1,'red_black_trees.c']]],
+  ['rbtnewtree_15',['RBTNewTree',['../red__black__trees_8h.html#a94de5630eeabaaa40f9dfc4e521fe691',1,'RBTNewTree(RBTNode *x):&#160;red_black_trees.c'],['../red__black__trees_8c.html#a94de5630eeabaaa40f9dfc4e521fe691',1,'RBTNewTree(RBTNode *x):&#160;red_black_trees.c']]],
+  ['rbtnode_16',['RBTNode',['../red__black__trees_8h.html#a0909095411d73bfc2b950fdfbe40bc95',1,'red_black_trees.h']]],
+  ['rbtrightrotate_17',['RBTRightRotate',['../red__black__trees_8c.html#ac6f263425d21418cb10678b8be6001a0',1,'red_black_trees.c']]],
+  ['rbttransplant_18',['RBTTransplant',['../red__black__trees_8c.html#ad9b077437c268cda93851b5650196a0b',1,'red_black_trees.c']]],
+  ['rbttree_19',['RBTTree',['../red__black__trees_8h.html#aaaa709daf4e068c84ae425e38d742a75',1,'red_black_trees.h']]],
+  ['red_20',['red',['../colors_8h.html#a559376bb32652816f3def20bc9bde3f6',1,'red(char *str):&#160;colors.c'],['../colors_8c.html#a559376bb32652816f3def20bc9bde3f6',1,'red(char *str):&#160;colors.c']]],
+  ['red_5fblack_5ftrees_2ec_21',['red_black_trees.c',['../red__black__trees_8c.html',1,'']]],
+  ['red_5fblack_5ftrees_2eh_22',['red_black_trees.h',['../red__black__trees_8h.html',1,'']]],
+  ['run_5ftests_23',['run_tests',['../tests_8h.html#adb1d9484e837a7e27f97d4320ea1996f',1,'run_tests():&#160;tests.c'],['../tests_8c.html#adb1d9484e837a7e27f97d4320ea1996f',1,'run_tests():&#160;tests.c']]]
 ];

@@ -11,6 +11,13 @@
 #include "../data_structures/binary_search_trees.h"
 #include "../data_structures/b_trees.h"
 
+/**
+ ** @file utils.h
+ ** @brief Utils functions
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(size_t length);
 
