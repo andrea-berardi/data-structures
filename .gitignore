@@ -17,4 +17,4 @@ cmake-build-release/
 .~lock.*.ods#
 
 # Python virtual environments
-/venv/
+venv/
