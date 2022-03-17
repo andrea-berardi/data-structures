@@ -5,12 +5,25 @@
 
 #include <stdlib.h>
 
+/**
+ ** @file linked_lists.h
+ ** @brief Linked Lists implementation (header)
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Structure of a node of a Linked List
+ **/
 typedef struct ll_node {
     int key;
     struct ll_node *previous;
     struct ll_node *next;
 } LLNode;
 
+/**
+ ** @brief Structure of a Linked List
+ **/
 typedef struct ll_head {
     size_t cardinality; // amount of elements in the linked list
     struct ll_node *head;

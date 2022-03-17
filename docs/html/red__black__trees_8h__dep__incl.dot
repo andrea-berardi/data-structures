@@ -1,0 +1,13 @@
+digraph "src/headers/data_structures/red_black_trees.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/headers/data_structures\l/red_black_trees.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Red-Black Trees implementation (header)"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/headers/utils/utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h_source.html",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/modules/utils/tests.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tests_8c.html",tooltip="Tests necessary to ensure the correct functioning of the algorithms."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/modules/data_structures\l/red_black_trees.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$red__black__trees_8c.html",tooltip="Red-Black Trees implementation."];
+}

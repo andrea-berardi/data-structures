@@ -4,8 +4,9 @@ var indexSectionsWithContent =
   1: "bclnr",
   2: "bclrt",
   3: "bdglrty",
-  4: "b",
-  5: "d"
+  4: "bclr",
+  5: "c",
+  6: "d"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "typedefs",
-  5: "pages"
+  5: "enums",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Files",
   3: "Functions",
   4: "Typedefs",
-  5: "Pages"
+  5: "Enumerations",
+  6: "Pages"
 };
 

@@ -11,6 +11,6 @@ digraph "src/modules/data_structures/red_black_trees.c"
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="stdbool.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="../../headers/data\l_structures/red_black\l_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$red__black__trees_8h_source.html",tooltip=" "];
+  Node5 [label="../../headers/data\l_structures/red_black\l_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$red__black__trees_8h.html",tooltip="Red-Black Trees implementation (header)"];
   Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
