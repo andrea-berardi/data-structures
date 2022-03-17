@@ -32,9 +32,6 @@ void BSTInOrderTreeWalkToArray(BSTNode *x, int array[], size_t *index);
 // Populates an array passed as argument while walking a RBT (InOrderTreeWalk)
 void RBTInOrderTreeWalkToArray(RBTTree *T, RBTNode *x, int array[], size_t *index);
 
-// Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
-void FreeNull_Int(int *array);
-
 // Error messages to print in case of bad input
 void error_menu(char *argv[]);
 

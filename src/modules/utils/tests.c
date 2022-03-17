@@ -40,11 +40,11 @@ bool test_linked_list() {
 
     LLDestroyList(L);
 
-    FreeNull_Int(array);
+    free(array);
 
-    FreeNull_Int(rand_insert_values_pool);
-    FreeNull_Int(rand_search_values_pool);
-    FreeNull_Int(rand_delete_values_pool);
+    free(rand_insert_values_pool);
+    free(rand_search_values_pool);
+    free(rand_delete_values_pool);
 
     return true;
 }
@@ -84,13 +84,13 @@ bool test_binary_search_tree() {
         return false;
     }
 
-    FreeNull_Int(array);
+    free(array);
 
     BSTDestroyTree(T);
 
-    FreeNull_Int(rand_insert_values_pool);
-    FreeNull_Int(rand_search_values_pool);
-    FreeNull_Int(rand_delete_values_pool);
+    free(rand_insert_values_pool);
+    free(rand_search_values_pool);
+    free(rand_delete_values_pool);
 
     return true;
 }
@@ -181,7 +181,7 @@ bool test_red_black_tree() {
         print_array(array, T->cardinality);
     }
 
-    FreeNull_Int(array);
+    free(array);
 
     if (!test_RB_properties(T, rand_insert_values_pool, 10000)) {
         fprintf(stderr, "RBT: The tree is not a valid RBT.\n");
@@ -189,9 +189,9 @@ bool test_red_black_tree() {
 
     RBTDestroyTree(T);
 
-    FreeNull_Int(rand_insert_values_pool);
-    FreeNull_Int(rand_search_values_pool);
-    FreeNull_Int(rand_delete_values_pool);
+    free(rand_insert_values_pool);
+    free(rand_search_values_pool);
+    free(rand_delete_values_pool);
 
     return true;
 }
@@ -221,9 +221,9 @@ bool test_b_tree() {
 
     BTDestroyTree(T);
 
-    FreeNull_Int(rand_insert_values_pool);
-    FreeNull_Int(rand_search_values_pool);
-    FreeNull_Int(rand_delete_values_pool);
+    free(rand_insert_values_pool);
+    free(rand_search_values_pool);
+    free(rand_delete_values_pool);
 
     return true;
 }

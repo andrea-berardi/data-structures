@@ -15,7 +15,7 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
         // - I can keep track of what I'm generating
         // - I won't be adding any overheads by using the modulus operator (%) during the experiments
         // - By using "small" values I'll be able to tell if weird things are happening to my arrays
-        // - I'll be able to compare the generated arrays and the generated BSTs more easily
+        // - I'll be able to compare the generated arrays and the generated trees more easily
         // Also, I'm using different arrays in order not to create outliers.
         int *rand_insert_values_pool = gen_rnd_array(max_keys);
         int *rand_search_values_pool = gen_rnd_array(max_search);
@@ -56,9 +56,9 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
         BSTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
 
         // Destroying the arrays
-        FreeNull_Int(rand_insert_values_pool);
-        FreeNull_Int(rand_search_values_pool);
-        FreeNull_Int(rand_delete_values_pool);
+        free(rand_insert_values_pool);
+        free(rand_search_values_pool);
+        free(rand_delete_values_pool);
     }
 
     return (long double) t_tot / (long double) max_instances;
@@ -74,7 +74,7 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         // - I can keep track of what I'm generating
         // - I won't be adding any overheads by using the modulus operator (%) during the experiments
         // - By using "small" values I'll be able to tell if weird things are happening to my arrays
-        // - I'll be able to compare the generated arrays and the generated BSTs more easily
+        // - I'll be able to compare the generated arrays and the generated trees more easily
         // Also, I'm using different arrays in order not to create outliers.
         int *rand_insert_values_pool = gen_rnd_array(max_keys);
         int *rand_search_values_pool = gen_rnd_array(max_search);
@@ -114,9 +114,9 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
         RBTDestroyTree(T); // destroying the tree and all its leaves (nodes) - `T` is now NULL
 
         // Destroying the arrays
-        FreeNull_Int(rand_insert_values_pool);
-        FreeNull_Int(rand_search_values_pool);
-        FreeNull_Int(rand_delete_values_pool);
+        free(rand_insert_values_pool);
+        free(rand_search_values_pool);
+        free(rand_delete_values_pool);
     }
 
     return (long double) t_tot / (long double) max_instances;

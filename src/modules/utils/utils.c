@@ -50,12 +50,6 @@ void print_array(const int array[], size_t length) {
         printf("%s%d%s", i == 0 ? "[" : "", array[i], i < length - 1 ? ", " : "]\n");
 }
 
-// Deallocate and set to NULL some memory referenced by a pointer - I'll use this for the arrays
-void FreeNull_Int(int *array) {
-    free(array);
-    array = NULL;
-}
-
 void LLListWalkToArray(LLHead *L, int array[]) {
     LLNode *x = L->head;
 
