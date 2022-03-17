@@ -2,6 +2,19 @@
 
 #include "../../headers/data_structures/binary_search_trees.h"
 
+/**
+ ** @file binary_search_trees.c
+ ** @brief Binary Search Trees implementation
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Search recursively a key
+ ** @param x node where to start the search
+ ** @param k key to search
+ ** @return node containing the key or NULL if not found
+ **/
 BSTNode *BSTSearch(BSTNode *x, int k) {
     if (x == NULL || x->key == k) {
         return x;
@@ -13,6 +26,7 @@ BSTNode *BSTSearch(BSTNode *x, int k) {
         return BSTSearch(x->right, k);
     }
 }
+
 
 BSTNode *BSTIterativeSearch(BSTNode *x, int k) {
     while (x != NULL && k != x->key) {
