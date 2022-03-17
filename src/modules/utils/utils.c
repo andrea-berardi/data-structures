@@ -6,6 +6,13 @@
 #include "../../headers/utils/utils.h"
 #include "../../headers/utils/colors.h"
 
+/**
+ ** @file utils.c
+ ** @brief Utils functions
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
 // Generate a new, uninitialized, array of integers, given its length
 int *new_array(const size_t length) {
     int *array = malloc(length * sizeof(int));
