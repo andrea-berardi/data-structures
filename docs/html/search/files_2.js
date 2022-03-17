@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['red_5fblack_5ftrees_2ec_0',['red_black_trees.c',['../red__black__trees_8c.html',1,'']]]
+  ['linked_5flists_2ec_0',['linked_lists.c',['../linked__lists_8c.html',1,'']]]
 ];

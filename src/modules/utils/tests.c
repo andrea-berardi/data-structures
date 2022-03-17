@@ -5,6 +5,17 @@
 #include "../../headers/utils/tests.h"
 #include "../../headers/utils/utils.h"
 
+/**
+ ** @file tests.c
+ ** @brief Tests necessary to ensure the correct functioning of the algorithms.
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Test the integrity of a linked list
+ ** @return true if the list is correct, false otherwise
+ **/
 bool test_linked_list() {
     LLHead *L = LLNewList(NULL);
 
@@ -49,6 +60,10 @@ bool test_linked_list() {
     return true;
 }
 
+/**
+ ** @brief Test the integrity of a binary tree
+ ** @return true if the test passed, false otherwise
+ **/
 bool test_binary_search_tree() {
     int *rand_insert_values_pool = gen_rnd_array(10000);
     int *rand_search_values_pool = gen_rnd_array(6000);
@@ -95,6 +110,12 @@ bool test_binary_search_tree() {
     return true;
 }
 
+/**
+ ** @brief Compute the height of a Red-Black tree
+ ** @param T the tree to compute the height of
+ *+ @param x the current node
+ *+ @return the height of the tree, or -1 if there's an error
+ **/
 ssize_t RBTComputeHeight(RBTTree *T, RBTNode *x) {
     if (x == T->nil) return 0;
 
@@ -108,6 +129,10 @@ ssize_t RBTComputeHeight(RBTTree *T, RBTNode *x) {
     }
 }
 
+/**
+ ** @brief Test the integrity of a Red-Black tree (all 5 properties)
+ ** @return true if the test passed, false otherwise
+ **/
 bool test_RB_properties(RBTTree *T, int *array, size_t array_size) {
     if (T->root == T->nil) return true;
 
@@ -148,6 +173,10 @@ bool test_RB_properties(RBTTree *T, int *array, size_t array_size) {
     return true;
 }
 
+/**
+ ** @brief Test the integrity of a Red-Black tree
+ ** @return true if the test passed, false otherwise
+ **/
 bool test_red_black_tree() {
     int *rand_insert_values_pool = gen_rnd_array(10000);
     int *rand_search_values_pool = gen_rnd_array(6000);
@@ -196,6 +225,10 @@ bool test_red_black_tree() {
     return true;
 }
 
+/**
+ ** @brief Test the integrity of a B-Tree (use this with Valgrind!)
+ ** @return true if the test passed, false otherwise
+ **/
 bool test_b_tree() {
     int *rand_insert_values_pool = gen_rnd_array(10000);
     int *rand_search_values_pool = gen_rnd_array(6000);
@@ -228,6 +261,10 @@ bool test_b_tree() {
     return true;
 }
 
+/**
+ ** @brief Run all the integrity tests
+ ** @return true if the test passed, false otherwise ("&=" ensures that if one fails, the overall test fails)
+ **/
 bool run_tests() {
     bool result = true;
 
