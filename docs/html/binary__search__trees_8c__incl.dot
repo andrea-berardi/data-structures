@@ -7,6 +7,6 @@ digraph "src/modules/data_structures/binary_search_trees.c"
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="../../headers/data\l_structures/binary_search\l_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$binary__search__trees_8h_source.html",tooltip=" "];
+  Node3 [label="../../headers/data\l_structures/binary_search\l_trees.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$binary__search__trees_8h.html",tooltip="Binary Search Trees implementation (header)"];
   Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

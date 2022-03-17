@@ -5,6 +5,16 @@
 
 #include <stdlib.h>
 
+/**
+ ** @file binary_search_trees.h
+ ** @brief Binary Search Trees implementation (header)
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Structure of a node of a BST Node
+ **/
 typedef struct bst_node {
     int key;
     struct bst_node *parent;
@@ -12,6 +22,9 @@ typedef struct bst_node {
     struct bst_node *right;
 } BSTNode;
 
+/**
+ ** @brief Structure of a BST
+ **/
 typedef struct bst_tree {
     size_t cardinality; // practical usage: it'll define the dimension of the arrays we'll use for "TreeWalks"
     struct bst_node *root;
