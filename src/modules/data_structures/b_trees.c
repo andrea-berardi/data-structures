@@ -4,14 +4,37 @@
 
 #include "../../headers/data_structures/b_trees.h"
 
+/**
+ ** @file b_trees.c
+ ** @brief B-Trees implementation
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Simulate writing a node on disk
+ ** @param node the node to write
+ ** @return address of the node
+ **/
 BTNode *DiskWrite(BTNode *node) {
     return node;
 }
 
+/**
+ ** @brief Simulate reading a node from disk
+ ** @param xci the node read
+ ** @return address of the node
+ **/
 BTNode *DiskRead(BTNode *xci) {
     return xci;
 }
 
+/**
+ ** @brief Create a new node
+ ** @param t t of the tree
+ ** @param leaf is the node a leaf?
+ ** @return address of the node
+ **/
 BTNode *BTNewNode(ssize_t t, bool leaf) {
     BTNode *x = malloc(sizeof(BTNode));
 
@@ -23,6 +46,11 @@ BTNode *BTNewNode(ssize_t t, bool leaf) {
     return x;
 }
 
+/**
+ ** @brief Create a new tree
+ ** @param t t of the tree
+ ** @return address of the tree
+ **/
 BTTree *BTNewTree(ssize_t t) {
     BTTree *tree = malloc(sizeof(BTTree));
 
@@ -37,6 +65,12 @@ BTTree *BTNewTree(ssize_t t) {
     return tree;
 }
 
+/**
+ ** @brief Split a node
+ ** @param T the tree that contains the node to split
+ ** @param x the node to split
+ ** @param i the index of the key to split
+ **/
 void BTSplitChild(BTTree *T, BTNode *x, ssize_t i) {
     BTNode *y = x->children[i];
     BTNode *z = BTNewNode(T->t, y->leaf);
@@ -74,6 +108,12 @@ void BTSplitChild(BTTree *T, BTNode *x, ssize_t i) {
     DiskWrite(x);
 }
 
+/**
+ ** @brief Insert a key in a tree where its node is not full
+ ** @param T the tree to insert the key
+ ** @param x the node to insert the key
+ ** @param k the key to insert
+ **/
 void BTInsertNonFull(BTTree *T, BTNode *x, int k) {
     ssize_t i = x->n - 1;
 
@@ -103,6 +143,11 @@ void BTInsertNonFull(BTTree *T, BTNode *x, int k) {
     }
 }
 
+/**
+ ** @brief Insert a key in a tree
+ ** @param T the tree to insert the key in
+ ** @param k the key to insert
+ **/
 void BTInsertKey(BTTree *T, int key) {
     BTNode *r = T->root;
 
@@ -121,6 +166,12 @@ void BTInsertKey(BTTree *T, int key) {
     }
 }
 
+/**
+ ** @brief Search a key in a tree
+ ** @param x the node to search the key in
+ ** @param k the key to search
+ ** @return struct containing the key and the node where the key is found
+ **/
 NodeAndIndex BTSearchKey(BTNode *x, int k) {
     ssize_t i = 0;
 
@@ -147,6 +198,11 @@ NodeAndIndex BTSearchKey(BTNode *x, int k) {
     }
 }
 
+/**
+ ** @brief Delete a key from a leaf node
+ ** @param x the node to delete the key from
+ ** @param i the index of the key to delete
+ **/
 void BTDeleteFromLeaf(BTNode *x, ssize_t i) {
     for (ssize_t j = i + 1; j < x->n; ++j) {
         x->keys[j - 1] = x->keys[j];
@@ -157,6 +213,12 @@ void BTDeleteFromLeaf(BTNode *x, ssize_t i) {
     DiskWrite(x);
 }
 
+/**
+ ** @brief Find the index of the closest key to the right
+ ** @param x the node to search the key in
+ ** @param k the key to search
+ ** @return the index of the closest key to the right
+ **/
 ssize_t BTFindKey(BTNode *x, int k) {
     ssize_t i = 0;
 
@@ -165,6 +227,12 @@ ssize_t BTFindKey(BTNode *x, int k) {
     return i;
 }
 
+/**
+ ** @brief Predecessor of a key
+ ** @param x the node to search the key in
+ ** @param i the index of the key to search
+ ** @return value of the predecessor of the key
+ **/
 int BTPredecessor(BTNode *x, ssize_t i) {
     BTNode *y = x->children[i];
 
@@ -175,6 +243,12 @@ int BTPredecessor(BTNode *x, ssize_t i) {
     return y->keys[y->n - 1];
 }
 
+/**
+ ** @brief Successor of a key
+ ** @param x the node to search the key in
+ ** @param i the index of the key to search
+ ** @return value of the successor of the key
+ **/
 int BTSuccessor(BTNode *x, ssize_t i) {
     BTNode *y = x->children[i + 1];
 
@@ -185,6 +259,11 @@ int BTSuccessor(BTNode *x, ssize_t i) {
     return y->keys[0];
 }
 
+/**
+ ** @brief Borrow a key from the previous sibling
+ ** @param x the node that borrows the key
+ ** @param i the index of the key to pick
+ **/
 void BTBorrowFromPrevious(BTNode *x, ssize_t i) {
     BTNode *y = x->children[i];
     BTNode *z = x->children[i - 1];
@@ -215,6 +294,11 @@ void BTBorrowFromPrevious(BTNode *x, ssize_t i) {
     DiskWrite(x);
 }
 
+/**
+ ** @brief Borrow a key from the successive sibling
+ ** @param x the node that borrows the key
+ ** @param i the index of the key to search
+ **/
 void BTBorrowFromNext(BTNode *x, ssize_t i) {
     BTNode *y = x->children[i];
     BTNode *z = x->children[i + 1];
@@ -245,6 +329,12 @@ void BTBorrowFromNext(BTNode *x, ssize_t i) {
     DiskWrite(x);
 }
 
+/**
+ ** @brief Merge a node with its next sibling
+ ** @param T the tree that contains the nodes
+ ** @param x the node to merge
+ ** @param i the index of the node to merge
+ **/
 void BTMerge(BTTree *T, BTNode *x, ssize_t i) {
     BTNode *y = x->children[i];
     BTNode *z = x->children[i + 1];
@@ -287,6 +377,12 @@ void BTMerge(BTTree *T, BTNode *x, ssize_t i) {
     z = NULL;
 }
 
+/**
+ ** @brief Fill a node with keys from its previous sibling
+ ** @param T the tree that contains the nodes
+ ** @param x the node to fill
+ ** @param i the index of the node to fill
+ **/
 void BTFillNode(BTTree *T, BTNode *x, ssize_t i) {
     if (i != 0 && x->children[i - 1]->n >= T->t) {
         BTBorrowFromPrevious(x, i);
@@ -301,8 +397,21 @@ void BTFillNode(BTTree *T, BTNode *x, ssize_t i) {
     }
 }
 
+/**
+ ** @brief Remove a key from a node
+ ** @param T the tree that contains the key to delete
+ ** @param x the node to remove the key from
+ ** @param key the key to remove
+ **/
 void BTRemoveFromNode(BTTree *T, BTNode *x, int k);
 
+/**
+ ** @brief Delete a key from a node that isn't a leaf
+ ** @param T the tree that contains the key to delete
+ ** @param x the node to remove the key from
+ ** @param i the index of the key to remove
+ ** @return value of the predecessor of the key
+ **/
 void BTDeleteFromNonLeaf(BTTree *T, BTNode *x, ssize_t i) {
     int k = x->keys[i];
 
@@ -325,6 +434,12 @@ void BTDeleteFromNonLeaf(BTTree *T, BTNode *x, ssize_t i) {
     }
 }
 
+/**
+ ** @brief Remove a key from a node
+ ** @param T the tree that contains the key to delete
+ ** @param x the node to remove the key from
+ ** @param k the key to remove
+ **/
 void BTRemoveFromNode(BTTree *T, BTNode *x, int k) {
     ssize_t i = BTFindKey(x, k);
 
@@ -353,6 +468,11 @@ void BTRemoveFromNode(BTTree *T, BTNode *x, int k) {
     }
 }
 
+/**
+ ** @brief Delete a key from a tree
+ ** @param T the tree to delete the key from
+ ** @param k the key to delete
+ **/
 void BTDeleteKey(BTTree *T, int key) {
     if (T->root == NULL) {
         return; // empty tree
@@ -376,6 +496,10 @@ void BTDeleteKey(BTTree *T, int key) {
     }
 }
 
+/**
+ ** @brief Destroy a tree and its nodes recursively
+ ** @param x the current node to destroy
+ **/
 void BTDestroyTreeRecursive(BTNode *x) {
     ssize_t i;
 
@@ -399,6 +523,10 @@ void BTDestroyTreeRecursive(BTNode *x) {
     x = NULL;
 }
 
+/**
+ ** @brief Destroy a tree
+ ** @param T the tree to destroy
+ **/
 void BTDestroyTree(BTTree *T) {
     if (T == NULL || T->root == NULL) {
         return; // empty tree
@@ -410,6 +538,10 @@ void BTDestroyTree(BTTree *T) {
     T = NULL;
 }
 
+/**
+ ** @brief Print a tree recursively
+ ** @param x the current node to print
+ **/
 void BTTraverseRecurse(BTNode *x) {
     ssize_t i;
 
@@ -426,6 +558,10 @@ void BTTraverseRecurse(BTNode *x) {
     }
 }
 
+/**
+ ** @brief Traverse a tree
+ ** @param T the tree to traverse
+ **/
 void BTTraverse(BTTree *T) {
     if (T->root == NULL) {
         return;

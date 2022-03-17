@@ -4,6 +4,18 @@
 
 #include "../../headers/data_structures/red_black_trees.h"
 
+/**
+ ** @file red_black_trees.c
+ ** @brief Red-Black Trees implementation
+ ** @author Andrea Berardi
+ ** @date 20/02/2022
+ **/
+
+/**
+ ** @brief Rotate the tree to the left
+ ** @param T the tree to rotate in
+ ** @param x the node to rotate
+ **/
 void RBTLeftRotate(RBTTree *T, RBTNode *x) {
     RBTNode *y = x->right;
     x->right = y->left;
@@ -26,6 +38,11 @@ void RBTLeftRotate(RBTTree *T, RBTNode *x) {
     x->parent = y;
 }
 
+/**
+ ** @brief Rotate the tree to the right
+ ** @param T the tree to rotate in
+ ** @param x the node to rotate
+ **/
 void RBTRightRotate(RBTTree *T, RBTNode *x) {
     RBTNode *y = x->left;
     x->left = y->right;
@@ -91,6 +108,11 @@ void RBTRightRotate(RBTTree *T, RBTNode *x) {
 //     }
 // }
 
+/**
+ ** @brief Fix the tree after an insertion
+ ** @param T the tree to fix
+ ** @param x the node to fix from
+ **/
 void RBTInsertFixup(RBTTree *T, RBTNode *z) {
     while (z->parent->color == RED) {
         if (z->parent == z->parent->parent->left) {
@@ -139,6 +161,11 @@ void RBTInsertFixup(RBTTree *T, RBTNode *z) {
     T->root->color = BLACK;
 }
 
+/**
+ ** @brief Insert a node in the tree
+ ** @param T the tree to insert in
+ ** @param z the node to insert
+ **/
 void RBTInsert(RBTTree *T, RBTNode *z) {
     RBTNode *y = T->nil;
     RBTNode *x = T->root;
@@ -172,6 +199,12 @@ void RBTInsert(RBTTree *T, RBTNode *z) {
     T->cardinality += 1;
 }
 
+/**
+ ** @brief Create a new node
+ ** @param T the tree to insert in
+ ** @param k the key to insert
+ ** @return node containing the key
+ **/
 RBTNode *RBTNewNode(RBTTree *T, int k) {
     RBTNode *node = malloc(sizeof(RBTNode));
 
@@ -184,12 +217,24 @@ RBTNode *RBTNewNode(RBTTree *T, int k) {
     return node;
 }
 
+/**
+ ** @brief Insert a key in the tree
+ ** @param T the tree to insert in
+ ** @param key the key to insert
+ **/
 void RBTInsertKey(RBTTree *T, int key) {
     RBTNode *x = RBTNewNode(T, key);
 
     RBTInsert(T, x);
 }
 
+/**
+ ** @brief Transplant a node
+ ** @param T the tree where the transplant occurs
+ ** @param u the node to transplant
+ ** @param v the node to transplant with
+ ** @return node containing the key
+ **/
 void RBTTransplant(RBTTree *T, RBTNode *u, RBTNode *v) {
     if (u->parent == T->nil) {
         T->root = v;
@@ -260,6 +305,11 @@ void RBTTransplant(RBTTree *T, RBTNode *u, RBTNode *v) {
 //     }
 // }
 
+/**
+ ** @brief Fix the tree after a deletion
+ ** @param T the tree to fix
+ ** @param x the node to fix
+ **/
 void RBTDeleteFixup(RBTTree *T, RBTNode *x) {
     while (x != T->root && x->color == BLACK) {
         if (x == x->parent->left) {
@@ -324,6 +374,12 @@ void RBTDeleteFixup(RBTTree *T, RBTNode *x) {
     x->color = BLACK;
 }
 
+/**
+ ** @brief Search the minimum node of a subtree
+ ** @param T the tree to search in
+ ** @param x the node to start the search from
+ ** @return node containing the minimum key
+ **/
 RBTNode *RBTMinimum(RBTTree *T, RBTNode *x) {
     while (x->left != T->nil) {
         x = x->left;
@@ -332,6 +388,11 @@ RBTNode *RBTMinimum(RBTTree *T, RBTNode *x) {
     return x;
 }
 
+/**
+ ** @brief Delete a node from the tree
+ ** @param T the tree to delete from
+ ** @param z the node to delete
+ **/
 void RBTDelete(RBTTree *T, RBTNode *z) {
     RBTNode *y = z;
     Color y_original_color = y->color;
@@ -385,6 +446,13 @@ void RBTDelete(RBTTree *T, RBTNode *z) {
 //     }
 // }
 
+/**
+ ** @brief Iteratively search for a key in the tree
+ ** @param T the tree to search in
+ ** @param x the node to start the search from
+ ** @param k the key to search for
+ ** @return node containing the key
+ **/
 RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k) {
     while (x != T->nil && k != x->key) {
         if (k < x->key) {
@@ -397,6 +465,12 @@ RBTNode *RBTIterativeSearch(RBTTree *T, RBTNode *x, int k) {
     return x;
 }
 
+/**
+ ** @brief Delete a key from the tree
+ ** @param T the tree to delete from
+ ** @param key the key to delete
+ ** @return true if the key was found and deleted, false otherwise
+ **/
 bool RBTDeleteKey(RBTTree *T, int k) {
     RBTNode *x = RBTIterativeSearch(T, T->root, k);
 
@@ -408,6 +482,11 @@ bool RBTDeleteKey(RBTTree *T, int k) {
     }
 }
 
+/**
+ ** @brief Empty the tree
+ ** @param T the tree to empty
+ ** @param x the node to start the deletion from
+ **/
 void RBTEmptyTree(RBTTree *T, RBTNode *x) {
     if (x != T->nil && x != NULL) {
         RBTEmptyTree(T, x->left);
@@ -425,6 +504,10 @@ void RBTEmptyTree(RBTTree *T, RBTNode *x) {
 //     }
 // }
 
+/**
+ ** @brief Destroy the tree
+ ** @param T the tree to destroy
+ **/
 void RBTDestroyTree(RBTTree *T) {
     RBTEmptyTree(T, T->root);
 
@@ -435,6 +518,11 @@ void RBTDestroyTree(RBTTree *T) {
     T = NULL;
 }
 
+/**
+ ** @brief Create a new tree
+ ** @param x the node to insert (can be NULL)
+ ** @return address of the new tree
+ **/
 RBTTree *RBTNewTree(RBTNode *x) {
     RBTTree *tree = malloc(sizeof(RBTTree));
 
