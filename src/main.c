@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    bold_green("Done!\n"); // if we arrive here, the experiment were successful
+    bold_green("Done!\n"); // if we arrive here, the experiments were successful
 
     /* Automatic plotter (Python script) */
     plotter(argv[1]); // the function handles potential errors

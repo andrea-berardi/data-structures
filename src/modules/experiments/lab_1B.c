@@ -47,8 +47,7 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
                 for (size_t key = 0; key < max_delete; ++key) {
                     // This uses the iterative version of BSTSearch, but both versions are implemented and functional.
                     // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    BSTDeleteKey(T,
-                                 rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                    BSTDeleteKey(T, rand_delete_values_pool[delete_index++]);
                 }
                 t_end = clock();
 
@@ -70,8 +69,7 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
                 for (size_t key = 0; key < max_delete; ++key) {
                     // This uses the iterative version of BSTSearch, but both versions are implemented and functional.
                     // I can't see any performance differences between the two, but the iterative version should be the go-to choice.
-                    LLDeleteKey(L,
-                                rand_delete_values_pool[delete_index++]); // it's important to use `i++` instead of `++i`
+                    LLDeleteKey(L, rand_delete_values_pool[delete_index++]);
                 }
                 t_end = clock();
 
