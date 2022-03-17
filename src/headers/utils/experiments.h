@@ -20,24 +20,24 @@ typedef struct {
 typedef enum data_structures {
     LL = 0, // Linked List
     BST = 1, // Binary Search Tree
-    RBT = 2, // Red-Black Tree
-    BT = 3, // B-Tree
+    // RBT = 2, // Red-Black Tree
+    // BT = 3, // B-Tree
 } DataStructure;
 
 // Lab. 1A - Binary Search Trees
-void lab_1A(char file[], Configuration conf, bool DEBUG);
+void lab_1A(char file[], Configuration conf);
 
 // Lab. 1B - Linked Lists, Binary Search Trees
-void lab_1B(char file[], Configuration conf, bool DEBUG);
+void lab_1B(char file[], Configuration conf);
 
 // Lab. 2 - Binary Search Trees, Red-Black Trees
-void lab_2(char file[], Configuration conf, bool DEBUG);
+void lab_2(char file[], Configuration conf);
 
 // Lab. 3 - B-Trees, Binary Search Trees, Red-Black Trees
-void lab_3(char file[], Configuration conf, bool DEBUG);
+void lab_3(char file[], Configuration conf);
 
 // Final experiment - B-Trees
-void lab_final(char file[], Configuration conf, bool DEBUG);
+void lab_final(char file[], Configuration conf);
 
 #endif //DS_EXPERIMENTS_H
 

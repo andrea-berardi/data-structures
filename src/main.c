@@ -8,8 +8,6 @@
 #include "headers/utils/colors.h"
 #include "headers/utils/experiments.h"
 
-const bool DEBUG = false; // this flag toggles debug checks (e.g. it checks if the data structures work correctly)
-
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         fprintf(stderr, "Wrong number of arguments supplied.\n");
@@ -76,23 +74,23 @@ int main(int argc, char *argv[]) {
     if (strcmp(argv[1], "1A") == 0) {
         /* Lab. 1A - (BSTs) Binary Search Trees */
         bold_yellow("Running Lab. 1A (Binary Search Trees)... ");
-        lab_1A("../results/lab_1/1A/lab_1A.csv", lab1A_conf, DEBUG);
+        lab_1A("../results/lab_1/1A/lab_1A.csv", lab1A_conf);
     } else if (strcmp(argv[1], "1B") == 0) {
         /* Lab. 1B - (LLs) Linked Lists, (BSTs) Binary Search Trees */
         bold_yellow("Running Lab. 1B (Linked Lists, Binary Search Trees)... ");
-        lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf, DEBUG);
+        lab_1B("../results/lab_1/1B/lab_1B.csv", lab1B_conf);
     } else if (strcmp(argv[1], "2") == 0) {
         /* Lab. 2 - (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         bold_yellow("Running Lab. 2 (Red-Black Trees, Binary Search Trees)... ");
-        lab_2("../results/lab_2/lab_2.csv", lab2_conf, DEBUG);
+        lab_2("../results/lab_2/lab_2.csv", lab2_conf);
     } else if (strcmp(argv[1], "3") == 0) {
         /* Lab. 3 - (BTs) B-Trees, (RBTs) Red-Black Trees, (BSTs) Binary Search Trees */
         bold_yellow("Running Lab. 3 (B-Trees, Red-Black Trees, Binary Search Trees)... ");
-        lab_3("../results/lab_3/lab_3.csv", lab3_conf, DEBUG);
+        lab_3("../results/lab_3/lab_3.csv", lab3_conf);
     } else if (strcmp(argv[1], "4") == 0) {
         /* Final experiment */
         bold_yellow("Running Final (BTs with variable degree t)... ");
-        lab_final("../results/final/final.csv", final_conf, DEBUG);
+        lab_final("../results/final/final.csv", final_conf);
     } else if (strcmp(argv[1], "test") == 0) {
         /* Test the DS's integrity */
         bold_yellow("Running unit and Data Structures integrity tests... ");

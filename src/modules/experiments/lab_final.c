@@ -1,13 +1,11 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "../../headers/utils/utils.h"
 #include "../../headers/utils/experiments.h"
 
-long double
-final_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double final_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -51,10 +49,6 @@ final_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_
 
         t_tot += t_end - t_start;
 
-        if (DEBUG) {
-            printf("LOL\n"); // Suppress warning
-        }
-
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
@@ -69,7 +63,7 @@ final_BT(ssize_t t, size_t max_keys, size_t max_search, size_t max_delete, size_
     return (long double) t_tot / (long double) max_instances;
 }
 
-void lab_final(char file[], Configuration conf, bool DEBUG) {
+void lab_final(char file[], Configuration conf) {
     FILE *fp = fopen(file, "w+");
     if (fp == NULL) {
         fprintf(stderr, "Failed to open file `%s`\n", file);
@@ -93,7 +87,7 @@ void lab_final(char file[], Configuration conf, bool DEBUG) {
         ssize_t t = 10;
         for (ssize_t i = 0; i < 3; ++i) {
             srand(conf.seed);
-            array[i] = final_BT(t, keys, max_search, max_delete, conf.max_instances, DEBUG);
+            array[i] = final_BT(t, keys, max_search, max_delete, conf.max_instances);
 
             t *= 10;
         }
@@ -103,6 +97,8 @@ void lab_final(char file[], Configuration conf, bool DEBUG) {
             fprintf(fp, ",%Lf", array[i]);
         }
         fprintf(fp, "\n");
+
+        free(array);
 
         ++conf.seed;
     }

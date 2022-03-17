@@ -1,14 +1,12 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "../../headers/utils/utils.h"
 #include "../../headers/utils/experiments.h"
 
 long double
-exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure,
-       const bool DEBUG) {
+exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, DataStructure data_structure) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -89,19 +87,6 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
 
         t_tot += t_end - t_start;
 
-        if (DEBUG) {
-            int *array = new_array(T->cardinality);
-            size_t index = 0;
-            BSTInOrderTreeWalkToArray(T->root, array, &index);
-
-            if (is_sorted(array, T->cardinality))
-                printf("Array sorted successfully (length: %zu)\n", T->cardinality);
-            else
-                fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
-
-            FreeNull_Int(array);
-        }
-
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
@@ -117,7 +102,7 @@ exp_1B(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instanc
     return (long double) t_tot / (long double) max_instances;
 }
 
-void lab_1B(char file[], Configuration conf, bool DEBUG) {
+void lab_1B(char file[], Configuration conf) {
     FILE *fp = fopen(file, "w+");
     if (fp == NULL) {
         fprintf(stderr, "Failed to open file `%s`\n", file);
@@ -132,9 +117,9 @@ void lab_1B(char file[], Configuration conf, bool DEBUG) {
         size_t max_delete = keys - max_search;
 
         srand(conf.seed);
-        long double time_BST = exp_1B(keys, max_search, max_delete, conf.max_instances, BST, DEBUG);
+        long double time_BST = exp_1B(keys, max_search, max_delete, conf.max_instances, BST);
         srand(conf.seed);
-        long double time_LL = exp_1B(keys, max_search, max_delete, conf.max_instances, LL, DEBUG);
+        long double time_LL = exp_1B(keys, max_search, max_delete, conf.max_instances, LL);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_BST, time_LL);
 

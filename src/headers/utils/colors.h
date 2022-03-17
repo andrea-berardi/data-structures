@@ -4,12 +4,19 @@
 #define DATA_STRUCTURES_COLORS_H
 
 void red(char *str); // Red, standard
+
 void bold_red(char *str); // Red, bold
+
 void yellow(char *str); // Yellow, standard
+
 void bold_yellow(char *str); // Yellow, bold
+
 void green(char *str); // Green, standard
+
 void bold_green(char *str); // Green, bold
+
 void blue(char *str); // Blue, standard
+
 void bold_blue(char *str); // Blue, bold
 
 #endif //DATA_STRUCTURES_COLORS_H

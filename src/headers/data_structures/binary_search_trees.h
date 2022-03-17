@@ -25,9 +25,9 @@ BSTNode *BSTMinimum(BSTNode *x);
 
 BSTNode *BSTMaximum(BSTNode *x);
 
-BSTNode *BSTSuccessor(BSTNode *x);
+// BSTNode *BSTSuccessor(BSTNode *x); // unused
 
-BSTNode *BSTPredecessor(BSTNode *x);
+// BSTNode *BSTPredecessor(BSTNode *x); // unused
 
 void BSTInsertKey(BSTTree *T, int k);
 
@@ -39,7 +39,7 @@ void BSTDeleteKey(BSTTree *T, int k);
 void BSTDestroyTree(BSTTree *T);
 
 // this procedure destroys every node of a tree BUT preserves the structure of the BST while running
-void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x);
+// void BSTEmptyTreePreserveStructure(BSTTree *T, BSTNode *x); // unused
 
 #endif //DS_BINARY_SEARCH_TREES_H
 

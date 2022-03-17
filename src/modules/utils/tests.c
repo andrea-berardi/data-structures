@@ -219,19 +219,7 @@ bool test_b_tree() {
         BTDeleteKey(T, rand_delete_values_pool[delete_index++]);
     }
 
-    int *array = new_array(10000);
-    size_t index = 0;
-
-    /* BSTInOrderTreeWalkToArray(T->root, array, &index);
-
-    if (!is_sorted(array, T->cardinality)) {
-        fprintf(stderr, "BT: The array was not sorted correctly.\n");
-        print_array(array, T->cardinality);
-    }*/
-
     BTDestroyTree(T);
-
-    FreeNull_Int(array);
 
     FreeNull_Int(rand_insert_values_pool);
     FreeNull_Int(rand_search_values_pool);

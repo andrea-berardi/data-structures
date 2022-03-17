@@ -1,12 +1,11 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "../../headers/utils/utils.h"
 #include "../../headers/utils/experiments.h"
 
-long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -51,19 +50,6 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
 
         t_tot += t_end - t_start;
 
-        if (DEBUG) {
-            int *array = new_array(T->cardinality);
-            size_t index = 0;
-            BSTInOrderTreeWalkToArray(T->root, array, &index);
-
-            if (is_sorted(array, T->cardinality))
-                printf("Array sorted successfully (length: %zu)\n", T->cardinality);
-            else
-                fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
-
-            FreeNull_Int(array);
-        }
-
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
@@ -78,7 +64,7 @@ long double exp_BST(size_t max_keys, size_t max_search, size_t max_delete, size_
     return (long double) t_tot / (long double) max_instances;
 }
 
-long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances, const bool DEBUG) {
+long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_t max_instances) {
     clock_t t_tot = 0;
 
     for (size_t instance = 1; instance <= max_instances; ++instance) {
@@ -122,20 +108,6 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
 
         t_tot += t_end - t_start;
 
-        if (DEBUG) {
-            int *array = new_array(T->cardinality);
-            size_t index = 0;
-
-            RBTInOrderTreeWalkToArray(T, T->root, array, &index);
-
-            if (is_sorted(array, T->cardinality))
-                printf("Array sorted successfully (length: %zu)\n", T->cardinality);
-            else
-                fprintf(stderr, "The array was not sorted correctly.\n"), print_array(array, T->cardinality);
-
-            FreeNull_Int(array);
-        }
-
         /* The following lines will give back to the OS the dynamic memory previously allocated */
 
         // Destroying the data structures of the test
@@ -150,7 +122,7 @@ long double exp_RBT(size_t max_keys, size_t max_search, size_t max_delete, size_
     return (long double) t_tot / (long double) max_instances;
 }
 
-void lab_2(char file[], Configuration conf, bool DEBUG) {
+void lab_2(char file[], Configuration conf) {
     FILE *fp = fopen(file, "w+");
     if (fp == NULL) {
         fprintf(stderr, "Failed to open file `%s`\n", file);
@@ -165,10 +137,10 @@ void lab_2(char file[], Configuration conf, bool DEBUG) {
         size_t max_delete = keys - max_search;
 
         srand(conf.seed);
-        long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_BST = exp_BST(keys, max_search, max_delete, conf.max_instances);
 
         srand(conf.seed);
-        long double time_RBT = exp_RBT(keys, max_search, max_delete, conf.max_instances, DEBUG);
+        long double time_RBT = exp_RBT(keys, max_search, max_delete, conf.max_instances);
 
         fprintf(fp, "%zu,%Lf,%Lf\n", keys, time_BST, time_RBT);
 
